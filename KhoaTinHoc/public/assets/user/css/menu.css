@@ -1,0 +1,40 @@
+	nav.nav {
+		    background: #159894;
+		}
+
+		nav.nav ul {
+		    list-style: none;
+		    display: flex;
+		}
+
+		nav.nav ul a {
+		    display: block;
+		    padding: 14px 22px;
+		    /* border: 1px solid #ccc; */
+		    text-decoration: none;
+		    transition: all 0.4s;
+		    color: #fff;
+		}
+
+		nav.nav ul a:hover {
+		    background: black;
+		    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%) !important;
+		}
+		
+		nav.nav ul li {
+		    position: relative;
+		}
+		nav.nav ul li:hover ul.submenu {
+			display: block;
+		}
+		nav.nav ul li ul.submenu {
+			display: none;
+		    position: absolute;
+		    width: 200px;
+		    background: #108a85;;
+		}
+
+		nav.nav ul li ul.submenu a {
+		    border-bottom: 1px solid rgba(0,0,0,0.2);
+		    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+		}
