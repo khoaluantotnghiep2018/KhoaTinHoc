@@ -7,45 +7,28 @@ Danh sách
 <link rel="stylesheet" href="assets/user/css/list.css">
 @endsection
 
-@section('content') 
+@section('content')
 <div class="content">
-    <div class="list-categories__title">
-        <div>
-            Danh Sách Sinh Viên	
-        </div>
-    </div>	<!-- Trang tin -->
 
-    <div class="list">
-        <div class="list-search">
-            <form action="" >
-                <input type="text" placeholder="Nhập ...">
-                <button type='submit'>Tìm kiếm</button>
-            </form>	
+    <input type="text" id="idStudent" onkeyup="seachIdInfomation()" placeholder="Nhập mã ..." title="Mã sinh viên là?">
+    <input type="text" id="nameStudent" onkeyup="seachNameInfomation()" placeholder="Nhập tên ..." title="Tên sinh viên là?">
 
-            <form action="">
-                <select>
-                    <option value="">Search theo lớp</option>
-                    <option value="">10</option>
-                    <option value="">11</option>
-                    <option value="">12</option>
-                </select>
-            </form>
-        </div>
+    <div class="list"> 
         <div class="table">
-            <table>
+            <table id="myTable">
                 <tr>
-                    <th>Mã Sinh Viên</th>
-                    <th>Họ & Tên</th>
+                    <th>MÃ</th>
+                    <th>HỌ VÀ TÊN</th>
                     <th>Ngày Sinh</th>
                     <th>Lớp</th>
                     <th>Địa chỉ</th>
                 </tr>
                 <tr>
-                    <td>DHU005986</td>
-                    <td>PHẠM THỊ THU HẰNG</td>
+                    <td>15s1021068</td>
+                    <td>Huỳnh Văn Thùy</td>
                     <td>18/07/1996</td>
-                    <td>12</td>
-                    <td>Hà Nội 123123123123123123</td>
+                    <td>Tin 4A</td>
+                    <td>Tam Lãnh - Phú Ninh - Quảng Nam</td>
                 </tr>
                 <tr>
                     <td>DHU005986</td>
@@ -96,15 +79,14 @@ Danh sách
                     <td>12</td>
                     <td>Hà Nội 123123123123123123</td>
                 </tr>
-            </table>	
+            </table>
         </div>
-        
+
     </div>
-        
 </div> <!-- END CONTENT -->
 @endsection
 
 
 @section('script')
-
+<script src="assets/user/js/list.js"></script>
 @endsection

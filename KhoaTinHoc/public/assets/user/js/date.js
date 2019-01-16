@@ -1,4 +1,5 @@
-var dateNow = new Date();var date = document.querySelector('.date');
+var dateNow = new Date();
+var date = document.querySelector('.date');
 var year = dateNow.getFullYear();
 var month = (dateNow.getMonth() + 1);
 month = (month < 10)? '0' + month : month;

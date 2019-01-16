@@ -16,3 +16,9 @@ Route::get('/danhsach', function () {
 Route::get('/baiviet', function () {
     return view('pages/user/news');
 });
+
+// Phần quản trị viên
+
+Route::get('/admin/home', function () {
+    return view('pages/admin/home');
+}); 

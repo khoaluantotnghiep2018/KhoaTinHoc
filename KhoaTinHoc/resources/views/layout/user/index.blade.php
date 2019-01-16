@@ -29,6 +29,5 @@
 </body>
 
 </html>
-<script src='assets/user/js/style.js'></script> 
-<script src='js/date.js'></script>
+<script src='assets/user/js/style.js'></script>  
 @yield('script')

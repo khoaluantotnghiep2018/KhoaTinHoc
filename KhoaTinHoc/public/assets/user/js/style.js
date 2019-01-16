@@ -89,10 +89,7 @@ linkLogin.onclick = function()
 closeForm.onclick = function()
 {
 	logForm.classList.remove('displayForm');
-}
-
-
-
+} 
 
 $(document).ready(function(){
 	var width = $(window).width(); 

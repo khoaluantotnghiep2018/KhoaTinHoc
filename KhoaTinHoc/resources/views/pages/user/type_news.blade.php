@@ -151,3 +151,7 @@ Loại tin tức
 
 </div> <!-- END CONTENT -->
 @endsection
+
+@section('script')
+<script src='assets/user/js/date.js'></script>
+@endsection

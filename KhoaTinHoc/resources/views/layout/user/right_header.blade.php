@@ -77,7 +77,8 @@
             <label for="">
                 <textarea name="" id="" placeholder="Bạn cần khoa hổ trợ điều gì?" rows="1" cols="28"></textarea>
             </label>
-            <button>Gửi</button>
+            <button>Gửi hổ trợ</button>
+            <button>Gửi ẩn danh</button>
         </form>
     </div>
 </div> <!-- END CONTACT (LH) -->

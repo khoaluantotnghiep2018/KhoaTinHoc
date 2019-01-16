@@ -1,3 +1,15 @@
+#idStudent, #nameStudent {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 50%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    float: left;
+  }
+
 .list {
     width: 100%;
     padding: 20px 0;
@@ -11,49 +23,17 @@
     box-shadow: 1px 0px 1px #a9a9a9 inset;
 }
 
+.list table th{
+    text-transform: uppercase;
+}
+
 .list table td,th {
     padding: 15px;
-    border-bottom: 1px solid #dedede;
-    /* box-shadow: 1px 1px 1px #bdbcbc inset; */
-    font-size: 15px;
+    border-bottom: 1px solid #dedede; 
+    font-size: 14px;
 }
 
 .list table tr:nth-child(even) td {
     background: #ececec;
 }
-
-.list-search {
-    display: flex;
-    margin-bottom: 15px;
-    justify-content: space-between;
-    width: 100%;
-}
-
-form {
-    /* width: calc(50% - 1rem); */
-}
-
-.list-search input[type="text"] {
-    width: 70%;
-    padding: 5px 10px;
-    outline: none;
-}
-
-.list-search button {
-    padding: 7px 10px;
-    background: #428bca;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    margin-left: -5px;
-    cursor: pointer;
-}
-.list-search form {
-    display: block;
-}
-
-.list-search select {
-    width: 200px;
-    padding: 6px;
-    outline: none;
-}
+ 
