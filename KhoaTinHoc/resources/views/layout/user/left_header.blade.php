@@ -41,15 +41,18 @@
         <div class="title">Liên kết website</div>
         <div class="lienket-website">
 
-            <select name="" id="0">
-
+            <select name="" id="0"> 
                 <option value="">Giành cho sinh viên</option>
                 <option value="">website 1</option>
                 <option value="">website 2</option>
             </select>
-            <select name="" id="0">
-
+            <select name="" id="0"> 
                 <option value="">Giành cho giảng viên</option>
+                <option value="">website 1</option>
+                <option value="">website 2</option>
+            </select>
+            <select name="" id="0"> 
+                <option value="">Liên kết khác</option>
                 <option value="">website 1</option>
                 <option value="">website 2</option>
             </select>

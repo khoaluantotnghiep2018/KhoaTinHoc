@@ -69,8 +69,11 @@ Danh sách
                         <div class="cmt-user__text">
                             <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
                             <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
-                            <div class="rep">
-                                <a class='btn-rep'>Rep</a>
+                           
+                            <button class='fas fa-trash-alt remove'> Xóa</button>
+                            <button class='far fa-edit remove'> Sửa</button>
+                            <div class="rep"> 
+                                <a class="btn-rep far fa-comment-dots"> 5 phản hồi khác</a>
                             </div>
                         </div>
                     </div>	 <!-- Nội dung comment của user -->
@@ -82,7 +85,8 @@ Danh sách
                                 <div class="cmt-user__text">
                                     <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
                                     <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
-                                    <button class='remove'>Xóa</button>
+                                    <button class='fas fa-trash-alt remove'> Xóa</button>
+                                    <button class='far fa-edit remove'> Sửa</button>
                                 </div>
                             </div>	
 
@@ -91,7 +95,8 @@ Danh sách
                                 <div class="cmt-user__text">
                                     <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
                                     <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos cumque ad, aspernatur officia maiores dolorum odio sit voluptatibus sint nulla voluptatum aliquam, quidem deserunt nostrum consequatur. Eaque, doloribus, rem?</div>
-                                    <button class='remove'>Xóa</button>
+                                    <button class='fas fa-trash-alt remove'> Xóa</button>
+                                    <button class='far fa-edit remove'> Sửa</button>
                                 </div>
                             </div>	
 
@@ -100,7 +105,8 @@ Danh sách
                                 <div class="cmt-user__text">
                                     <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
                                     <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
-                                    <button class='remove'>Xóa</button>
+                                    <button class='fas fa-trash-alt remove'> Xóa</button>
+                                    <button class='far fa-edit remove'> Sửa</button>
                                 </div>
                             </div>	
                         </div> <!-- nội dung rep của user -->
@@ -111,13 +117,13 @@ Danh sách
                                     <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
                                     <textarea name="" id="" cols="30" rows="3"></textarea>	
                                 </div>
-                                <div class="btn"><button>Rep bình luận</button></div>
+                                <div class="btn"><button>Trả lời</button></div>
                             </div>
                         </div> <!-- ô input rep user -->	
                     </div> <!-- Khung chứa của rep -->
                     
                 </div>
-
+ 
             </div>
         </div>
     </div>

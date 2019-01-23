@@ -1,57 +1,58 @@
 <div class="right">
-<div class="right-news">
-    <div class="title">Tin tức nỗi bật</div>
-    <div class="right-news_border">
-        <div class="marquee">
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
+    <div class="right-news">
+        <div class="title">Tin tức nỗi bật</div>
+        <div class="right-news_border">
+            <div class="marquee">
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
+                <div class="right-news__box">
+                    <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
+                            alt=""></a>
+                    <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
+                    <div style='clear:both'></div>
+                </div>
             </div>
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
-            </div>
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
-            </div>
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
-            </div>
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
-            </div>
-            <div class="right-news__box">
-                <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-                        alt=""></a>
-                <a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-                <div style='clear:both'></div>
-            </div>
+
         </div>
+
 
     </div>
 
-
-</div>
-
-<div class="right-information">
-    <a href=""><strong>Giới thiệu về trường</strong></a>
-    <p>Khoa Tin học Trường Đại học Sư phạm Huế được chính thức thành lập vào ngày 15 tháng 12 năm 1999 theo quyết định
-        của Đại Học Huế số 398/QĐ-ĐHH-TCNS ngày 10 tháng 12 năm 1999 mà tiền thân là Bộ môn Tin học được thành lập theo
-        quyết định số 09/QĐ-TC ngày 8 tháng 3 năm 1996 của Ban Giám hiệu trường ĐHSP Huế.</p>
-</div> <!-- Giới thiệu trường học . RIGHT -->
+    <div class="right-information"> 
+            <a href=""><strong>THÔNG BÁO</strong></a>  
+            <div class="ArticleNewTitle" align="center"> LỊCH THI HỌC KỲ I (2018-2019) CHÍNH THỨC</div>
+            <hr> » Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.
+            <hr>
+            <hr>* Thông báo cập nhật lúc 18h40 ngày 10/01/2019. 
+    </div> <!-- Giới thiệu trường học . RIGHT -->
 
 </div> <!-- END RIGHT -->
 

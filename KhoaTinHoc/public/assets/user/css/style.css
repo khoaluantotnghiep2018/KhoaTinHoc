@@ -36,20 +36,94 @@
 		    height: 100%;
 		}
 		.header-login {
-		       position: absolute;
-    /* right: 0; */
-    top: 0;
-    right: 24px;
-    top: 0;
-    margin-top: 15px;
-    font-size: 25px;
-    color: #3a445f;
-    cursor: pointer;
-    padding: 5px 10px;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 1px 3px 8px #793333;
+			position: absolute;
+			/* right: 0; */	
+			top: 0;
+			right: 24px;
+			top: 0;
+			margin-top: 15px;
+			font-size: 25px;
+			color: #3a445f;
+			cursor: pointer;
+			padding: 5px 10px;
+			background: #fff;
+			border-radius: 4px;
+			box-shadow: 1px 3px 8px #793333;
 		}
+
+		/* css cho logout */
+		.header-logout i{ 
+			position: absolute; 
+			top: 0;
+			right: 24px; 
+			margin-top: 15px;
+			font-size: 25px;
+			color: #3a445f;
+			cursor: pointer;
+			padding: 5px 10px;
+			background: #fff;
+			border-radius: 4px;
+			box-shadow: 1px 3px 8px #793333;
+		}
+		#logout-form{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(0,0,0,0.5);
+			z-index: 999999999;
+			height: 100%;
+			display: none;
+		}
+		.logout-form-content {
+			position: fixed; 
+			width: 30%; 
+			padding: 10px;
+			background: #fff;
+			border-radius: 3px; 
+			margin-left: 30%;
+			top: 40%;
+		}      
+		.logout-form-content ul{
+			list-style-type: none; 
+			background-color: #f1f1f1;
+			text-align: center; 
+		}
+		.logout-form-content ul li a {
+			display: block;
+			color: #000;
+			padding: 8px 16px;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		.logout-form-content ul li a:hover {
+			background-color: #555;
+			color: white;
+		}
+		#logout-form{
+			position: absolute; 
+			width: 100%;
+			background: rgba(0,0,0,0.5);
+			z-index: 999999999;
+			height: 100%;
+			display: none;
+		}   
+		.closeLogout {
+		   display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 1.5rem;
+			color: #fff;
+			z-index: 9999999;
+		} 
+		.closeLogout:hover,
+		.closeLogout:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		/* xong phần logout */
 
 		nav.nav {
 		    background: #159894;
@@ -63,7 +137,7 @@
 		nav.nav ul a {
 		    display: block;
 		    padding: 14px 22px;
-		    /* border: 1px solid #ccc; */
+		    text-align: center;
 		    text-decoration: none;
 		    transition: all 0.4s;
 			color: #fff;  
@@ -91,7 +165,8 @@
 
 		nav.nav ul li ul.submenu a {
 		    border-bottom: 1px solid rgba(0,0,0,0.2);
-		    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+			box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+			text-align: left;
 		}
 
 		#clocktop{
@@ -270,10 +345,12 @@
 		.right-information a {
 		    text-decoration: none;
 		    margin-bottom: 10px;
-		    display: block;
+			display: block;
+			text-align: center;
 		}
 		.right-information a strong {
-		    color: #0c4075;
+			color: #d41010;
+			
 		}
 		.right-information {
 			border-top: 1px solid #159894;
@@ -670,7 +747,7 @@ ul.left-menu__sub li {
 }
 
 .contact-title {
-       background: #159894;
+    background: #159894;
     padding: 8px 20px;
     /* border-radius: 4px; */
     color: #fff;
@@ -753,6 +830,14 @@ ul.left-menu__sub li {
 /* DÃ nh cho mÃ¡y tÃ­nh báº£ng chiá»u dá»c */
 @media only screen and (max-width:650px)
 {
+	.logout-form-content { 
+		width: 80%; 
+		padding: 10px;
+		background: #fff;
+		border-radius: 3px; 
+		margin-left: 10%;
+		top: 30%;
+	}     
 	.left-truycap {
     margin-bottom: 20px;
 }
@@ -844,8 +929,16 @@ ul.left-menu__sub li {
 	.header-banner img{
 		height: 75px;	
 	}
+	.logout-form-content { 
+		width: 90%; 
+		padding: 10px;
+		background: #fff;
+		border-radius: 3px; 
+		margin-left: 5%;
+		top: 40%;
+	}      
 	.contact-title {
-	    border-radius: 50%;
+	    border-radius: 5%;
 	    padding: 14px 18px;
 	    text-align: center;
 	}
@@ -889,8 +982,8 @@ ul.left-menu__sub li {
 	    display: none;
 	}
 	.left-lienket:nth-child(3) {
-    display: block;
-}
+    	display: block;
+	}
 	main.main .content {
 	    flex: 0 0 calc(100%);
 	    /* border: 1px solid; */

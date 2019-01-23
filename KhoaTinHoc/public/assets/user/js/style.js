@@ -133,3 +133,17 @@ var vitri = $('.footer').offset();
 		$('body,html').animate({scrollTop:0});
 	});
 });
+// Xử lý logout
+modalLogout = document.getElementById("logout-form");
+function clickLogout() {
+	modalLogout.style.display = "block";
+}
+btnExit = document.getElementsByClassName("closeLogout")[0];
+btnExit.onclick = function () {
+	modalLogout.style.display = "none";
+}  
+window.onclick = function(event) {
+	if (event.target == modalLogout) {
+		modalLogout.style.display = "none";
+	}
+}

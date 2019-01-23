@@ -202,7 +202,7 @@ Trang chủ
             </article>
         </div>
     </div>
-    <span id="test">Thông điệp: @{{ message }}</span>
+    <!-- <span id="test">Thông điệp: @{{ message }}</span> -->
 </div> <!-- END CONTENT -->
 @endsection
 
