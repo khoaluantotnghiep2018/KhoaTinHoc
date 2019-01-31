@@ -1,5 +1,14 @@
 <div class="right">
     <div class="right-news">
+        <div class="right-information">
+            <a href=""><strong>THÔNG BÁO</strong></a>
+            <div class="ArticleNewTitle" align="center"> LỊCH THI HỌC KỲ I (2018-2019) CHÍNH THỨC</div>
+            <hr> » Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.
+            <hr>
+            <hr>* Thông báo cập nhật lúc 18h40 ngày 10/01/2019.
+         </div> 
+         <!--Giới thiệu trường học . RIGHT -->
+
         <div class="title">Tin tức nỗi bật</div>
         <div class="right-news_border">
             <div class="marquee">
@@ -41,18 +50,9 @@
                 </div>
             </div>
 
-        </div>
-
+        </div> 
 
     </div>
-
-    <div class="right-information"> 
-            <a href=""><strong>THÔNG BÁO</strong></a>  
-            <div class="ArticleNewTitle" align="center"> LỊCH THI HỌC KỲ I (2018-2019) CHÍNH THỨC</div>
-            <hr> » Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.
-            <hr>
-            <hr>* Thông báo cập nhật lúc 18h40 ngày 10/01/2019. 
-    </div> <!-- Giới thiệu trường học . RIGHT -->
 
 </div> <!-- END RIGHT -->
 
