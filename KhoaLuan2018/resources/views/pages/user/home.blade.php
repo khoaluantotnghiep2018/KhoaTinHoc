@@ -6,17 +6,60 @@ Trang chủ
 
 @section('content')
 <div class="content"> 
+    <!-- Hiển thị rss -->
     <div class="content-box">
         <div class="content-box__title">
-            <div class="link">
-                <p href="">Thông báo</p>
-            </div>
-
+            <div class="link"> 
+                <p>RSS</p>
+                <a class="fa fa-rss" id="readRss" href=""></a>      
+            </div> 
             <div class="next">
-                <!-- <a href=""><i class="fas fa-list"></i></a> -->
             </div>
         </div>
+        <?php
+            $doc = new DOMDocument();
+            $doc->load("https://ictnews.vn/rss/cntt"); 
+            $max = $doc->getElementsByTagName("item")->count();
+            // Lấy ngẫu nhiên 1 tin 
+            $index = rand(0,$max-1);
+            $articles = $doc->getElementsByTagName("item")->item($index);
+            $title = $articles->getElementsByTagName("title")->item(0);
+            $description = $articles->getElementsByTagName("description")->item(0);
+            $link = $articles->getElementsByTagName("link")->item(0);
+            $pubDate = $articles->getElementsByTagName("pubDate")->item(0);
+        ?>  
+        <div class="content-box__main" id="news_top">  
+            <article> 
+                <?php 
+                    // Xử lý hình ảnh + nội dung  
+                    $stat = strpos($description->nodeValue, '</br>');
+                    $content_image = substr($description->nodeValue, 0, $stat); 
+                    $content_text = substr($description->nodeValue, $stat+6, strlen($description->nodeValue)-1); 
+                    $content_text = str_replace("]]>","",$content_text);
+                    echo $content_image;   
+                ?>
+                <div class="information">
+                    <div class="information-title"><a href="<?php echo $link->nodeValue; ?>"><?php echo $title->nodeValue; ?></a></div>
+                    <div class="date"> 
+                        <span class="fas fa-calendar-alt"> <?php echo $pubDate->nodeValue ?></span>  
+                    </div> 
+                    <div class="text"><?php  echo $content_text; ?></div>
+                </div>  
+            </article>
+        </div>
 
+    </div>
+
+    <!-- Hiển thị top news khoa -->
+    <div class="content-box">
+        <div class="content-box__title">
+        <div class="link"> 
+                <p>RSS</p>
+                <a class="fa fa-rss" id="readRss" href=""></a>      
+            </div> 
+            <div class="next">
+            </div>
+        </div> 
         <div class="content-box__main" id="news_top">  
             <article>
                 <a href=""><img src="http://tintuc.hues.vn/wp-content/uploads/sites/2/2016/05/lanh-dao-DH-hue-tang-giay-khen-cho-2-tap-the-doi-6-ca-nhan-cua-khoa-Tin-hoc-vi-co-thanh-tich-trong-cong-tac-giang-day-nghien-cuu-khoa-hoc.jpg"
@@ -24,7 +67,7 @@ Trang chủ
                 <div class="information">
                     <div class="information-title"><a href="">Kỷ niệm 20 năm thành lập khoa Tin Học cùng cựu sinh viên</a></div>
                     <div class="date"> 
-                        <span class="calendar-alt"> 05/09/2018 17:38</span>  
+                        <span class="fas fa-calendar-alt"> 05/09/2018 17:38</span>  
                     </div>
                     <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora quam
                         laboriosam eveniet
@@ -36,7 +79,8 @@ Trang chủ
                 <div class="cmt"> 
                     <span><i class="fas fa-eye"></i> : 200</span>
                     <span><i class="far fa-comment"></i> :20</span> 
-                </div>
+                </div> 
+            
             </article>
         </div>
 

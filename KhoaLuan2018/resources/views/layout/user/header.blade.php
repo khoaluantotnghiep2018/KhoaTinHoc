@@ -64,18 +64,17 @@
         </div>
 
     </div>
-</div>
-
+</div>  
 <header class="header">
     <div class="header-banner">
         <img src="assets/user/images/bannerDHSP.gif" alt="">
-    </div>
+    </div> 
     <div class="header-login" hidden><i class="fas fa-user"></i></div>
     <div class="header-logout">
         <i onclick="clickLogout()" class="fas fa-user-tie"></i>
     </div>
 </header> <!-- END HEADER -->
-<div class="bar-menu"><i class="fas fa-bars"></i></div>
+<div class="bar-menu"><i class="fas fa-bars"></i></div> 
 <nav class="nav">
     <div class="close"><i class="fas fa-times-circle"></i></div>
     <ul>
@@ -116,10 +115,10 @@
 
 <div class="search">
     <div id="clocktop"></div>
-    <div class="form-search">
+    <div class="form-search"> 
         <form action="" method='get'>
             <input type="text" placeholder="Tìm kiếm..." name='search'>
             <button><i class="fas fa-search"></i></button>
-        </form>
+        </form> 
     </div>
 </div> <!-- END SEARCH -->
