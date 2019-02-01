@@ -19,6 +19,6 @@ Route::get('/baiviet', function () {
 
 // Phần quản trị viên
 
-Route::get('/admin/home', function () {
-    return view('pages/admin/home');
+Route::get('/admin/trangchu', function () {
+    return view('pages/admin/trangchu');
 }); 
