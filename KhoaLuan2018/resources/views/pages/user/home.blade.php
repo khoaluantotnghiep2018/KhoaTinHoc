@@ -11,7 +11,7 @@ Trang chủ
         <div class="content-box__title">
             <div class="link"> 
                 <p>RSS</p>
-                <a class="fa fa-rss" id="readRss" href=""></a>      
+                <a class="fa fa-rss" id="readRss" href="trangchu"></a>      
             </div> 
             <div class="next">
             </div>

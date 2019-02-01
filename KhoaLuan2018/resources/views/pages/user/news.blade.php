@@ -8,8 +8,7 @@ Danh sách
 @endsection
 
 @section('content')  
-<div class="content"> 
-
+<div class="content">  
     <div class="news">
         <div class="news-title">
             <h1>TH Hồng Sơn - Tưng bừng ngày hội khai trường</h1>

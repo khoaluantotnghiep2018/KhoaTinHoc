@@ -1,24 +1,31 @@
 <?php
- 
+    
+    
+Route::group(['prefix'=>''] , function(){
+    Route::get('trangchu', function () {
+        return view('pages/user/home');
+    });   
+    Route::get('gioithieu', function () {
+        return view('pages/user/introduce');
+    });  
+    Route::get('danhsachtin', function () {
+        return view('pages/user/type_news');
+    });  
+    Route::get('tintuc', function () {
+        return view('pages/user/news');
+    });
+});
+    
 
-Route::get('/', function () {
-    return view('pages/user/home');
+Route::group(['prefix'=>'quantri'] , function(){
+    Route::get('trangchu', function () {
+        return view('pages/admin/trangchu');
+    }); 
+    Route::group(['prefix'=>'gioithieu'] , function(){
+        Route::get('/', function () {
+            return view('pages/admin/gioithieu');
+        });   
+        Route::post('/sua', 'TrangchuController@SuaGioiThieu');
+    });
 });
 
-Route::get('/loaitintuc', function () {
-    return view('pages/user/type_news');
-});
-
-Route::get('/danhsach', function () {
-    return view('pages/user/list_view');
-});
-
-Route::get('/baiviet', function () {
-    return view('pages/user/news');
-});
-
-// Phần quản trị viên
-
-Route::get('/admin/trangchu', function () {
-    return view('pages/admin/trangchu');
-}); 

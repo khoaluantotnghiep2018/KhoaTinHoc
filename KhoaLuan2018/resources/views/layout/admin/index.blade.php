@@ -3,6 +3,7 @@
   <head> 
     <title>@yield('title')</title>
     <meta charset="utf-8">  
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <base href="{{asset('')}}">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="assets/admin/css/main.css"> 
@@ -12,7 +13,7 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Admin page</a>
+    <header class="app-header"><a class="app-header__logo" href="quantri/trangchu">Admin page</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -84,7 +85,7 @@
         <li><a class="app-menu__item active" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Trang chủ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="gioithieu.html"><i class="icon fa fa-circle-o"></i> Giới thiệu</a></li>
+            <li><a class="treeview-item" href="quantri/gioithieu"><i class="icon fa fa-circle-o"></i> Giới thiệu</a></li>
             <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Font Icons</a></li>
             <li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>
             <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>
@@ -129,6 +130,9 @@
     <script src="assets/admin/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <script type="text/javascript" src="assets/admin/js/plugins/chart.js"></script> 
+    <!-- TinyMCE -->
+    <script src="tinymce/tinymce.js"></script>  
+
     @yield('script')
   </body>
 </html>
