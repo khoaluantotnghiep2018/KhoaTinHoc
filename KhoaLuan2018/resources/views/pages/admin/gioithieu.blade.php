@@ -21,7 +21,7 @@ Giới thiệu
                     <h3 class="title">Chỉnh sửa nội dung</h3>
                 </div>
                 <div class="tile-body"> 
-                    <textarea name="" rows="30" id="textGioiThieu"></textarea>
+                    <textarea name="" rows="30" id="textGioiThieu" >{!! $trangchu->gioithieu !!}</textarea>
                     <p>Toàn bộ nội dung thay đổi sẽ không thể hoàn tác, bạn hãy chắc chắc thay đổi.</p>
                     <a class="btn btn-info" id="suagioithieu" href="javascript:void(0)">Cập nhật</a>
                     <input name="image" type="file" id="upload" hidden>

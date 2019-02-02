@@ -97,7 +97,7 @@
 		<nav class="nav">
 			<div class="close"><i class="fas fa-times-circle"></i></div>
 			<ul>
-				<li><a href="trangchu.html"><i class="fas fa-home"></i></a></li>
+				<li><a href="trangchu"><i class="fas fa-home"></i></a></li>
 				<li><a href="gioithieu">Giới thiệu</a></li>
 				<li>
 					<a href="">Thông báo</a>
