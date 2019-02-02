@@ -5,10 +5,7 @@ Route::group(['prefix'=>''] , function(){
     Route::get('', function () {
         return redirect()->route('trangchinh');
     }); 
-    Route::get('trangchu', function () {
-        return view('pages/user/home');
-    })->name('trangchinh');   
-    
+    Route::get('trangchu', 'TrangchuController@loadTrangChu')->name('trangchinh');    
     Route::get('gioithieu', 'TrangchuController@getDuLieuNguoiDung');
     
     Route::get('danhsachtin', function () {
@@ -29,6 +26,10 @@ Route::group(['prefix'=>'quantri'] , function(){
     Route::group(['prefix'=>'gioithieu'] , function(){
         Route::get('', 'TrangchuController@getDuLieuQuanTri');  
         Route::post('/sua', 'TrangchuController@SuaGioiThieu');
+    });
+    Route::group(['prefix'=>'hienthi'] , function(){
+        Route::get('', 'TrangchuController@HienThiRss');  
+        Route::post('/suahienthirss', 'TrangchuController@updateHienThiRss'); 
     });
 });
 

@@ -86,8 +86,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Trang chủ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="quantri/gioithieu"><i class="icon fa fa-circle-o"></i> Giới thiệu</a></li>
-            <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Font Icons</a></li>
-            <li><a class="treeview-item" href="ui-cards.html"><i class="icon fa fa-circle-o"></i> Cards</a></li>
+            <li><a class="treeview-item" href="quantri/hienthi"><i class="icon fa fa-circle-o"></i> Hiển thị</a></li>
             <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>
           </ul>
         </li>
@@ -132,6 +131,9 @@
     <script type="text/javascript" src="assets/admin/js/plugins/chart.js"></script> 
     <!-- TinyMCE -->
     <script src="tinymce/tinymce.js"></script>  
+    <!-- Thông báo js -->
+    <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-notify.min.js"></script> 
+    <script type="text/javascript" src="assets/admin/js/plugins/sweetalert.min.js"></script>  
 
     @yield('script')
   </body>

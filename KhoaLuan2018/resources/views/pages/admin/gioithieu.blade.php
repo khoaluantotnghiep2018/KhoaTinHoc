@@ -32,7 +32,5 @@ Giới thiệu
 </main> 
 
 @section('script')
-<script src="assets/admin/js/gioithieu.js"></script>
-<script type="text/javascript" src="assets/admin/js/plugins/bootstrap-notify.min.js"></script> 
-<script type="text/javascript" src="assets/admin/js/plugins/sweetalert.min.js"></script> 
+<script src="assets/admin/js/gioithieu.js"></script> 
 @endsection

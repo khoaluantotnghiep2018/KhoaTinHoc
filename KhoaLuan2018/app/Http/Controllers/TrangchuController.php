@@ -15,6 +15,11 @@ class TrangchuController extends Controller
         View::share('trangchu',$trangchu);
     } 
 
+    public function loadTrangChu(){
+        return view('pages/user/home');
+    }
+
+    // Cập nhật giới thiệu
     public function SuaGioiThieu(){
         if(isset($_POST['textgioithieu'])){
             $textgioithieu = $_POST['textgioithieu']; 
@@ -34,4 +39,22 @@ class TrangchuController extends Controller
     public function getDuLieuQuanTri(){ 
         return view('pages.admin.gioithieu');
     }
+
+    // Xử lý phần hiển thị ngoài trang chủ
+    public function HienThiRss(){
+        return view('pages.admin.hienthi');
+    }
+    public function updateHienThiRss(){
+        if(isset($_POST['trangthai'])){
+            $trangthai = $_POST['trangthai']; 
+            if($trangthai == 1){
+                $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 1]);  
+            }
+            if($trangthai == 0){
+                $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 0]);  
+            }
+            return $updateHienThiRss;  
+        }
+    }
+     
 }

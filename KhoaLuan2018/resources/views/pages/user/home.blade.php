@@ -7,7 +7,7 @@ Trang chủ
 @section('content')
 <div class="content"> 
     <!-- Hiển thị rss -->
-    <div class="content-box">
+    <div class="content-box" @if(!$trangchu->hienthirss) hidden @endif>
         <div class="content-box__title">
             <div class="link"> 
                 <p>RSS</p>
@@ -51,7 +51,7 @@ Trang chủ
     </div>
 
     <!-- Hiển thị top news khoa -->
-    <div class="content-box">
+    <div class="content-box" @if($trangchu->hienthirss) hidden @endif>
         <div class="content-box__title">
         <div class="link"> 
                 <p>RSS</p>
