@@ -3,6 +3,14 @@
 Giới thiệu
 @endsection
 
+@section('css')
+<style> 
+    #list li{
+        cursor: move;
+    }
+</style>
+@endsection
+
 <main class="app-content">
     <div class="app-title">
         <div>
@@ -59,6 +67,16 @@ Giới thiệu
                                 <input id="checktintuc4" class="form-check-input" type="checkbox">Chương trình đào tạo
                             </label>
                         </div>
+                        <!-- Quản lý tin tức ưu tiên -->
+                        <legend>Sắp xếp hiển thị ưu tiên</legend>
+                        <section> 
+                            <ul class="sortable list" id="list">
+                                <li class="indextintuc">Tin tức</li>
+                                <li class="indextintuc">Thông báo</li>
+                                <li class="indextintuc">tuyển sinh</li>
+                                <li class="indextintuc">đào tạo</li> 
+                            </ul>
+                        </section> 
 
                         <form>
                             <div class="form-group">
@@ -171,4 +189,10 @@ Giới thiệu
 
 @section('script')
 <script src="assets/admin/js/hienthi.js"></script>
+<script src="assets/admin/js/jquery.sortable.js"></script>
+<script>
+    $(function() {
+        $('.sortable').sortable(); 
+    }); 
+</script>
 @endsection
