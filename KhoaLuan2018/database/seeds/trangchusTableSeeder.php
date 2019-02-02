@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use DB;
 
 class trangchusTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class trangchusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trangchus')->insert([
+        DB::table('trang_chus')->insert([
             'gioithieu' => "Đây là giới thiệu!",
             'hienthirss' => 0, 
         ]);
