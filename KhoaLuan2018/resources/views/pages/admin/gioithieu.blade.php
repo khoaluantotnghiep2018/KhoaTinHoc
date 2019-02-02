@@ -1,8 +1,7 @@
 @extends('layout/admin/index')
 @section('title')
 Giới thiệu
-@endsection 
-
+@endsection  
 <main class="app-content">
     <div class="app-title">
         <div>

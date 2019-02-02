@@ -43,6 +43,7 @@ Danh sách
             <p>
             Trong không khí vui tươi của ngày khai giảng năm học mới 2018-2019, Chủ tịch nước Trần Đại Quang đã gửi đến các thầy giáo, cô giáo, cán bộ, công chức, viên chức, người lao động đã và đang công tác trong ngành Giáo dục, các bậc phụ huynh cùng toàn thể các em sinh viên, học sinh cả nước những tình cảm thân thiết và lời chúc mừng tốt đẹp nhất.
             </p>
+            
         </div>
 
 
