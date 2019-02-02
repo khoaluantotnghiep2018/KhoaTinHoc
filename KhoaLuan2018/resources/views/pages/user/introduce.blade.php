@@ -6,7 +6,9 @@ Giới thiệu
 
 @section('content')    
     <div class="news">
-        {!!$trangchu->gioithieu!!} 
+        <div class="news-content">
+            {!!$trangchu->gioithieu!!} 
+        </div>
     </div>
 @endsection
 
