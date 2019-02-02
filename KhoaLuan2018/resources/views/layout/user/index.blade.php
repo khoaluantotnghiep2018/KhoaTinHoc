@@ -332,7 +332,7 @@
 					<li><a href=""><i class="fas fa-fax"></i> Fax: 0234.12345678</a></li>
 					<li><a href=""><i class="fas fa-envelope-square"></i> Email: khoatinhocdhsphue.edu.vn</a></li>
 					<li><a href=""><i class="fas fa-file-contract"></i> Website: http://khaotinhocsphue.edu.vn</a></li>
-					<li>Bản quyền © thuộc về khoa Tin Học trường đại học sư phạm Huế.</li>
+					<li>Bản quyền © thuộc về khoa Tin Học trường đại học sư phạm Huế, thiết kế bởi Huỳnh Văn Thùy.</li>
 				</ul>
 			</div>
 			<div class="footer-right">

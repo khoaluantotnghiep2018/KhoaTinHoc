@@ -73,10 +73,11 @@ Giới thiệu
                             <ul class="sortable list" id="list">
                                 <li class="indextintuc">Tin tức</li>
                                 <li class="indextintuc">Thông báo</li>
-                                <li class="indextintuc">tuyển sinh</li>
-                                <li class="indextintuc">đào tạo</li> 
+                                <li class="indextintuc">Tuyển sinh</li>
+                                <li class="indextintuc">Chương trình đào tạo</li> 
                             </ul>
                         </section> 
+                        <button class="btn btn-primary" type="button" id="subxeptintuc"><i class="fa fa-fw fa-lg fa-check-circle"></i>Xếp lại</button>
 
                         <form>
                             <div class="form-group">
@@ -194,5 +195,42 @@ Giới thiệu
     $(function() {
         $('.sortable').sortable(); 
     }); 
+   
+    $("#subxeptintuc").click(function(){ 
+        var mangtintuc = [];  
+        $( ".indextintuc" ).each(function( index ) { 
+            mangtintuc.push( {
+                uutien: index,
+                value: $( this ).text(), 
+            }); 
+        });
+        // console.log( mangtintuc );  
+        $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            url:'quantri/hienthi/suahienthitintuc',
+            method:'post',
+            data: {mangtintuc: mangtintuc},
+            success:function(response){ 
+
+                console.log(response);
+
+                // if(response != ""){ 
+                //     // Hiển thị thông báo thành công
+                //     $.notify({
+                //         title: "Thành công : ",
+                //         message: "Nội dung đã được cập nhật!",
+                //         icon: 'fa fa-check' 
+                //     },{
+                //         type: "success"
+                //     });   
+                // }
+                // else{
+                //     swal({
+                //         title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
+                //     });
+                // } 
+            }
+        })
+    });
 </script>
 @endsection

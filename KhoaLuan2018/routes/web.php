@@ -29,7 +29,8 @@ Route::group(['prefix'=>'quantri'] , function(){
     });
     Route::group(['prefix'=>'hienthi'] , function(){
         Route::get('', 'TrangchuController@HienThiRss');  
-        Route::post('/suahienthirss', 'TrangchuController@updateHienThiRss'); 
+        Route::post('suahienthirss', 'TrangchuController@updateHienThiRss'); 
+        Route::post('suahienthitintuc', 'TrangchuController@updateHienThiTinTuc'); 
     });
 });
 

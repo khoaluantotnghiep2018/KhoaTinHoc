@@ -56,5 +56,36 @@ class TrangchuController extends Controller
             return $updateHienThiRss;  
         }
     }
-     
+    public function updateHienThiTinTuc(){
+        if(isset($_POST['mangtintuc'])){
+            $mangtintuc = $_POST['mangtintuc'];
+            // echo $mangtintuc['0']['id'];
+            // echo $mangtintuc['0']['value'];
+
+            $arrlength = count($mangtintuc);
+
+            for($i = 0; $i < $arrlength; $i++) {
+                $uutien = $mangtintuc[$i]['uutien'];
+                switch ($mangtintuc[$i]['value']) {
+                    case "Tin tức": 
+                        DB::table('the_loais')->where('tentheloai', 'Tin tức')->update(['uutien' => $uutien]);
+                        break;
+                    case "Thông báo":
+                        DB::table('the_loais')->where('tentheloai', 'Thông báo')->update(['uutien' => $uutien]);
+                        break;
+                    case "Tuyển sinh":
+                        DB::table('the_loais')->where('tentheloai', 'Tuyển sinh')->update(['uutien' => $uutien]);
+                        break;
+                    case "Chương trình đào tạo":
+                        DB::table('the_loais')->where('tentheloai', 'Chương trình đào tạo')->update(['uutien' => $uutien]);
+                    break; 
+                    default:
+                        break;
+                }
+            }
+
+            return (string)$mangtintuc['0']['value'];
+        }
+       
+    }
 }
