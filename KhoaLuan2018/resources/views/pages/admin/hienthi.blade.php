@@ -21,25 +21,46 @@ Giới thiệu
                 <div class="row">
                     <div class="col-lg-6">
 
-                        <fieldset class="form-group">
-                            <legend>Hiển thị tin đầu trang</legend>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" id="optionsRadios1" type="radio" name="optionsRadios"
-                                        value="option1" @if($trangchu->hienthirss) checked="" @endif>Lựa chọn tin lấy
-                                    từ RSS
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" id="optionsRadios2" type="radio" name="optionsRadios"
-                                        value="option2" @if(!$trangchu->hienthirss) checked="" @endif>Lựa chọn tin lấy
-                                    từ tin tức nỗi bật
-                                </label>
-                            </div>
-                        </fieldset>
+                        <legend>Hiển thị tin đầu trang</legend>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" id="optionsRadios1" type="radio" name="optionsRadios"
+                                    value="option1" @if($trangchu->hienthirss) checked @endif>Lựa chọn tin lấy
+                                từ RSS
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" id="optionsRadios2" type="radio" name="optionsRadios"
+                                    value="option2" @if(!$trangchu->hienthirss) checked @endif>Lựa chọn tin lấy
+                                từ tin tức nỗi bật
+                            </label>
+                        </div>
+                        <legend>Danh mục tin tức hiển thị</legend>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="checktintuc1" class="form-check-input" type="checkbox" checked>Thông báo
+                            </label>
+                        </div>
 
-                        <form> 
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="checktintuc2" class="form-check-input" type="checkbox">Tin tức
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="checktintuc3" class="form-check-input" type="checkbox">Tuyển sinh
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="checktintuc4" class="form-check-input" type="checkbox">Chương trình đào tạo
+                            </label>
+                        </div>
+
+                        <form>
                             <div class="form-group">
                                 <legend>Hiển thị tin đầu trang</legend>
                                 <label for="exampleInputEmail1">Email address</label>

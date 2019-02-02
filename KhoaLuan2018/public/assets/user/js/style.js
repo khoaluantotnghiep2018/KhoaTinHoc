@@ -99,12 +99,7 @@ closeForm.onclick = function()
 
 
 $(document).ready(function(){
-	var width = $(window).width();
-	if(width <= 1000)
-	{
-		console.log('oke');
-	}
-	console.log(width);
+	var width = $(window).width(); 
 	$('.left-menu li').click(function(){
 		$(this).find('.left-menu__sub').slideToggle();
 	});
@@ -141,7 +136,6 @@ var vitri = $('.footer').offset();
 	});
 	if(window.screen.width < 1000)
 	{
-		console.log('13');
 		$('.nav li').click(function(){
 			$(this).find('.submenu').slideToggle();
 		});
