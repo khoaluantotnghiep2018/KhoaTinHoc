@@ -51,7 +51,7 @@ $(document).ready(function() {
         if(textgioithieu != ""){
             $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                url:'admin/gioithieu/sua',
+                url:'quantri/gioithieu/sua',
                 method:'post',
                 data: {textgioithieu: textgioithieu},
                 success:function(response){ 

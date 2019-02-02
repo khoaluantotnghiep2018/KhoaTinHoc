@@ -34,6 +34,8 @@ function timeclock() {
 	}
 }
 
+const listA = document.querySelectorAll('.nav > ul > li > a');
+
 var danhmuc = document.querySelector('.danhmuc');
 var close = document.querySelector('.close');
 var closeForm = document.querySelector('.close-form');
@@ -49,7 +51,9 @@ var tagI = document.querySelector('.left-menu .danhmuc i.fas.fa-angle-down');
 var tagUl = document.querySelector('.left-menu ul');
 var menuSub = document.querySelector('.left-menu__sub');
 
-var tagLi = document.querySelectorAll('.left-menu li'); 
+var tagLi = document.querySelectorAll('.left-menu li');
+// console.log(tagLi);
+// console.log(danhmuc);
 
 danhmuc.onclick = function()
 {
@@ -89,19 +93,22 @@ linkLogin.onclick = function()
 closeForm.onclick = function()
 {
 	logForm.classList.remove('displayForm');
-} 
+}
+
+
+
 
 $(document).ready(function(){
-	var width = $(window).width(); 
+	var width = $(window).width();
+	if(width <= 1000)
+	{
+		console.log('oke');
+	}
+	console.log(width);
 	$('.left-menu li').click(function(){
 		$(this).find('.left-menu__sub').slideToggle();
-		return false;
 	});
 
-	$('.nav li').click(function(){
-		$(this).find('.submenu').slideToggle();
-		return false;
-	});
 var vitri = $('.footer').offset();
 	$('.contact-title').click(function(){
 		$(this).toggleClass('biendoi');
@@ -132,7 +139,19 @@ var vitri = $('.footer').offset();
 	$('.clickTop').click(function(){
 		$('body,html').animate({scrollTop:0});
 	});
+	if(window.screen.width < 1000)
+	{
+		console.log('13');
+		$('.nav li').click(function(){
+			$(this).find('.submenu').slideToggle();
+		});
+		listA.forEach((item) => {
+			item.removeAttribute('href');
+		});
+	}
 });
+
+
 // Xử lý logout
 modalLogout = document.getElementById("logout-form");
 function clickLogout() {

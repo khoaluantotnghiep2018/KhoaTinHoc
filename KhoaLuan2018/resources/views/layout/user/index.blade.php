@@ -149,25 +149,25 @@
 					<div class="danhmuc">Danh Mục <i class="fas fa-angle-down"></i></div>
 					<ul>
 						<li>
-							<a href="">Cơ cấu tổ chức</a>
+							<a href="javascript:void(0)">Cơ cấu tổ chức</a>
 							<ul class="left-menu__sub">
 								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ chức 1</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ chức 2</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ chức 3</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ chức 4</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ chức 2</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ chức 3</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ chức 4</a></li>
 							</ul>
 						</li>
 						<li>
-							<a href="">Các tổ chuyên môn</a>
+							<a href="javascript:void(0)">Các tổ chuyên môn</a>
 							<ul class="left-menu__sub">
-								<li><a href=""><i class="fas fa-award"></i> Tổ 1</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ 2</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ 3</a></li>
-								<li><a href=""><i class="fas fa-award"></i> Tổ 4</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ 1</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ 2</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ 3</a></li>
+								<li><a href="trangchu"><i class="fas fa-award"></i> Tổ 4</a></li>
 							</ul>
 						</li>
-						<li><a href="">Chi bộ</a></li>
-						<li><a href="">Thông tin từ cơ sở dữ liệu</a></li>
+						<li><a href="javascript:void(0)">Chi bộ</a></li>
+						<li><a href="javascript:void(0)">Thông tin từ cơ sở dữ liệu</a></li>
 					</ul>
 				</div>
 

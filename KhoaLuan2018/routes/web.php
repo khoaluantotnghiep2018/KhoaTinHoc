@@ -2,9 +2,12 @@
     
     
 Route::group(['prefix'=>''] , function(){
+    Route::get('', function () {
+        return redirect()->route('trangchinh');
+    }); 
     Route::get('trangchu', function () {
         return view('pages/user/home');
-    });   
+    })->name('trangchinh');   
     Route::get('gioithieu', function () {
         return view('pages/user/introduce');
     });  
