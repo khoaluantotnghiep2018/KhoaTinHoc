@@ -20,9 +20,12 @@ Route::group(['prefix'=>''] , function(){
     
 // QUẢN TRỊ VIÊN
 Route::group(['prefix'=>'quantri'] , function(){
+    Route::get('', function () {
+        return redirect()->route('trangchinhadmin');
+    }); 
     Route::get('trangchu', function () {
         return view('pages/admin/trangchu');
-    }); 
+    })->name('trangchinhadmin');
     Route::group(['prefix'=>'gioithieu'] , function(){
         Route::get('', 'TrangchuController@getDuLieuQuanTri');  
         Route::post('/sua', 'TrangchuController@SuaGioiThieu');

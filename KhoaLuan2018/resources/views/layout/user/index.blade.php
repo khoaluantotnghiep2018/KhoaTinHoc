@@ -100,7 +100,7 @@
 				<li><a href="trangchu"><i class="fas fa-home"></i></a></li>
 				<li><a href="gioithieu">Giới thiệu</a></li>
 				<li>
-					<a href="">Thông báo</a>
+					<a href="danhsachtin">Thông báo</a>
 					<ul class='submenu'>
 						<li><a href="trangchu">Tin tức 1</a></li>
 						<li><a href="">Tin tức 2</a></li>
@@ -112,13 +112,13 @@
 					<a href="loaitintuc">Tin tức</a>
 				</li>
 				<li>
-					<a href="">Tuyển sinh</a>
+					<a href="danhsachtin">Tuyển sinh</a>
 					<ul class='submenu'>
 						<li><a href="">Đại học</a></li>
 						<li><a href="">Sau đại học</a></li>
 					</ul>
 				</li>
-				<li><a href="">Chương trình đào tạo</a></li>
+				<li><a href="danhsachtin">Chương trình đào tạo</a></li>
 				<li>
 					<a href="">Danh sách</a>
 					<ul class='submenu'>

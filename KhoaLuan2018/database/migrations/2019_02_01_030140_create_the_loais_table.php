@@ -15,6 +15,7 @@ class CreateTheLoaisTable extends Migration
     {
         Schema::create('the_loais', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('tentheloai');
             $table->integer('uutien');
             $table->boolean('hienthi')->default(0);
             $table->timestamps();

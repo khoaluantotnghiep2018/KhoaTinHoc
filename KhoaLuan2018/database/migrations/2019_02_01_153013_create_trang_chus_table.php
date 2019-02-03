@@ -13,7 +13,7 @@ class CreateTrangchusTable extends Migration
      */
     public function up()
     {
-        Schema::create('trangchus', function (Blueprint $table) {
+        Schema::create('trang_chus', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('gioithieu');
             $table->boolean('hienthirss');
@@ -28,6 +28,6 @@ class CreateTrangchusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trangchus');
+        Schema::dropIfExists('trang_chus');
     }
 }
