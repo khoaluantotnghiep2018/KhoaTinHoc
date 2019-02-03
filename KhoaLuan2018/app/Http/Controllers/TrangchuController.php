@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;  
 use DB; 
 use View;
+use Carbon\Carbon;
 
 class TrangchuController extends Controller
 {
@@ -12,9 +13,8 @@ class TrangchuController extends Controller
     function __construct(){
         $trangchu = DB::table('trang_chus')->first(); 
         $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
-        
-        View::share('trangchu',$trangchu);
-        View::share('theloai',$theloai); 
+        $dulieuthongbao = DB::table('thong_baos')->first(); 
+        View::share(['trangchu'=>$trangchu,'theloai'=>$theloai,'dulieuthongbao'=>$dulieuthongbao]); 
     } 
     // NGƯỜI DÙNG
     public function loadTrangChu(){
@@ -92,8 +92,7 @@ class TrangchuController extends Controller
 
     public function updateAnHienTinTuc(){
         if(isset($_POST['manghienthitin'])){
-            $manghienthitin = $_POST['manghienthitin']; 
-
+            $manghienthitin = $_POST['manghienthitin'];  
             $arrlength = count($manghienthitin);
 
             for($i = 0; $i < $arrlength; $i++) {
@@ -104,5 +103,29 @@ class TrangchuController extends Controller
             return "ok";
         }
        
+    }
+
+    public function updateThongBao(){
+        if(isset($_POST['mangthongbao'])){
+            $mangthongbao = $_POST['mangthongbao'];  
+            $arrlength = count($mangthongbao);
+
+            for($i = 0; $i < $arrlength; $i++) {
+                $ma = $mangthongbao[$i]['ten']; 
+                $hienthi = $mangthongbao[$i]['giatri'];  
+            }  
+
+            $ngayhienthi = date("Y-m-d", strtotime($mangthongbao[3]['giatri']));
+            $ngayketthuc = date("Y-m-d", strtotime($mangthongbao[4]['giatri']));
+            $checkupdate = DB::table('thong_baos')->where('id', 1)->update(
+                                    [ 
+                                        'tieude' => $mangthongbao[0]['giatri'], 
+                                        'noidung' => $mangthongbao[1]['giatri'],
+                                        'ghichu' => $mangthongbao[2]['giatri'],
+                                        'ngaybatdau' => $ngayhienthi,
+                                        'ngayhethan' => $ngayketthuc
+                                    ]);
+            return $checkupdate;
+        }
     }
 }

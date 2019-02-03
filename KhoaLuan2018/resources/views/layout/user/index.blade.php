@@ -219,7 +219,7 @@
 			<div class="right">
 				<div class="right-news">
 					<div class="right-information">
-						<a href=""><strong>THÔNG BÁO</strong></a>
+						<a href="" class="fa fa-bullhorn"><strong> THÔNG BÁO</strong></a>
 						<div class="ArticleNewTitle" align="center"><center><b>LỊCH THI HỌC KỲ I (2018-2019) CHÍNH THỨC</b></center></div>
 						<hr> 
 						» Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.<hr> 

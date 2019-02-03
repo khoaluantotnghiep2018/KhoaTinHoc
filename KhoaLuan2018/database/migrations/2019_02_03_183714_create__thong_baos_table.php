@@ -16,7 +16,7 @@ class CreateThongbaosTable extends Migration
         Schema::create('thong_baos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tieude');
-            $table->string('noidung');
+            $table->text('noidung');
             $table->string('ghichu');
             $table->dateTime('ngaybatdau');
             $table->dateTime('ngayhethan');
