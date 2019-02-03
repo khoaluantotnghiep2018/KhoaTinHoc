@@ -1,6 +1,6 @@
 <?php
     
-    
+    // NGƯỜI DÙNG 
 Route::group(['prefix'=>''] , function(){
     Route::get('', function () {
         return redirect()->route('trangchinh');
@@ -18,7 +18,7 @@ Route::group(['prefix'=>''] , function(){
     // Route::get('/test', 'TrangchuController@getDuLieu');
 });
     
-
+// QUẢN TRỊ VIÊN
 Route::group(['prefix'=>'quantri'] , function(){
     Route::get('trangchu', function () {
         return view('pages/admin/trangchu');
@@ -31,6 +31,8 @@ Route::group(['prefix'=>'quantri'] , function(){
         Route::get('', 'TrangchuController@HienThiRss');  
         Route::post('suahienthirss', 'TrangchuController@updateHienThiRss'); 
         Route::post('suahienthitintuc', 'TrangchuController@updateHienThiTinTuc'); 
+        Route::post('suaanhientintuc', 'TrangchuController@updateAnHienTinTuc'); 
+        
     });
 });
 

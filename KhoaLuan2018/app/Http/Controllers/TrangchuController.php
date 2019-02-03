@@ -12,7 +12,9 @@ class TrangchuController extends Controller
 
     function __construct(){
         $trangchu = DB::table('trang_chus')->first(); 
+        $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
         View::share('trangchu',$trangchu);
+        View::share('theloai',$theloai);
     } 
 
     public function loadTrangChu(){
@@ -58,9 +60,7 @@ class TrangchuController extends Controller
     }
     public function updateHienThiTinTuc(){
         if(isset($_POST['mangtintuc'])){
-            $mangtintuc = $_POST['mangtintuc'];
-            // echo $mangtintuc['0']['id'];
-            // echo $mangtintuc['0']['value'];
+            $mangtintuc = $_POST['mangtintuc']; 
 
             $arrlength = count($mangtintuc);
 
@@ -82,9 +82,24 @@ class TrangchuController extends Controller
                     default:
                         break;
                 }
-            }
+            } 
+            return "ok";
+        }
+       
+    }
 
-            return (string)$mangtintuc['0']['value'];
+    public function updateAnHienTinTuc(){
+        if(isset($_POST['manghienthitin'])){
+            $manghienthitin = $_POST['manghienthitin']; 
+
+            $arrlength = count($manghienthitin);
+
+            for($i = 0; $i < $arrlength; $i++) {
+                $ma = $manghienthitin[$i]['id']; 
+                $hienthi = $manghienthitin[$i]['hienthi']; 
+                DB::table('the_loais')->where('id', $ma)->update(['hienthi' => $hienthi]); 
+            } 
+            return "ok";
         }
        
     }

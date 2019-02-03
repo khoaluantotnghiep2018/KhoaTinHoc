@@ -45,36 +45,21 @@ Giới thiệu
                             </label>
                         </div>
                         <legend>Danh mục tin tức hiển thị</legend>
+                        @foreach($theloai as $tlhienthi)
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input id="checktintuc1" class="form-check-input" type="checkbox" checked>Thông báo
+                                <input class="form-check-input hienthitin" type="checkbox"  value="{{$tlhienthi->id}}" @if($tlhienthi->hienthi) checked @endif >{{$tlhienthi->tentheloai}}
                             </label>
                         </div>
-
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input id="checktintuc2" class="form-check-input" type="checkbox">Tin tức
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input id="checktintuc3" class="form-check-input" type="checkbox">Tuyển sinh
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input id="checktintuc4" class="form-check-input" type="checkbox">Chương trình đào tạo
-                            </label>
-                        </div>
+                        @endforeach 
+                        <button class="btn btn-primary" type="button" id="subhienthitintuc"><i class="fa fa-fw fa-lg fa-check-circle"></i>Lưu lại</button> 
                         <!-- Quản lý tin tức ưu tiên -->
                         <legend>Sắp xếp hiển thị ưu tiên</legend>
                         <section> 
                             <ul class="sortable list" id="list">
-                                <li class="indextintuc">Tin tức</li>
-                                <li class="indextintuc">Thông báo</li>
-                                <li class="indextintuc">Tuyển sinh</li>
-                                <li class="indextintuc">Chương trình đào tạo</li> 
+                                @foreach($theloai as $tlsapxep)
+                                <li class="indextintuc">{{$tlsapxep->tentheloai}}</li> 
+                                @endforeach
                             </ul>
                         </section> 
                         <button class="btn btn-primary" type="button" id="subxeptintuc"><i class="fa fa-fw fa-lg fa-check-circle"></i>Xếp lại</button>
@@ -210,25 +195,59 @@ Giới thiệu
             url:'quantri/hienthi/suahienthitintuc',
             method:'post',
             data: {mangtintuc: mangtintuc},
-            success:function(response){ 
+            success:function(response){   
+                if(response != ""){ 
+                    // Hiển thị thông báo thành công
+                    $.notify({
+                        title: "Thành công : ",
+                        message: "Nội dung đã được cập nhật!",
+                        icon: 'fa fa-check' 
+                    },{
+                        type: "success"
+                    });   
+                }
+                else{
+                    swal({
+                        title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
+                    });
+                } 
+            }
+        })
+    });
 
-                console.log(response);
-
-                // if(response != ""){ 
-                //     // Hiển thị thông báo thành công
-                //     $.notify({
-                //         title: "Thành công : ",
-                //         message: "Nội dung đã được cập nhật!",
-                //         icon: 'fa fa-check' 
-                //     },{
-                //         type: "success"
-                //     });   
-                // }
-                // else{
-                //     swal({
-                //         title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
-                //     });
-                // } 
+    $("#subhienthitintuc").click(function(){ 
+        var manghienthitin = [];  
+        $( ".hienthitin").each(function( ) {
+            var hienthi = 0;
+            if(this.checked){
+                hienthi = 1;
+            }
+            manghienthitin.push( {
+                id: $( this ).val(), 
+                hienthi: hienthi, 
+            }); 
+        });  
+        $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            url:'quantri/hienthi/suaanhientintuc',
+            method:'post',
+            data: {manghienthitin: manghienthitin},
+            success:function(response){   
+                if(response != ""){ 
+                    // Hiển thị thông báo thành công
+                    $.notify({
+                        title: "Thành công : ",
+                        message: "Nội dung đã được cập nhật!",
+                        icon: 'fa fa-check' 
+                    },{
+                        type: "success"
+                    });   
+                }
+                else{
+                    swal({
+                        title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
+                    });
+                } 
             }
         })
     });
