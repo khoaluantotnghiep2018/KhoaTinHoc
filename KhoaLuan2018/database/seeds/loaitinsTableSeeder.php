@@ -55,11 +55,11 @@ class loaitinsTableSeeder extends Seeder
                 ],
                 [
                     'tenloaitin' => "Đại học",
-                    'id_theloai' => 1,  
+                    'id_theloai' => 4,  
                 ],
                 [
                     'tenloaitin' => "Sau đại học",
-                    'id_theloai' => 1,  
+                    'id_theloai' => 4,  
                 ],
             ]
         );

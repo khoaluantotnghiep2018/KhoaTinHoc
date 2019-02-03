@@ -99,34 +99,19 @@
 			<ul>
 				<li><a href="trangchu"><i class="fas fa-home"></i></a></li>
 				<li><a href="gioithieu">Giới thiệu</a></li>
+				@foreach($tatcatheloai as $tctl)
 				<li>
-					<a href="danhsachtin">Thông báo</a>
+					<a href="danhsachtin">{{$tctl->tentheloai}}</a>
 					<ul class='submenu'>
-						<li><a href="trangchu">Tin tức 1</a></li>
-						<li><a href="">Tin tức 2</a></li>
-						<li><a href="">Tin tức 4</a></li>
-						<li><a href="">Tin tức 5</a></li>
+						@foreach($loaitin as $lt) 
+						@if($tctl->id == $lt->id_theloai)
+						<li><a href="trangchu">{{$lt->tenloaitin}}</a></li> 
+						@endif
+						@endforeach
 					</ul>
-				</li>
-				<li>
-					<a href="loaitintuc">Tin tức</a>
-				</li>
-				<li>
-					<a href="danhsachtin">Tuyển sinh</a>
-					<ul class='submenu'>
-						<li><a href="">Đại học</a></li>
-						<li><a href="">Sau đại học</a></li>
-					</ul>
-				</li>
-				<li><a href="danhsachtin">Chương trình đào tạo</a></li>
-				<li>
-					<a href="">Danh sách</a>
-					<ul class='submenu'>
-						<li><a href="">Giảng viên</a></li>
-						<li><a href="">Sinh viên</a></li>
-					</ul>
-				</li>
-				<!-- <li><a href=""></a></li> -->
+				</li> 
+				@endforeach
+				<li><a href="">Danh sách</a></li>
 				<li><a href="">Tài liệu tham khảo</a></li>
 				<li><a href="">Liên hệ chúng tôi</a></li>
 			</ul>

@@ -12,10 +12,11 @@ class TrangchuController extends Controller
     function __construct(){
         $trangchu = DB::table('trang_chus')->first(); 
         $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
+        
         View::share('trangchu',$trangchu);
-        View::share('theloai',$theloai);
+        View::share('theloai',$theloai); 
     } 
-
+    // NGƯỜI DÙNG
     public function loadTrangChu(){
         return view('pages/user/home');
     }
@@ -45,6 +46,8 @@ class TrangchuController extends Controller
     public function HienThiRss(){
         return view('pages.admin.hienthi');
     }
+
+    // QUẢN TRỊ VIÊN
     public function updateHienThiRss(){
         if(isset($_POST['trangthai'])){
             $trangthai = $_POST['trangthai']; 

@@ -6,14 +6,14 @@ Giới thiệu
 @section('css') 
 <link rel="stylesheet" href="assets/user/css/news.css">
 @endsection
-@section('content')    
+@section('content')     
 
 <div class="content">  
-    <div class="news">   
+    <div class="news">  
         <div class="news-content"> 
-            {!!$trangchu->gioithieu!!} 
+            {!!$trangchu->gioithieu!!}  
         </div> 
-    </div>  
+    </div> 
 </div> <!-- END CONTENT -->
 
 @endsection

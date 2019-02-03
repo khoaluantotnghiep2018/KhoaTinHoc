@@ -54,8 +54,7 @@ $(document).ready(function() {
                 url:'quantri/gioithieu/sua',
                 method:'post',
                 data: {textgioithieu: textgioithieu},
-                success:function(response){ 
-                    if(response != ""){
+                success:function(response){  
                         $('#suagioithieu').val = response;
                         // Hiển thị thông báo thành công
                         $.notify({
@@ -64,13 +63,7 @@ $(document).ready(function() {
                             icon: 'fa fa-check' 
                         },{
                             type: "success"
-                        });   
-                    }
-                    else{
-                        swal({
-                            title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
-                        });
-                    }
+                        });    
 
                 }
             })
