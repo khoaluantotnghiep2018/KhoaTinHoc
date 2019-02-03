@@ -34,6 +34,10 @@ function timeclock() {
 	}
 }
 
+const thongbao = document.querySelector('.right-information');
+const main = document.querySelector('.main');
+var height = thongbao.offsetHeight;
+
 const listA = document.querySelectorAll('.nav > ul > li > a');
 
 var danhmuc = document.querySelector('.danhmuc');
@@ -132,16 +136,21 @@ var vitri = $('.footer').offset();
 	});
 
 	$('.clickTop').click(function(){
-		$('body,html').animate({scrollTop:0});
+		$('body,html').animate({scrollTop:0}); 
 	});
 	if(window.screen.width < 1000)
 	{
+		let heightThongbao = thongbao.clientHeight; 
 		$('.nav li').click(function(){
 			$(this).find('.submenu').slideToggle();
 		});
 		listA.forEach((item) => {
 			item.removeAttribute('href');
 		});
+	}
+	if(window.screen.width <= 650)
+	{
+		main.style.paddingTop = height + 35 + 'px';
 	}
 });
 

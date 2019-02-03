@@ -5,6 +5,7 @@ Giới thiệu
 @endsection
 @section('css') 
 <link rel="stylesheet" href="assets/user/css/news.css">
+
 @endsection
 @section('content')     
 

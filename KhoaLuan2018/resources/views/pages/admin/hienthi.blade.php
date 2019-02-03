@@ -8,6 +8,9 @@ Giới thiệu
     #list li{
         cursor: move;
     }
+    #mceu_13-body {
+        display: none;
+    }
 </style>
 @endsection
 
@@ -27,7 +30,7 @@ Giới thiệu
         <div class="col-md-12">
             <div class="tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
 
                         <legend>Hiển thị tin đầu trang</legend>
                         <div class="form-check">
@@ -64,14 +67,7 @@ Giới thiệu
                         </section> 
                         <button class="btn btn-primary" type="button" id="subxeptintuc"><i class="fa fa-fw fa-lg fa-check-circle"></i>Xếp lại</button>
 
-                        <form>
-                            <div class="form-group">
-                                <legend>Hiển thị tin đầu trang</legend>
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp"
-                                    placeholder="Enter email"><small class="form-text text-muted" id="emailHelp">We'll
-                                    never share your email with anyone else.</small>
-                            </div>
+                        <form> 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
                                 <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
@@ -113,7 +109,13 @@ Giới thiệu
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-4 offset-lg-1">
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="form-group">
+                            <legend>Cập nhật thông báo</legend> 
+                            <textarea name="" rows="9" id="textthongbao" ></textarea> 
+                        </div>
+                        <button class="btn btn-primary" type="button" id="subdangthongbao"><i class="fa fa-fw fa-lg fa-check-circle"></i>Tải lên thông báo mới</button>
+
                         <form>
                             <div class="form-group">
                                 <fieldset disabled="">
@@ -177,6 +179,32 @@ Giới thiệu
 <script src="assets/admin/js/hienthi.js"></script>
 <script src="assets/admin/js/jquery.sortable.js"></script>
 <script>
+
+$(document).ready(function () { 
+    if (tinymce.editors.length > 0) {
+        for (i = 0; i < tinymce.editors.length; i++) {
+            tinymce.editors[i].remove();
+        }
+    }
+
+    tinyMCE.init({
+        mode: "textthongbao",
+        theme : "advanced",
+        // (more init options here)
+        setup: function(ed) {
+            // Force Paste-as-Plain-Text
+            ed.onPaste.add( function(ed, e, o) {
+                ed.execCommand('mcePasteText', true);
+                return tinymce.dom.Event.cancel(e);
+            });
+        }
+    }); 
+    
+    
+ 
+});
+
+
     $(function() {
         $('.sortable').sortable(); 
     }); 
