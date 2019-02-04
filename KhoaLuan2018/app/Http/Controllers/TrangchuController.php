@@ -11,25 +11,13 @@ class TrangchuController extends Controller
 {
 
     function __construct(){
-        $trangchu = DB::table('trang_chus')->first(); 
-        $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
-        $dulieuthongbao = DB::table('thong_baos')->first(); 
-        View::share(['trangchu'=>$trangchu,'theloai'=>$theloai,'dulieuthongbao'=>$dulieuthongbao]); 
+         
     } 
     // NGƯỜI DÙNG
     public function loadTrangChu(){
         return view('pages/user/home');
     }
-
-    // Cập nhật giới thiệu
-    public function SuaGioiThieu(){
-        if(isset($_POST['textgioithieu'])){
-            $textgioithieu = $_POST['textgioithieu']; 
-            $updateText = DB::table('trang_chus')->where('id', 1)->update(['gioithieu' => $textgioithieu]);  
-            return $textgioithieu; 
-        }
-    }
-
+ 
     public function getDuLieuNguoiDung(){ 
         return view('pages.user.introduce');
     }
@@ -43,6 +31,16 @@ class TrangchuController extends Controller
     }
 
     // QUẢN TRỊ VIÊN
+
+    // Cập nhật giới thiệu
+    public function SuaGioiThieu(){
+        if(isset($_POST['textgioithieu'])){
+            $textgioithieu = $_POST['textgioithieu']; 
+            $updateText = DB::table('trang_chus')->where('id', 1)->update(['gioithieu' => $textgioithieu]);  
+            return $textgioithieu; 
+        }
+    }
+
     public function updateHienThiRss(){
         if(isset($_POST['trangthai'])){
             $trangthai = $_POST['trangthai']; 

@@ -360,7 +360,7 @@
 			padding: 10px 20px;
 			background: whitesmoke;
 			margin-bottom: 10px;
-			/*display: none;*/
+			display: none;
 		}
 
 		.content-box__title {
@@ -903,7 +903,7 @@ ul.left-menu__sub li {
     left: 50%;
     transform: translateX(-50%);
     width: 96%;
-    line-height: 30px; 
+    line-height: 30px;  
 }
 	footer.footer .container {
 	    padding: 0 20px;

@@ -292,14 +292,21 @@ $("#subhienthitintuc").click(function(){
                 giatri: $( this ).val(), 
             }); 
         });   
+ 
 
-        var ngayhienthi = moment($('#ngaydau').val()).format("DD-MM-YYYY");
-        var ngayhethan = moment($('#ngaycuoi').val()).format("DD-MM-YYYY");   
+        var ngaydau = $("#ngaydau").val().split("/")
+        var ngayht = ngaydau[2].trim()+"-"+ngaydau[1].trim()+"-"+ngaydau[0].trim();
+        var ngayhienthi = moment(ngayht).format("YYYY-MM-DD");
+
+        var ngaycuoi = $("#ngaycuoi").val().split("/")
+        var ngayhh = ngaycuoi[2].trim()+"-"+ngaycuoi[1].trim()+"-"+ngaycuoi[0].trim();
+        var ngayhethan = moment(ngayhh).format("YYYY-MM-DD"); 
+           
         if(ngayhienthi > ngayhethan){ 
             swal({
                 title: "Ngày hết hạn không đúng!",
             });
-        }
+        } 
         else{
             $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },

@@ -232,8 +232,8 @@
 						<hr> 
 						{!!$dulieuthongbao->noidung!!}
 						<hr>* <b><i>{{$dulieuthongbao->ghichu}}</i></b>
-						<input type="text" id="ngaybatdauthongbao" name="" value="{{$dulieuthongbao->ngaybatdau}}">
-						<input type="text" id="ngayhethanthongbao" name="" value="{{$dulieuthongbao->ngayhethan}}">
+						<input hidden="" type="text" id="ngaybatdauthongbao" name="" value="{{$dulieuthongbao->ngaybatdau}}">
+						<input hidden="" type="text" id="ngayhethanthongbao" name="" value="{{$dulieuthongbao->ngayhethan}}">
 					</div>
 					@endif
 					<!--Giới thiệu trường học . RIGHT -->
