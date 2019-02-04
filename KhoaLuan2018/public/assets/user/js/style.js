@@ -140,13 +140,16 @@ var vitri = $('.footer').offset();
 	});
 	if(window.screen.width < 1000)
 	{
+		$('.nav .showsubmenu').css('display','block');
 		let heightThongbao = thongbao.clientHeight; 
-		$('.nav li').click(function(){
-			$(this).find('.submenu').slideToggle();
-		});
-		listA.forEach((item) => {
-			item.removeAttribute('href');
-		});
+		$('.nav .showsubmenu').click(function(e){
+			e.preventDefault();
+			($(this).attr('class') === 'fa fa-minus showsubmenu') ? 
+			$(this).attr('class','fa fa-plus-square showsubmenu') :
+			$(this).attr('class','fa fa-minus showsubmenu')
+			$(e.target.parentElement.nextElementSibling).slideToggle(); 
+			console.log(e);
+		}); 
 	}
 	if(window.screen.width <= 650)
 	{

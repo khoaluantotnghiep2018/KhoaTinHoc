@@ -10,6 +10,12 @@
 	<link rel="stylesheet" href="assets/user/css/reset.css">
 	<link rel="stylesheet" href="assets/user/css/style.css">
 	<link rel="stylesheet" href="assets/user/css/all.css">
+	<style>
+		.showsubmenu{
+			float: right;
+			display: none;
+		}
+	</style>
 	@yield('css')
 	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
@@ -101,7 +107,7 @@
 				<li><a href="gioithieu">Giới thiệu</a></li>
 				@foreach($tatcatheloai as $tctl)
 				<li>
-					<a href="danhsachtin">{{$tctl->tentheloai}}</a>
+					<a href="danhsachtin">{{$tctl->tentheloai}}<i class="fa fa-plus-square showsubmenu"></i></a>
 					<ul class='submenu'>
 						@foreach($loaitin as $lt) 
 						@if($tctl->id == $lt->id_theloai)

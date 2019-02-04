@@ -127,11 +127,11 @@ Giới thiệu
                         <div class="form-group">
                             <label class="col-form-label" for="inputDefault">Ngày bắt đầu</label>
                             <input name="ngaybatdau" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" 
-                            value="{{ Carbon\Carbon::parse($dulieuthongbao->ngaybatdau)->format('d-m-Y')}} "> 
+                            value="{{ Carbon\Carbon::parse($dulieuthongbao->ngaybatdau)->format('d/m/Y')}} "> 
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="inputDefault">Ngày hết hạn</label>
-                            <input name="ngayhethan" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" value="{{ Carbon\Carbon::parse($dulieuthongbao->ngayhethan)->format('d-m-Y')}} "> 
+                            <input name="ngayhethan" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" value="{{ Carbon\Carbon::parse($dulieuthongbao->ngayhethan)->format('d/m/Y')}} "> 
                         </div>
                     </div>
                     <button class="btn btn-primary" type="button" id="subdangthongbao"><i class="fa fa-fw fa-lg fa-check-circle"></i>Tải lên thông báo mới</button>
@@ -313,10 +313,22 @@ Giới thiệu
                 ten: $( this ).attr("name"),
                 giatri: $( this ).val(), 
             }); 
-        });  
-        var ngayhienthi = mangthongbao[3]['giatri'];
-        var ngayhethan = mangthongbao[4]['giatri']; 
-
+        });   
+        var ngayhienthi = mangthongbao[3]['giatri'].split("/");
+        var ngayhethan = mangthongbao[4]['giatri'].split("/");  
+        var i = 3;
+        var dem = 0;
+        while(i>0){ 
+            batdau = parseInt(ngayhienthi[i]);
+            ketthuc = parseInt(ngayhethan[i]);
+            if(batdau > ketthuc){
+                dem++;   
+                break;
+            }
+            console.log("so sánh "+batdau+" với "+ketthuc);
+            i--; 
+        }
+        console.log("dem: "+dem);
          
         // $.ajax({
         //     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
