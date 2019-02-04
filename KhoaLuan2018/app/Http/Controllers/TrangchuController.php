@@ -109,8 +109,8 @@ class TrangchuController extends Controller
                 $hienthi = $mangthongbao[$i]['giatri'];  
             }  
 
-            $ngayhienthi = date("Y-m-d", strtotime($mangthongbao[3]['giatri']));
-            $ngayketthuc = date("Y-m-d", strtotime($mangthongbao[4]['giatri']));
+            $ngayhienthi = date("Y-d-m", strtotime($mangthongbao[3]['giatri']));
+            $ngayketthuc = date("Y-d-m", strtotime($mangthongbao[4]['giatri']));
             $checkupdate = DB::table('thong_baos')->where('id', 1)->update(
                                     [ 
                                         'tieude' => $mangthongbao[0]['giatri'], 
