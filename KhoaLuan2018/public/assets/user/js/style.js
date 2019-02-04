@@ -146,9 +146,8 @@ var vitri = $('.footer').offset();
 			e.preventDefault();
 			($(this).attr('class') === 'fa fa-minus showsubmenu') ? 
 			$(this).attr('class','fa fa-plus-square showsubmenu') :
-			$(this).attr('class','fa fa-minus showsubmenu')
-			$(e.target.parentElement.nextElementSibling).slideToggle(); 
-			console.log(e);
+			$(this).attr('class','fa fa-minus showsubmenu');
+			$(e.target.parentElement.nextElementSibling).slideToggle();  	
 		}); 
 	}
 	if(window.screen.width <= 650)

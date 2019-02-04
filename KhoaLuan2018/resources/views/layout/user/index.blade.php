@@ -14,7 +14,8 @@
 		.showsubmenu{
 			float: right;
 			display: none;
-		}
+			font-size: 22px;
+		} 
 	</style>
 	@yield('css')
 	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
@@ -111,7 +112,7 @@
 					<ul class='submenu'>
 						@foreach($loaitin as $lt) 
 						@if($tctl->id == $lt->id_theloai)
-						<li><a href="trangchu">{{$lt->tenloaitin}}</a></li> 
+						<li><center><a href="trangchu">{{$lt->tenloaitin}}</a></center></li> 
 						@endif
 						@endforeach
 					</ul>

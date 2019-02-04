@@ -588,6 +588,7 @@ footer.footer .footer-left li a i {
 	}
 	nav.nav ul li ul.submenu a {
 		border: none; 
+		text-align: center;
 	}
 	nav.nav ul li:hover ul.submenu {
 			display: none;

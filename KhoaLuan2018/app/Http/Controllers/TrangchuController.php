@@ -86,8 +86,7 @@ class TrangchuController extends Controller
                 }
             } 
             return "ok";
-        }
-       
+        } 
     }
 
     public function updateAnHienTinTuc(){

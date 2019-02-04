@@ -126,12 +126,12 @@ Giới thiệu
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="inputDefault">Ngày bắt đầu</label>
-                            <input name="ngaybatdau" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" 
+                            <input id="ngaydau" name="ngaybatdau" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" 
                             value="{{ Carbon\Carbon::parse($dulieuthongbao->ngaybatdau)->format('d/m/Y')}} "> 
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="inputDefault">Ngày hết hạn</label>
-                            <input name="ngayhethan" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" value="{{ Carbon\Carbon::parse($dulieuthongbao->ngayhethan)->format('d/m/Y')}} "> 
+                            <input id="ngaycuoi" name="ngayhethan" class="form-control demoDate dulieuthongbao" type="text" placeholder="Chọn ngày" value="{{ Carbon\Carbon::parse($dulieuthongbao->ngayhethan)->format('d/m/Y')}} "> 
                         </div>
                     </div>
                     <button class="btn btn-primary" type="button" id="subdangthongbao"><i class="fa fa-fw fa-lg fa-check-circle"></i>Tải lên thông báo mới</button>
@@ -201,6 +201,8 @@ Giới thiệu
 <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="assets/admin/js/plugins/select2.min.js"></script>
 <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-datepicker.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script>
 
     $(document).ready(function () { 
@@ -314,44 +316,38 @@ Giới thiệu
                 giatri: $( this ).val(), 
             }); 
         });   
-        var ngayhienthi = mangthongbao[3]['giatri'].split("/");
-        var ngayhethan = mangthongbao[4]['giatri'].split("/");  
-        var i = 3;
-        var dem = 0;
-        while(i>0){ 
-            batdau = parseInt(ngayhienthi[i]);
-            ketthuc = parseInt(ngayhethan[i]);
-            if(batdau > ketthuc){
-                dem++;   
-                break;
-            }
-            console.log("so sánh "+batdau+" với "+ketthuc);
-            i--; 
+
+        var ngayhienthi = moment($('#ngadau').val()).format("DD-MM-YYYY");
+        var ngayhethan = moment($('#ngaycuoi').val()).format("DD-MM-YYYY");   
+        if(ngayhienthi > ngayhethan){ 
+             swal({
+                title: "Ngày hết hạn không đúng!",
+            });
         }
-        console.log("dem: "+dem);
-         
-        // $.ajax({
-        //     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        //     url:'quantri/hienthi/suathongbao',
-        //     method:'post',
-        //     data: {mangthongbao: mangthongbao},
-        //     success:function(response){    
-        //         if(response == 1){  
-        //             $.notify({
-        //                 title: "Thành công : ",
-        //                 message: "Nội dung đã được cập nhật!",
-        //                 icon: 'fa fa-check' 
-        //             },{
-        //                 type: "success"
-        //             });   
-        //         }
-        //         else{
-        //             swal({
-        //                 title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
-        //             });
-        //         } 
-        //     }
-        // })
+        else{
+                $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                url:'quantri/hienthi/suathongbao',
+                method:'post',
+                data: {mangthongbao: mangthongbao},
+                success:function(response){    
+                    if(response == 1){  
+                        $.notify({
+                            title: "Thành công : ",
+                            message: "Nội dung đã được cập nhật!",
+                            icon: 'fa fa-check' 
+                        },{
+                            type: "success"
+                        });   
+                    }
+                    else{
+                        swal({
+                            title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
+                        });
+                    } 
+                }
+            })
+        }
     }); 
 
     // Xử lý select ngày
