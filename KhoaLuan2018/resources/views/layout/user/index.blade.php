@@ -227,14 +227,10 @@
 				<div class="right-news">
 					<div class="right-information">
 						<a href="" class="fa fa-bullhorn"><strong> THÔNG BÁO</strong></a>
-						<div class="ArticleNewTitle" align="center"><center><b>LỊCH THI HỌC KỲ I (2018-2019) CHÍNH THỨC</b></center></div>
+						<div class="ArticleNewTitle" align="center"><center><b>{{$dulieuthongbao->tieude}}</b></center></div>
 						<hr> 
-						» Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.<hr> 
-						» Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.<hr> 
-						» Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.<hr> 
-						» Đã có lịch thi chính thức, SV truy cập trang web để xem lịch thi cụ thể.<hr> 
-						<hr>
-						<hr>* <b><i>Thông báo cập nhật lúc 18h40 ngày 10/01/2019.</i></b>
+						{!!$dulieuthongbao->noidung!!}
+						<hr>* <b><i>{{$dulieuthongbao->ghichu}}</i></b>
 					</div>
 					<!--Giới thiệu trường học . RIGHT -->
 

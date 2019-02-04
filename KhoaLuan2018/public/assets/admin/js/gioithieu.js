@@ -55,16 +55,15 @@ $(document).ready(function() {
                 method:'post',
                 data: {textgioithieu: textgioithieu},
                 success:function(response){  
-                        $('#suagioithieu').val = response;
-                        // Hiển thị thông báo thành công
-                        $.notify({
-                            title: "Thành công : ",
-                            message: "Nội dung đã được cập nhật!",
-                            icon: 'fa fa-check' 
-                        },{
-                            type: "success"
-                        });    
-
+                    $('#suagioithieu').val = response;
+                    // Hiển thị thông báo thành công
+                    $.notify({
+                        title: "Thành công : ",
+                        message: "Nội dung đã được cập nhật!",
+                        icon: 'fa fa-check' 
+                    },{
+                        type: "success"
+                    });     
                 }
             })
         }

@@ -114,7 +114,7 @@ Giới thiệu
                         <legend>Cập nhật thông báo</legend> 
                         <div class="form-group has-success">
                             <label class="form-control-label" for="inputSuccess1">Tiêu đề</label>
-                            <input name="tieude" class="form-control is-valid dulieuthongbao" id="inputValid" type="text" value="{{$dulieuthongbao->tieude}} ">
+                            <input name="tieude" class="form-control is-valid dulieuthongbao" id="inputValid" type="text" value="{{$dulieuthongbao->tieude}}">
                         </div> 
                         <div class="form-group">
                             <label for="exampleTextarea">Nội dung</label>
@@ -203,33 +203,7 @@ Giới thiệu
 <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-datepicker.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script>
-
-    $(document).ready(function () { 
-        if (tinymce.editors.length > 0) {
-            for (i = 0; i < tinymce.editors.length; i++) {
-                tinymce.editors[i].remove();
-            }
-        }
-
-        tinyMCE.init({
-            mode: "textthongbao",
-            theme : "advanced",
-        // (more init options here)
-        setup: function(ed) {
-            // Force Paste-as-Plain-Text
-            ed.onPaste.add( function(ed, e, o) {
-                ed.execCommand('mcePasteText', true);
-                return tinymce.dom.Event.cancel(e);
-            });
-        }
-    }); 
-
-
-
-    });
-
-
+<script>  
     $(function() {
         $('.sortable').sortable(); 
     }); 
@@ -331,20 +305,13 @@ Giới thiệu
                 method:'post',
                 data: {mangthongbao: mangthongbao},
                 success:function(response){    
-                    if(response == 1){  
-                        $.notify({
-                            title: "Thành công : ",
-                            message: "Nội dung đã được cập nhật!",
-                            icon: 'fa fa-check' 
-                        },{
-                            type: "success"
-                        });   
-                    }
-                    else{
-                        swal({
-                            title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
-                        });
-                    } 
+                    $.notify({
+                        title: "Thành công : ",
+                        message: "Nội dung đã được cập nhật!",
+                        icon: 'fa fa-check' 
+                    },{
+                        type: "success"
+                    });    
                 }
             })
         }
