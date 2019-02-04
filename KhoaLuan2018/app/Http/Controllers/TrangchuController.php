@@ -40,7 +40,7 @@ class TrangchuController extends Controller
             return $textgioithieu; 
         }
     }
-
+    //  Cập nhật hiển thị / ẩn tin tức
     public function updateHienThiRss(){
         if(isset($_POST['trangthai'])){
             $trangthai = $_POST['trangthai']; 
@@ -53,6 +53,7 @@ class TrangchuController extends Controller
             return $updateHienThiRss;  
         }
     }
+    // Cập nhật sắp xếp tin tức
     public function updateHienThiTinTuc(){
         if(isset($_POST['mangtintuc'])){
             $mangtintuc = $_POST['mangtintuc']; 
@@ -61,18 +62,19 @@ class TrangchuController extends Controller
 
             for($i = 0; $i < $arrlength; $i++) {
                 $uutien = $mangtintuc[$i]['uutien'];
+                $id = $mangtintuc[$i]['value'];
                 switch ($mangtintuc[$i]['value']) {
-                    case "Tin tức": 
-                        DB::table('the_loais')->where('tentheloai', 'Tin tức')->update(['uutien' => $uutien]);
+                    case 1: 
+                        DB::table('the_loais')->where('id', $id)->update(['uutien' => $uutien]);
                         break;
-                    case "Thông báo":
-                        DB::table('the_loais')->where('tentheloai', 'Thông báo')->update(['uutien' => $uutien]);
+                    case 2:
+                        DB::table('the_loais')->where('id', $id)->update(['uutien' => $uutien]);
                         break;
-                    case "Tuyển sinh":
-                        DB::table('the_loais')->where('tentheloai', 'Tuyển sinh')->update(['uutien' => $uutien]);
+                    case 3:
+                        DB::table('the_loais')->where('id', $id)->update(['uutien' => $uutien]);
                         break;
-                    case "Chương trình đào tạo":
-                        DB::table('the_loais')->where('tentheloai', 'Chương trình đào tạo')->update(['uutien' => $uutien]);
+                    case 4:
+                        DB::table('the_loais')->where('id', $id)->update(['uutien' => $uutien]);
                     break; 
                     default:
                         break;

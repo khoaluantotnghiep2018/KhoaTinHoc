@@ -62,7 +62,7 @@ Giới thiệu
                         <section> 
                             <ul class="sortable list" id="list">
                                 @foreach($theloai as $tlsapxep)
-                                <li class="indextintuc">{{$tlsapxep->tentheloai}}</li> 
+                                <li class="indextintuc" value="{{$tlsapxep->id}}">{{$tlsapxep->tentheloai}}</li> 
                                 @endforeach
                             </ul>
                         </section> 
@@ -215,34 +215,33 @@ $("#subxeptintuc").click(function(){
     $( ".indextintuc" ).each(function( index ) { 
         mangtintuc.push( {
             uutien: index,
-            value: $( this ).text(), 
+            value: $( this ).val(),  
         }); 
-    });
-        // console.log( mangtintuc );  
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            url:'quantri/hienthi/suahienthitintuc',
-            method:'post',
-            data: {mangtintuc: mangtintuc},
-            success:function(response){   
-                if(response != ""){ 
-                    // Hiển thị thông báo thành công
-                    $.notify({
-                        title: "Thành công : ",
-                        message: "Nội dung đã được cập nhật!",
-                        icon: 'fa fa-check' 
-                    },{
-                        type: "success"
-                    });   
-                }
-                else{
-                    swal({
-                        title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
-                    });
-                } 
+    }); 
+    $.ajax({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url:'quantri/hienthi/suahienthitintuc',
+        method:'post',
+        data: {mangtintuc: mangtintuc},
+        success:function(response){   
+            if(response != ""){ 
+                // Hiển thị thông báo thành công
+                $.notify({
+                    title: "Thành công : ",
+                    message: "Nội dung đã được cập nhật!",
+                    icon: 'fa fa-check' 
+                },{
+                    type: "success"
+                });   
             }
-        })
-    });
+            else{
+                swal({
+                    title: "Lỗi dữ liệu, thông tin chưa được cập nhật!",
+                });
+            } 
+        }
+    })
+});
 // Xử lý sửa hiển thị tin tức 
 $("#subhienthitintuc").click(function(){ 
     var manghienthitin = [];  
@@ -291,9 +290,8 @@ $("#subhienthitintuc").click(function(){
                 ten: $( this ).attr("name"),
                 giatri: $( this ).val(), 
             }); 
-        });   
- 
-
+        });    
+        
         var ngaydau = $("#ngaydau").val().split("/")
         var ngayht = ngaydau[2].trim()+"-"+ngaydau[1].trim()+"-"+ngaydau[0].trim();
         var ngayhienthi = moment(ngayht).format("YYYY-MM-DD");
@@ -301,7 +299,7 @@ $("#subhienthitintuc").click(function(){
         var ngaycuoi = $("#ngaycuoi").val().split("/")
         var ngayhh = ngaycuoi[2].trim()+"-"+ngaycuoi[1].trim()+"-"+ngaycuoi[0].trim();
         var ngayhethan = moment(ngayhh).format("YYYY-MM-DD"); 
-           
+
         if(ngayhienthi > ngayhethan){ 
             swal({
                 title: "Ngày hết hạn không đúng!",
