@@ -7,6 +7,7 @@ Trang chủ
 @section('content')
 <div class="content">
     <!-- Hiển thị rss -->
+    @if($trangchu != null)
     <div class="content-box" @if(!$trangchu->hienthirss) hidden @endif>
         <div class="content-box__title">
             <div class="link">
@@ -53,8 +54,10 @@ Trang chủ
         </div>
 
     </div>
+    @endif
 
     <!-- Hiển thị top news khoa -->
+    @if($trangchu != null)
     <div class="content-box" @if($trangchu->hienthirss) hidden @endif>
         <div class="content-box__title">
             <div class="link">
@@ -89,7 +92,9 @@ Trang chủ
         </div>
 
     </div>
+    @endif
     <!-- Hiên thị tin -->
+    @if($theloai != null)
     @foreach($theloai as $tl)
     <div class="content-box" @if(!$tl->hienthi) hidden @endif>
         <div class="content-box__title">
@@ -138,9 +143,11 @@ Trang chủ
 
     </div> 
     @endforeach
+    @endif
 
 </div> <!-- END CONTENT -->
 @endsection
 
 @section('script')
+<script type="text/javascript" src="assets/user/js/ustrangchu.js"></script>
 @endsection

@@ -134,6 +134,14 @@
     <!-- Thông báo js -->
     <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-notify.min.js"></script> 
     <script type="text/javascript" src="assets/admin/js/plugins/sweetalert.min.js"></script>  
+    <!-- Thư viện date -->
+    <script type="text/javascript" src="assets/admin/js/moment.min.js"></script>
+    <!-- Thư viện kéo thả div -->
+    <script src="assets/admin/js/jquery.sortable.js"></script>
+    <!-- Thư viện ngày tháng năm -> lịch -->
+    <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="assets/admin/js/plugins/select2.min.js"></script> 
+    <script type="text/javascript" src="assets/admin/js/plugins/bootstrap-datepicker.min.js"></script> 
 
     @yield('script')
   </body>

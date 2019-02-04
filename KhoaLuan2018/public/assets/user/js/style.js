@@ -154,6 +154,7 @@ var vitri = $('.footer').offset();
 	{
 		main.style.paddingTop = height + 35 + 'px';
 	}
+ 
 });
 
 
@@ -171,3 +172,4 @@ window.onclick = function(event) {
 		modalLogout.style.display = "none";
 	}
 }
+ 

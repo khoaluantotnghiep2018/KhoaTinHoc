@@ -14,6 +14,7 @@ Giới thiệu
 </style>
 @endsection
 
+@if($trangchu != null)
 <main class="app-content">
     <div class="app-title">
         <div>
@@ -194,6 +195,7 @@ Giới thiệu
     </div>
 </div>
 </main>
+@endif
 
 @section('script')
 <script src="assets/admin/js/hienthi.js"></script>
@@ -208,14 +210,14 @@ Giới thiệu
         $('.sortable').sortable(); 
     }); 
 // Xử lý sắp xếp tin tức
-    $("#subxeptintuc").click(function(){ 
-        var mangtintuc = [];  
-        $( ".indextintuc" ).each(function( index ) { 
-            mangtintuc.push( {
-                uutien: index,
-                value: $( this ).text(), 
-            }); 
-        });
+$("#subxeptintuc").click(function(){ 
+    var mangtintuc = [];  
+    $( ".indextintuc" ).each(function( index ) { 
+        mangtintuc.push( {
+            uutien: index,
+            value: $( this ).text(), 
+        }); 
+    });
         // console.log( mangtintuc );  
         $.ajax({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -242,25 +244,25 @@ Giới thiệu
         })
     });
 // Xử lý sửa hiển thị tin tức 
-    $("#subhienthitintuc").click(function(){ 
-        var manghienthitin = [];  
-        $( ".hienthitin").each(function( ) {
-            var hienthi = 0;
-            if(this.checked){
-                hienthi = 1;
-            }
-            manghienthitin.push( {
-                id: $( this ).val(), 
-                hienthi: hienthi, 
-            }); 
-        });  
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            url:'quantri/hienthi/suaanhientintuc',
-            method:'post',
-            data: {manghienthitin: manghienthitin},
-            success:function(response){   
-                if(response != ""){ 
+$("#subhienthitintuc").click(function(){ 
+    var manghienthitin = [];  
+    $( ".hienthitin").each(function( ) {
+        var hienthi = 0;
+        if(this.checked){
+            hienthi = 1;
+        }
+        manghienthitin.push( {
+            id: $( this ).val(), 
+            hienthi: hienthi, 
+        }); 
+    });  
+    $.ajax({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url:'quantri/hienthi/suaanhientintuc',
+        method:'post',
+        data: {manghienthitin: manghienthitin},
+        success:function(response){   
+            if(response != ""){ 
                     // Hiển thị thông báo thành công
                     $.notify({
                         title: "Thành công : ",
@@ -277,7 +279,7 @@ Giới thiệu
                 } 
             }
         })
-    }); 
+}); 
 
 
 
@@ -291,15 +293,15 @@ Giới thiệu
             }); 
         });   
 
-        var ngayhienthi = moment($('#ngadau').val()).format("DD-MM-YYYY");
+        var ngayhienthi = moment($('#ngaydau').val()).format("DD-MM-YYYY");
         var ngayhethan = moment($('#ngaycuoi').val()).format("DD-MM-YYYY");   
         if(ngayhienthi > ngayhethan){ 
-             swal({
+            swal({
                 title: "Ngày hết hạn không đúng!",
             });
         }
         else{
-                $.ajax({
+            $.ajax({
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                 url:'quantri/hienthi/suathongbao',
                 method:'post',
@@ -309,9 +311,11 @@ Giới thiệu
                         title: "Thành công : ",
                         message: "Nội dung đã được cập nhật!",
                         icon: 'fa fa-check' 
-                    },{
+                    },
+                    {
                         type: "success"
-                    });    
+                    }
+                    );    
                 }
             })
         }

@@ -225,13 +225,17 @@
 			<!-- Right -->
 			<div class="right">
 				<div class="right-news">
+					@if($dulieuthongbao != null)
 					<div class="right-information">
 						<a href="" class="fa fa-bullhorn"><strong> THÔNG BÁO</strong></a>
 						<div class="ArticleNewTitle" align="center"><center><b>{{$dulieuthongbao->tieude}}</b></center></div>
 						<hr> 
 						{!!$dulieuthongbao->noidung!!}
 						<hr>* <b><i>{{$dulieuthongbao->ghichu}}</i></b>
+						<input type="text" id="ngaybatdauthongbao" name="" value="{{$dulieuthongbao->ngaybatdau}}" hidden="true">
+						<input type="text" id="ngayhethanthongbao" name="" value="{{$dulieuthongbao->ngayhethan}}" hidden="true">
 					</div>
+					@endif
 					<!--Giới thiệu trường học . RIGHT -->
 
 					<div class="title">Tin tức nỗi bật</div>
@@ -338,4 +342,6 @@
 
 </html>
 <script src='assets/user/js/style.js'></script>
+<script type="text/javascript" src="assets/admin/js/moment.min.js"></script>
+
 @yield('script')
