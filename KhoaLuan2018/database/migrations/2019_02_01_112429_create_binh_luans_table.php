@@ -13,9 +13,10 @@ class CreateBinhluansTable extends Migration
      */
     public function up()
     {
-        Schema::create('binhluans', function (Blueprint $table) {
+        Schema::create('binh_luans', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->text('noidung');
             $table->integer('id_user')->unsigned(); 
             $table->foreign('id_user')->references('id')->on('users'); 
             $table->integer('id_tintuc')->unsigned(); 
@@ -30,6 +31,6 @@ class CreateBinhluansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('binhluans');
+        Schema::dropIfExists('binh_luans');
     }
 }

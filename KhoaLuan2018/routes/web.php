@@ -1,4 +1,6 @@
 <?php
+
+Route::get('test', 'thu@testmodel');
     
     // NGƯỜI DÙNG 
 Route::group(['prefix'=>''] , function(){
@@ -36,6 +38,11 @@ Route::group(['prefix'=>'quantri'] , function(){
         Route::post('suahienthitintuc', 'TrangchuController@updateHienThiTinTuc'); 
         Route::post('suaanhientintuc', 'TrangchuController@updateAnHienTinTuc');   
         Route::post('suathongbao', 'TrangchuController@updateThongBao');   
+    });
+    Route::group(['prefix'=>'tintuc'] , function(){ 
+        Route::group(['prefix'=>'theloai'] , function(){ 
+            Route::get('danhsach', 'TheLoaiController@getTheLoai');   
+        });
     });
 });
 

@@ -93,7 +93,7 @@
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Charts</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Tin tức</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i> Thể loại</a></li>
+            <li><a class="treeview-item" href="quantri/tintuc/theloai/danhsach"><i class="icon fa fa-circle-o"></i> Thể loại</a></li>
             <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Loại tin</a></li>
             <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Tin tức</a></li>
             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Chi tiết tin tức</a></li>
