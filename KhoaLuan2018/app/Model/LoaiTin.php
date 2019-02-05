@@ -10,7 +10,7 @@ class LoaiTin extends Model
     public $timestamps = false;
 
     public function theloai(){
-    	return $this->belogsTo('App\Model\TheLoai','id_theloai','id');
+    	return $this->belongsTo('App\Model\TheLoai','id_theloai','id');
     }
     public function tintuc(){
     	return $this->hasMany('App\Model\TinTuc','id_loaitin','id');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB; 
 use View;
 use Carbon\Carbon;
+use App\Model\TrangChu;
 
 class TrangchuController extends Controller
 {
@@ -33,25 +34,17 @@ class TrangchuController extends Controller
     // QUẢN TRỊ VIÊN
 
     // Cập nhật giới thiệu
-    public function SuaGioiThieu(){
-        if(isset($_POST['textgioithieu'])){
-            $textgioithieu = $_POST['textgioithieu']; 
-            $updateText = DB::table('trang_chus')->where('id', 1)->update(['gioithieu' => $textgioithieu]);  
-            return $textgioithieu; 
-        }
+    public function SuaGioiThieu(Request $request){
+        $gioithieu = TrangChu::find(1);
+        $gioithieu->gioithieu = $request->textgioithieu;
+        $test = $gioithieu->save(); 
+        return (string)$test;
     }
     //  Cập nhật hiển thị / ẩn tin tức
-    public function updateHienThiRss(){
-        if(isset($_POST['trangthai'])){
-            $trangthai = $_POST['trangthai']; 
-            if($trangthai == 1){
-                $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 1]);  
-            }
-            if($trangthai == 0){
-                $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 0]);  
-            }
-            return $updateHienThiRss;  
-        }
+    public function updateHienThiRss(Request $request){ 
+            $trangthai = $request->trangthai; 
+            $trangthai == 1 ? $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 1]) : $updateHienThiRss = DB::table('trang_chus')->where('id', 1)->update(['hienthirss' => 0]);  
+            return $updateHienThiRss;   
     }
     // Cập nhật sắp xếp tin tức
     public function updateHienThiTinTuc(){

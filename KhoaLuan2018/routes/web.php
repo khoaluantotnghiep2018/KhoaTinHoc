@@ -40,8 +40,11 @@ Route::group(['prefix'=>'quantri'] , function(){
         Route::post('suathongbao', 'TrangchuController@updateThongBao');   
     });
     Route::group(['prefix'=>'tintuc'] , function(){ 
-        Route::group(['prefix'=>'theloai'] , function(){ 
-            Route::get('danhsach', 'TheLoaiController@getTheLoai');   
+        Route::group(['prefix'=>'loaitin'] , function(){ 
+            Route::get('danhsach', 'LoaiTinController@getLoaiTin');   
+            Route::get('sua', 'LoaiTinController@suaLoaiTin');   
+            Route::get('xoa', 'LoaiTinController@xoaLoaiTin');   
+            Route::get('them', 'LoaiTinController@themLoaiTin');   
         });
     });
 });

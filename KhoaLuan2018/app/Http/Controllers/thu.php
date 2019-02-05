@@ -15,9 +15,14 @@ class thu extends Controller
     public function testmodel(){
     	// $trangchu = TrangChu::all();
     	// return $trangchu;
-    	$TheLoai =  TheLoai::find(1);  
-    	foreach ($TheLoai->loaitin as $value) {
-    		echo $value->id; 
-    	}
+    	// $TheLoai =  TheLoai::all();  
+    	// foreach ($TheLoai as $value) {
+    	// 	echo $value->tentheloai."<br>"; 
+    	// }
+    	// $trangchu = TrangChu::whereId(1)->update(['gioithieu' => "1"]); 
+    	$LoaiTin =  LoaiTin::all(); 
+    	foreach ($LoaiTin as $lt) {
+    		echo $lt->tenloaitin." ".$lt->theloai->tentheloai ."<br>";
+    	} 
     }
 }
