@@ -332,7 +332,7 @@
 				</ul>
 			</div>
 			<div class="footer-right">
-				<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdhsphue%2F&tabs=timeline&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+				<iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/Khoa-Tin-Ho%CC%A3c-%C4%90HSP-Hu%C3%AA%CC%81-609379282849972/&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
 				 width="500" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"
 				 allow="encrypted-media"></iframe>
 			</div>

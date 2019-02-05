@@ -24,8 +24,8 @@ class CreateTinTucsTable extends Migration
             $table->integer('binhluan')->default(0); 
             $table->integer('id_loaitin')->unsigned(); 
             $table->foreign('id_loaitin')->references('id')->on('loai_tins');
-            $table->integer('id_users')->unsigned(); 
-            $table->foreign('id_users')->references('id')->on('users'); 
+            $table->integer('id_user')->unsigned(); 
+            $table->foreign('id_user')->references('id')->on('users'); 
             $table->timestamps();
         });
     }
