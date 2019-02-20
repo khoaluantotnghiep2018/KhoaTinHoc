@@ -36,4 +36,18 @@ class LoaiTinController extends Controller
     public function xoaLoaiTin(){ 
     	return view('pages.admin.LoaiTin.xoa_loaitin');
     }
+
+    public function postthemLoaiTin(Request $request){  
+        $loaitinmoi = new LoaiTin;
+        $loaitinmoi->tenloaitin = $request->tenloaitin;
+        $loaitinmoi->id_theloai = $request->id_theloai;
+        $kiemtra = $loaitinmoi->save();
+
+        if($kiemtra){
+            return redirect('quantri/tintuc/loaitin/them')->with('thongbao',"1");
+        }
+        else{
+            return redirect('quantri/tintuc/loaitin/them')->with('thongbao',"0");
+        }
+    }
 }

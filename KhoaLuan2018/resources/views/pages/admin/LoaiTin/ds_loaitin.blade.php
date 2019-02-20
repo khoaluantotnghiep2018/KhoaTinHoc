@@ -2,6 +2,8 @@
 @section('title')
 Quản trị - Tin Tức - Loại tin
 @endsection  
+@section('css') 
+@endsection
 <main class="app-content">
 	<div class="app-title">
 		<div>
@@ -18,7 +20,7 @@ Quản trị - Tin Tức - Loại tin
 	<div class="col-md-12">
 		<div class="tile"> 
 			<h3 class="tile-title">Danh sách loại tin</h3> 
-			<td><button class="btn btn-success fa fa-plus-square-o" id="button-add-data" type="button"> Thêm mới</button></td> 
+			<td><button onclick="location.href='quantri/tintuc/loaitin/them'" class="btn btn-success fa fa-plus-square-o" id="button-add-data" type="button"> Thêm mới</button></td> 
 			<div class="table-responsive"> 
 				<table class="table">
 					<thead>

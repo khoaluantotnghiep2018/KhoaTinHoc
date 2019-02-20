@@ -44,7 +44,8 @@ Route::group(['prefix'=>'quantri'] , function(){
             Route::get('danhsach', 'LoaiTinController@getLoaiTin');   
             Route::get('sua', 'LoaiTinController@suaLoaiTin');   
             Route::get('xoa', 'LoaiTinController@xoaLoaiTin');   
-            Route::get('them', 'LoaiTinController@themLoaiTin');   
+            Route::get('them', 'LoaiTinController@themLoaiTin'); 
+            Route::post('them', 'LoaiTinController@postthemLoaiTin');   
         });
     });
 });
