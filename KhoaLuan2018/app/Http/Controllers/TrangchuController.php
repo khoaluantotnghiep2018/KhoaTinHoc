@@ -92,7 +92,7 @@ class TrangchuController extends Controller
        
     }
 
-    public function updateThongBao(){
+    public function updateThongBao(Request $request){  
         if(isset($_POST['mangthongbao'])){
             $mangthongbao = $_POST['mangthongbao'];  
             $arrlength = count($mangthongbao);
@@ -101,9 +101,13 @@ class TrangchuController extends Controller
                 $ma = $mangthongbao[$i]['ten']; 
                 $hienthi = $mangthongbao[$i]['giatri'];  
             }  
+ 
+            $ngayht = explode("/",$mangthongbao[3]['giatri']);
+            $ngaykt = explode("/",$mangthongbao[4]['giatri']);
 
-            $ngayhienthi = date("Y-d-m", strtotime($mangthongbao[3]['giatri']));
-            $ngayketthuc = date("Y-d-m", strtotime($mangthongbao[4]['giatri']));
+            $ngayhienthi = $ngayht[2].'/'.$ngayht[1].'/'.$ngayht[0];
+            $ngayketthuc = $ngaykt[2].'/'.$ngaykt[1].'/'.$ngaykt[0];
+
             $checkupdate = DB::table('thong_baos')->where('id', 1)->update(
                                     [ 
                                         'tieude' => $mangthongbao[0]['giatri'], 
@@ -112,7 +116,7 @@ class TrangchuController extends Controller
                                         'ngaybatdau' => $ngayhienthi,
                                         'ngayhethan' => $ngayketthuc
                                     ]);
-            return $checkupdate;
+            return $checkupdate; 
         }
     }
 }

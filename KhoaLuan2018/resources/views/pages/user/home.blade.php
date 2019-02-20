@@ -146,5 +146,5 @@ Trang chủ
             @endsection
 
             @section('script')
-            <script type="text/javascript" src="assets/user/js/ustrangchu.js"></script>
+            
             @endsection

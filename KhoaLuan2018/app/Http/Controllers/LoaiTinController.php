@@ -29,8 +29,23 @@ class LoaiTinController extends Controller
     	return view('pages.admin.LoaiTin.them_loaitin');
     }
 
-    public function suaLoaiTin(){ 
-    	return view('pages.admin.LoaiTin.sua_loaitin');
+    public function getsuaLoaiTin($id){ 
+        $loaitinsua = LoaiTin::find($id);
+    	return view('pages.admin.LoaiTin.sua_loaitin',['loaitinsua'=>$loaitinsua]); 
+    }
+
+    public function postsuaLoaiTin(Request $request, $id){ 
+        $loaitinsua = LoaiTin::find($id);
+        $loaitinsua->tenloaitin = $request->tenloaitin;
+        $loaitinsua->id_theloai = $request->id_theloai;
+        $kiemtra = $loaitinsua->save();
+
+        if($kiemtra){
+            return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',"1");
+        }
+        else{
+            return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',"0");
+        }
     }
 
     public function xoaLoaiTin(){ 

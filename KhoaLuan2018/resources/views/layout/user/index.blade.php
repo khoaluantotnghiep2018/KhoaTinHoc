@@ -339,9 +339,9 @@
 		</div>
 	</footer> <!-- END FOOTER -->
 </body>
-
-</html>
-<script src='assets/user/js/style.js'></script>
+<script src='assets/user/js/style.js'></script> 
 <script type="text/javascript" src="assets/admin/js/moment.min.js"></script>
-
+<script type="text/javascript" src="assets/user/js/ustrangchu.js"></script>
 @yield('script')
+</html>
+

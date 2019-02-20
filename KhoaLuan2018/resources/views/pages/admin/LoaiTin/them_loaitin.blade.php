@@ -11,15 +11,15 @@ Quản trị - Tin Tức - Thêm loại tin
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item">Forms</li>
-			<li class="breadcrumb-item"><a href="#">Form Components</a></li>
+			<li class="breadcrumb-item">Loại tin</li>
+			<li class="breadcrumb-item"><a href="#">Thêm loại tin</a></li>
 		</ul>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="tile">
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-6">
 						@if(session('thongbao'))
 							@if(session('thongbao') == '1')
 								<div class="alert alert-dismissible alert-success">
@@ -47,8 +47,9 @@ Quản trị - Tin Tức - Thêm loại tin
 								</select>
 							</div> 
 							<div class="tile-footer">
-								<button class="btn btn-primary" type="submit">Thêm mới</button>
-							</div>
+								<button class="btn btn-primary" type="submit">Thêm mới</button> 
+								<button class="btn btn-default" type="reset">Nhập lại</button>
+							</div> 
 						</form>
 					</div>
 					<!-- <div class="col-lg-4 offset-lg-1">

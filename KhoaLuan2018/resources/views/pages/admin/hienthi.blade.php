@@ -298,8 +298,7 @@ $("#subhienthitintuc").click(function(){
 
         var ngaycuoi = $("#ngaycuoi").val().split("/")
         var ngayhh = ngaycuoi[2].trim()+"-"+ngaycuoi[1].trim()+"-"+ngaycuoi[0].trim();
-        var ngayhethan = moment(ngayhh).format("YYYY-MM-DD"); 
-
+        var ngayhethan = moment(ngayhh).format("YYYY-MM-DD");   
         if(ngayhienthi > ngayhethan){ 
             swal({
                 title: "Ngày hết hạn không đúng!",
@@ -307,6 +306,7 @@ $("#subhienthitintuc").click(function(){
         } 
         else{
             $.ajax({
+
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                 url:'quantri/hienthi/suathongbao',
                 method:'post',
