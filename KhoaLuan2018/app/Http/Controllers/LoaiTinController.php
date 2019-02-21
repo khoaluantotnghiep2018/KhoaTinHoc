@@ -38,31 +38,22 @@ class LoaiTinController extends Controller
         $loaitinsua = LoaiTin::find($id);
         $loaitinsua->tenloaitin = $request->tenloaitin;
         $loaitinsua->id_theloai = $request->id_theloai;
-        $kiemtra = $loaitinsua->save();
-
-        if($kiemtra){
-            return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',"1");
-        }
-        else{
-            return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',"0");
-        }
+        $kiemtra = $loaitinsua->save(); 
+        return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',$kiemtra); 
     }
 
-    public function xoaLoaiTin(){ 
-    	return view('pages.admin.LoaiTin.xoa_loaitin');
+    public function getXoaLoaiTin($id){ 
+    	$loaitinxoa = LoaiTin::find($id);
+        $kiemtra = $loaitinxoa->delete(); 
+        return redirect('quantri/tintuc/loaitin/danhsach/')->with('thongbaoxoa',$kiemtra);  
     }
+ 
 
     public function postthemLoaiTin(Request $request){  
         $loaitinmoi = new LoaiTin;
         $loaitinmoi->tenloaitin = $request->tenloaitin;
         $loaitinmoi->id_theloai = $request->id_theloai;
-        $kiemtra = $loaitinmoi->save();
-
-        if($kiemtra){
-            return redirect('quantri/tintuc/loaitin/them')->with('thongbao',"1");
-        }
-        else{
-            return redirect('quantri/tintuc/loaitin/them')->with('thongbao',"0");
-        }
+        $kiemtra = $loaitinmoi->save(); 
+        return redirect('quantri/tintuc/loaitin/danhsach')->with('thongbaothem',$kiemtra); 
     }
 }

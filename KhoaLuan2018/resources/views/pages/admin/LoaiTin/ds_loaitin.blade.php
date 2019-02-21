@@ -20,6 +20,30 @@ Quản trị - Tin Tức - Loại tin
 	<div class="col-md-12">
 		<div class="tile"> 
 			<h3 class="tile-title">Danh sách loại tin</h3> 
+			@if(session('thongbaothem'))
+				@if(session('thongbaothem') == '1')
+					<div class="alert alert-dismissible alert-success">
+	                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được thêm mới!
+	              </div>
+				@else
+					<div class="alert alert-dismissible alert-danger">
+	                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thất bại!</strong> Lỗi tiến trình thêm dữ liệu!
+	              </div>
+				@endif
+			@endif
+
+
+			@if(session('thongbaoxoa'))
+				@if(session('thongbaoxoa') == '1')
+					<div class="alert alert-dismissible alert-success">
+	                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được xóa bỏ!
+	              </div>
+				@else
+					<div class="alert alert-dismissible alert-danger">
+	                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thất bại!</strong> Lỗi tiến trình xóa dữ liệu!
+	              </div>
+				@endif
+			@endif
 			<td><button onclick="location.href='quantri/tintuc/loaitin/them'" class="btn btn-success fa fa-plus-square-o" id="button-add-data" type="button"> Thêm mới</button></td> 
 			<div class="table-responsive"> 
 				<table class="table">
@@ -46,7 +70,7 @@ Quản trị - Tin Tức - Loại tin
 							@endforeach
 							<td><button onclick="location.href='quantri/tintuc/loaitin/sua/{{$lt->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button> 
 							</td>
-							<td><button class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
+							<td><button onclick="XoaLoaiTin({{$lt->id}})" class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
 						</tr>
 						@endforeach
 						@endif
@@ -57,5 +81,24 @@ Quản trị - Tin Tức - Loại tin
 	</div>
 </main>
 @section('script') 
+	<script>
+		function XoaLoaiTin(id){
+			swal({
+			  title: "Dữ liệu sẽ không được phục hồi",
+			  text: "Bạn chắc chắn xóa chứ?",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-danger",
+			  confirmButtonText: "Yes, delete it!",
+			  closeOnConfirm: false
+			},
+			function(){
 
+				location.href = 'quantri/tintuc/loaitin/xoa/'+id;
+
+			});
+			
+
+		}
+	</script>
 @endsection

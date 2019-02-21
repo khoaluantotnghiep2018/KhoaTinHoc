@@ -46,7 +46,7 @@ Route::group(['prefix'=>'quantri'] , function(){
             Route::get('sua/{id}', 'LoaiTinController@getsuaLoaiTin');   
             Route::post('sua/{id}', 'LoaiTinController@postsuaLoaiTin');   
 
-            Route::get('xoa', 'LoaiTinController@xoaLoaiTin');  
+            Route::get('xoa/{id}', 'LoaiTinController@getXoaLoaiTin');   
 
             Route::get('them', 'LoaiTinController@themLoaiTin'); 
             Route::post('them', 'LoaiTinController@postthemLoaiTin');   
