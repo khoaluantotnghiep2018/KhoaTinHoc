@@ -99,10 +99,11 @@
             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Chi tiết tin tức</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tài khoản</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i> Basic Tables</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Data Tables</a></li>
+            <li><a class="treeview-item" href="quantri/taikhoan/quantri/danhsach"><i class="icon fa fa-circle-o"></i> Quản trị</a></li>
+            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Giáo viên</a></li>
+            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Sinh viên</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>

@@ -96,9 +96,7 @@ Quản trị - Tin Tức - Loại tin
 
 				location.href = 'quantri/tintuc/loaitin/xoa/'+id;
 
-			});
-			
-
+			}); 
 		}
 	</script>
 @endsection

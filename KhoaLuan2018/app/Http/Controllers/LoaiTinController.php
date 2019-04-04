@@ -19,7 +19,6 @@ class LoaiTinController extends Controller
 	// NGƯỜI DÙNG
 
 
-
 	// QUẢN TRỊ VIÊN
     public function getLoaiTin(){ 
     	return view('pages.admin.LoaiTin.ds_loaitin');
