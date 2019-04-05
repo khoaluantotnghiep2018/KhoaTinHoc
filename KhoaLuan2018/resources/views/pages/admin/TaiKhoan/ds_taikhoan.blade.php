@@ -17,7 +17,7 @@ Quản trị - Tài khoản - Danh sách tài khoản
 		</ul>
       </div>
       <div class="row">
-      <button onclick="location.href='quantri/tintuc/loaitin/them'" class="btn btn-success fa fa-plus-square-o" id="button-add-data" type="button"> Thêm mới</button>
+      <button onclick="location.href='quantri/taikhoan/quantri/them'" class="btn btn-success fa fa-plus-square-o" id="button-add-data" type="button"> Thêm mới</button>
         <div class="col-md-12"> 
           <div class="tile">
             <div class="tile-body"> 
@@ -53,12 +53,7 @@ Quản trị - Tài khoản - Danh sách tài khoản
       </div>
 </main>
 
-@section('script') 
-<!-- Essential javascripts for application to work-->
-    <script src="assets/admin/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/admin/js/popper.min.js"></script>
-    <script src="assets/admin/js/bootstrap.min.js"></script>
-    <script src="assets/admin/js/main.js"></script>
+@section('script')  
     <!-- The javascript plugin to display page loading on top-->
     <script src="assets/admin/js/plugins/pace.min.js"></script>
     <script type="text/javascript" src="assets/admin/js/plugins/jquery.dataTables.min.js"></script>

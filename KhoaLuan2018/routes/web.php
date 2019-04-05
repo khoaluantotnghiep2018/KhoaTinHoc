@@ -62,7 +62,7 @@ Route::group(['prefix'=>'quantri'] , function(){
             Route::get('xoa/{id}', 'TaiKhoanController@getXoaLoaiTin');   
 
             Route::get('them', 'TaiKhoanController@themTaiKhoan'); 
-            Route::post('them', 'TaiKhoanController@postthemLoaiTin');   
+            Route::post('them', 'TaiKhoanController@postthemTaiKhoan');   
         });
     });
 

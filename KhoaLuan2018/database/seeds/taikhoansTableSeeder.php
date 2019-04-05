@@ -12,10 +12,13 @@ class taikhoansTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => "vanthuy", 
-            'email' => 'abc.gmail.com',
-            'password' => bcrypt('123'),
-            'permission' => 'admin',    
+            [
+                'name' => "vanthuy", 
+                'email' => 'abc.gmail.com',
+                'password' => bcrypt('123'),
+                'permission' => 'Admin',    
+                'image' => 'avatar.jpg', 
+            ],
         ]);
     }
 }
