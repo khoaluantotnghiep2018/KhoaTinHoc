@@ -29,13 +29,30 @@ class TaiKhoanController extends Controller
     	return view('pages.admin.TaiKhoan.them_taikhoan');
     }
 
-    public function getsuaTaiKhoan($id){  
+    public function getsuaTaiKhoan($id){ 
+        $taikhoansua = User::find($id);
+    	return view('pages.admin.TaiKhoan.sua_taikhoan',['taikhoansua'=>$taikhoansua]);  
     }
 
-    public function postsuaTaiKhoan(Request $request, $id){  
+    public function postsuaTaiKhoan(Request $request, $id){
+        $taikhoansua  = User::find($id); 
+        if($request->hinhanh != null){
+            $now = new DateTime(); 
+            $file = $request->file('hinhanh'); 
+            $fileName = $now->getTimestamp().$file->getClientOriginalName(); 
+            $file->move('assets/user/images/avatar',$fileName); 
+            $taikhoansua->image = $fileName; 
+        } 
+        if($taikhoansua->password != null){
+            $taikhoansua->password = bcrypt($request->password);
+        } 
+        $taikhoansua->permission = $request->permission;
+        $check =  $taikhoansua->save(); 
+        return redirect('quantri/taikhoan/quantri/sua/'.$id)->with('thongbao',$check); 
     }
 
     public function getXoaTaiKhoan($id){   
+        
     }
  
 

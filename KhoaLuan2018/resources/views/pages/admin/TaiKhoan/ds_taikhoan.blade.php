@@ -41,7 +41,7 @@ Quản trị - Tài khoản - Danh sách tài khoản
                     <td>{{$tk->email}}</td>
                     <td>{{$tk->updated_at}}</td>
                     <td>{{$tk->permission}}</td>
-                    <td><button onclick="location.href=''" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button><button onclick="location.href=''" class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
+                    <td><button onclick="location.href='quantri/taikhoan/quantri/sua/{{$tk->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button><button onclick="location.href=''" class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
                   </tr>
                   @endforeach
                   @endif

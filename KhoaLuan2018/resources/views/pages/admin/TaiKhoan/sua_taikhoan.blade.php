@@ -1,34 +1,43 @@
 @extends('layout/admin/index')
 @section('title')
-Quản trị - Tài khoản - Thêm tài khoản
+Quản trị - Tài khoản - Sửa tài khoản
 @endsection   
+<style>
+.app-sidebar__user-avatar_singin{
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+    border-radius: 50% !important;
+}
+</style>
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i> Thêm tài khoản</h1>
-          <p>Thêm tài khoản mới vào hệ thống</p>
+          <h1><i class="fa fa-edit"></i> Sửa tài khoản</h1>
+          <p>Cập nhật thông tin tài khoản cho hệ thống</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item">Trang chủ</li>
           <li class="breadcrumb-item">Tài khoản</li>
-          <li class="breadcrumb-item"><a href="#">Thêm</a></li>
+          <li class="breadcrumb-item"><a href="#">Sửa</a></li>
         </ul>
       </div>
         <div class="offset-md-2 col-md-8">
           <div class="tile">
-            <h3 class="tile-title"><center>Đăng ký</center></h3>
+            <h3 class="tile-title"><center>Cập nhật thông tin</center></h3>
             @if(session('thongbao'))
 							@if(session('thongbao') == '1')
 								<div class="alert alert-dismissible alert-success">
-				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được thêm mới!
+				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được cập nhật!
 				              </div>
                       @else
 								<div class="alert alert-dismissible alert-danger">
-				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thất bại!</strong> Tài khoản hoặc email đã được sử dụng!
+				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thất bại!</strong> Lỗi tiến trình cập nhật dữ liệu!
 				              </div> 
 							@endif
-						@endif
+            @endif
+            
             <div class="tile-body">
               <form class="form-horizontal" id="formDangKy" method="post" enctype="multipart/form-data">
               @csrf
@@ -37,17 +46,17 @@ Quản trị - Tài khoản - Thêm tài khoản
                   <div class="col-md-9">
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="permission" checked value="Admin">Quản trị 
+                        <input class="form-check-input" type="radio" name="permission" value="Admin" @if($taikhoansua->permission == 'Admin' ) checked @endif>Quản trị 
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="permission" value="GiangVien">Giảng viên
+                        <input class="form-check-input" type="radio" name="permission" value="GiangVien" @if($taikhoansua->permission == 'GiangVien' ) checked @endif>Giảng viên
                       </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="permission" value="SinhVien">Sinh viên
+                        <input class="form-check-input" type="radio" name="permission" value="SinhVien" @if($taikhoansua->permission == 'SinhVien' ) checked @endif>Sinh viên
                       </label>
                     </div>
                   </div>
@@ -55,25 +64,25 @@ Quản trị - Tài khoản - Thêm tài khoản
                 <div class="form-group row">
                   <label class="control-label col-md-3">Tên tài khoản</label>
                   <div class="col-md-8">
-                    <input required id="account" class="form-control" type="text" name="name" placeholder="Nhập vào tên tài khoản">
+                    <input readonly required id="account" class="form-control" type="text" name="name" placeholder="Nhập vào tên tài khoản" value="{{$taikhoansua->name}}">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Email</label>
                   <div class="col-md-8">
-                    <input required class="form-control" type="email" name="email" placeholder="Nhập vào địa chỉ email">
+                    <input readonly required class="form-control" type="email" name="email" placeholder="Nhập vào địa chỉ email" value="{{$taikhoansua->email}}">
                   </div>
                 </div> 
-                <div class="form-group row">
-                  <label class="control-label col-md-3">Mật khẩu</label>
+                <div class="form-group row"> 
+                  <label class="control-label col-md-3">Mật khẩu </label>
                   <div class="col-md-8">
-                    <input required id="password" class="form-control" type="password" name="password" placeholder="Nhập vào mật khẩu">
+                    <input id="password" class="form-control" type="password" name="password" placeholder="Nhập vào mật khẩu">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Xác nhận mật khẩu</label>
                   <div class="col-md-8">
-                    <input required id="setpassword" class="form-control" type="password" placeholder="Xác nhận lại mật khẩu">
+                    <input id="setpassword" class="form-control" type="password" placeholder="Xác nhận lại mật khẩu">
                   </div>
                 </div> 
                 <div class="form-group row">
@@ -81,13 +90,14 @@ Quản trị - Tài khoản - Thêm tài khoản
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" id="viewpass">Hiển thị mật khẩu
-                      </label>
+                      </label>  
                     </div>
                   </div>
                 </div>
                 
-                <div class="form-group row">
-                  <label class="control-label col-md-3">Hình đại diện</label>
+                
+                <div class="form-group row"> 
+                  <label class="control-label col-md-3"><img class="app-sidebar__user-avatar_singin" src="assets/user/images/avatar/{{$taikhoansua->image}}" alt="User Image"></label>
                   <div class="col-md-8">
                     <input class="form-control" type="file" name="hinhanh" id="hinhdaidien"> 
                   </div>
@@ -95,7 +105,7 @@ Quản trị - Tài khoản - Thêm tài khoản
                 <div class="tile-footer">
               <div class="row">
                 <div class="col-md-8 col-md-offset-3">
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Đăng ký</button>&nbsp;&nbsp;&nbsp;<button type='reset' class="btn btn-secondary"><i class="fa fa-refresh"></i>Làm mới</button>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Lưu lại</button>&nbsp;&nbsp;&nbsp;<button type='reset' class="btn btn-secondary"><i class="fa fa-refresh"></i>Nhập lại</button>
                 </div>
               </div>
             </div>
@@ -145,14 +155,14 @@ Quản trị - Tài khoản - Thêm tài khoản
             case 'image/pjpeg':
                   $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    url:'quantri/taikhoan/quantri/them',
+                    url:'quantri/taikhoan/quantri/sua/{{$taikhoansua->id}}',
                     method:'post', 
                     success:function(response){   
                         if(response == "1"){ 
                                 // Hiển thị thông báo thành công
                                 $.notify({
                                     title: "Thành công : ",
-                                    message: "Tài khoản đã được thêm mới!",
+                                    message: "Tài khoản đã được cập nhật!",
                                     icon: 'fa fa-check' 
                                 },{
                                     type: "success"

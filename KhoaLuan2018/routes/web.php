@@ -56,10 +56,10 @@ Route::group(['prefix'=>'quantri'] , function(){
         Route::group(['prefix'=>'quantri'] , function(){ 
             Route::get('danhsach', 'TaiKhoanController@getTaiKhoan');   
 
-            Route::get('sua/{id}', 'TaiKhoanController@getsuaLoaiTin');   
-            Route::post('sua/{id}', 'TaiKhoanController@postsuaLoaiTin');   
+            Route::get('sua/{id}', 'TaiKhoanController@getsuaTaiKhoan');   
+            Route::post('sua/{id}', 'TaiKhoanController@postsuaTaiKhoan');   
 
-            Route::get('xoa/{id}', 'TaiKhoanController@getXoaLoaiTin');   
+            Route::get('xoa/{id}', 'TaiKhoanController@getXoaTaiKhoan');   
 
             Route::get('them', 'TaiKhoanController@themTaiKhoan'); 
             Route::post('them', 'TaiKhoanController@postthemTaiKhoan');   
