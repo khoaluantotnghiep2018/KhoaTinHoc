@@ -52,7 +52,9 @@ class TaiKhoanController extends Controller
     }
 
     public function getXoaTaiKhoan($id){   
-        
+        $taikhoanxoa = User::find($id); 
+        $check = $taikhoanxoa->delete(); 
+        return redirect('quantri/taikhoan/quantri/danhsach')->with('thongbaoxoa',$check); 
     }
  
 
