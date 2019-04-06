@@ -1,0 +1,1 @@
+2sua_tintuc.blade.php

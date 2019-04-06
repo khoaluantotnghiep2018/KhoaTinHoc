@@ -36,6 +36,7 @@ class TaiKhoanController extends Controller
 
     public function postsuaTaiKhoan(Request $request, $id){
         $taikhoansua  = User::find($id); 
+        $taikhoansua->viewname = $request->viewname;
         if($request->hinhanh != null){
             $now = new DateTime(); 
             $file = $request->file('hinhanh'); 
@@ -74,7 +75,8 @@ class TaiKhoanController extends Controller
             $taikhoanmoi  = new User;
             $taikhoanmoi->name = $request->name;
             $taikhoanmoi->email = $request->email;
-            $taikhoanmoi->password = bcrypt($request->password);
+            $taikhoanmoi->viewname = $request->viewname;
+            $taikhoanmoi->password = bcrypt($request->password); 
             $taikhoanmoi->permission = $request->permission;
             $taikhoanmoi->image = $fileName;
             $check =  $taikhoanmoi->save(); 

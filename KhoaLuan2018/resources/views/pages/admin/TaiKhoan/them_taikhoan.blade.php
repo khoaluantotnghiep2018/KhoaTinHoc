@@ -59,6 +59,12 @@ Quản trị - Tài khoản - Thêm tài khoản
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label class="control-label col-md-3">Tên hiển thị</label>
+                  <div class="col-md-8">
+                    <input required class="form-control" type="text" name="viewname" placeholder="Nhập vào tên hiển thị">
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label class="control-label col-md-3">Email</label>
                   <div class="col-md-8">
                     <input required class="form-control" type="email" name="email" placeholder="Nhập vào địa chỉ email">

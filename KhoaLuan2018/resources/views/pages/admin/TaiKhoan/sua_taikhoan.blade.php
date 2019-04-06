@@ -62,6 +62,12 @@ Quản trị - Tài khoản - Sửa tài khoản
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label class="control-label col-md-3">Tên hiển thị</label>
+                  <div class="col-md-8">
+                    <input required class="form-control" type="text" name="viewname" placeholder="Nhập vào tên hiển thị" value="{{$taikhoansua->viewname}}">
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label class="control-label col-md-3">Tên tài khoản</label>
                   <div class="col-md-8">
                     <input readonly required id="account" class="form-control" type="text" name="name" placeholder="Nhập vào tên tài khoản" value="{{$taikhoansua->name}}">

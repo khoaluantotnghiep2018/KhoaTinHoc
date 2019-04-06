@@ -94,7 +94,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Tin tức</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="quantri/tintuc/loaitin/danhsach"><i class="icon fa fa-circle-o"></i> Loại tin</a></li>
-            <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Loại tin</a></li>
+            <li><a class="treeview-item" href="quantri/tintuc/baiviet/danhsach"><i class="icon fa fa-circle-o"></i> Bài viết</a></li>
             <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Tin tức</a></li>
             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Chi tiết tin tức</a></li>
           </ul>

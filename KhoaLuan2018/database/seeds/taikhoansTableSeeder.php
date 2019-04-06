@@ -14,6 +14,7 @@ class taikhoansTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => "vanthuy", 
+                'viewname' => "Huỳnh Văn Thùy",
                 'email' => 'abc.gmail.com',
                 'password' => bcrypt('123'),
                 'permission' => 'Admin',    

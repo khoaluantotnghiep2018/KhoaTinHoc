@@ -52,6 +52,22 @@ Route::group(['prefix'=>'quantri'] , function(){
             Route::post('them', 'LoaiTinController@postthemLoaiTin');   
         });
     });
+    Route::group(['prefix'=>'tintuc'] , function(){ 
+        Route::group(['prefix'=>'baiviet'] , function(){ 
+            Route::get('danhsach', 'BaiVietController@getBaiViet');   
+
+            Route::get('sua/{id}', 'BaiVietController@getsuaBaiViet');   
+            Route::post('sua/{id}', 'BaiVietController@postsuaBaiViet');   
+
+            Route::get('xoa/{id}', 'BaiVietController@getXoaBaiViet');   
+
+            Route::get('them', 'BaiVietController@themBaiViet'); 
+            Route::post('them', 'BaiVietController@postThemBaiViet'); 
+
+            Route::post('selectLoaiTin', 'BaiVietController@selectLoaiTin'); 
+            Route::post('suanoibat', 'BaiVietController@postSuaNoiBat');  
+        });
+    });
     Route::group(['prefix'=>'taikhoan'] , function(){ 
         Route::group(['prefix'=>'quantri'] , function(){ 
             Route::get('danhsach', 'TaiKhoanController@getTaiKhoan');   
