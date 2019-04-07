@@ -38,7 +38,7 @@
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input required type="text" placeholder="Tên đăng nhập hoặc email" name="name">
+						<input required type="text" placeholder="Tên đăng nhập hoặc email" name="name" autofocus>
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
@@ -70,7 +70,7 @@
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input required type="text" name="name" placeholder="Tên đăng nhập hoặc email"> 
+						<input required type="text" name="name" placeholder="Tên đăng nhập hoặc email" autofocus> 
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
@@ -365,7 +365,7 @@
 			btnSubLoginAd.prop('disabled', true);
 			var notify = confirm("Đăng nhập hệ thống quản trị?");
 			if (notify == true) {
-				console.log("Chuyển qua admin");
+				location.href = 'login/quantri';
 			}  
 		}
 		if(selectQuyen.val() == "GiangVien"){

@@ -37,10 +37,32 @@ class LoginController extends Controller
         return 'loidangnhap';  
     }
 
+    public function getLoginQuanTri(){
+    	return view('pages.admin.login'); 
+    }
+
+    public function postLoginQuanTri(Request $req){
+        $login = filter_var($req->name, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+        $payload[$login] = $req->name;
+        $payload['password'] = $req->password;
+        if (Auth::attempt($payload, $req->has('remember'))) {
+            if (Auth::User()->permission == "Admin") { 
+                return "ok"; 
+            }
+            return 'loiphanquyen'; 
+        }
+        return 'loidangnhap'; 
+    }
+
     public function getLogoutSinhVien(){
         Auth::logout();
         return back();
     }
+    public function getLogoutQuanTriVien(){
+        Auth::logout();
+        return redirect('login/quantri'); 
+    }
+    
     
     // QUẢN TRỊ VIÊN
 }
