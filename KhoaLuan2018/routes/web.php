@@ -17,6 +17,14 @@ Route::group(['prefix'=>''] , function(){
         return view('pages/user/news');
     });
 
+    Route::group(['prefix'=>'login'] , function(){  
+        Route::post('sinhvien','LoginController@postLoginSinhVien');   
+        Route::post('giangvien','LoginController@postLoginGiangVien');   
+    });
+    Route::group(['prefix'=>'logout'] , function(){  
+        Route::get('sinhvien','LoginController@getLogoutSinhVien');    
+    });
+
     // Route::get('/test', 'TrangchuController@getDuLieu');
 });
     

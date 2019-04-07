@@ -89,8 +89,8 @@ class BaiVietController extends Controller
     }
 
     public function getsuaBaiViet($id){ 
-        $loaitinsua = LoaiTin::find($id);
-    	return view('pages.admin.LoaiTin.sua_loaitin',['loaitinsua'=>$loaitinsua]); 
+        $baivietsua = TinTuc::find($id);
+    	return view('pages.admin.BaiViet.sua_baiviet',['baivietsua'=>$baivietsua]); 
     }
 
     public function postsuaBaiViet(Request $request, $id){ 
@@ -102,9 +102,9 @@ class BaiVietController extends Controller
     }
 
     public function getXoaBaiViet($id){ 
-    	$loaitinxoa = LoaiTin::find($id);
-        $kiemtra = $loaitinxoa->delete(); 
-        return redirect('quantri/tintuc/loaitin/danhsach/')->with('thongbaoxoa',$kiemtra);  
+    	$baivietxoa = TinTuc::find($id);
+        $kiemtra = $baivietxoa->delete(); 
+        return redirect('quantri/tintuc/baiviet/danhsach/')->with('thongbaoxoa',$kiemtra);  
     }
   
 }

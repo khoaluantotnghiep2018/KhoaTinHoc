@@ -27,14 +27,14 @@ Quản trị - Tài khoản - Danh sách bài viết
       @if(session('thongbaoxoa'))
 							@if(session('thongbaoxoa') == '1')
 								<div class="alert alert-dismissible alert-success">
-				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Tài khoản đã được xóa bỏ vĩnh viễn khỏi hệ thống!
+				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Bài viết đã được xóa bỏ vĩnh viễn khỏi hệ thống!
 				              </div>
                       @else
 								<div class="alert alert-dismissible alert-danger">
 				                	<button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thất bại!</strong> Lỗi tiến trình xóa bỏ dữ liệu!
 				              </div> 
 							@endif
-            @endif
+      @endif
       
       <div class="col-md-12"> 
           <div class="tile">
@@ -71,7 +71,7 @@ Quản trị - Tài khoản - Danh sách bài viết
                       </div>
                     </td>
                     <td>{{$ds->luotxem}}</td>
-                    <td><button onclick="location.href='quantri/taikhoan/quantri/sua/{{$ds->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button><button onclick="location.href='quantri/taikhoan/quantri/xoa/{{$ds->id}}'" class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
+                    <td><button  class="btn btn-success fa fa-search" type="button"> Xem</button><button onclick="location.href='quantri/tintuc/baiviet/sua/{{$ds->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button><button onclick="location.href='quantri/tintuc/baiviet/xoa/{{$ds->id}}'" class="btn btn-danger fa fa-trash" type="button"> Xóa </button></td>
                   </tr>
                   @endforeach
                   @endif

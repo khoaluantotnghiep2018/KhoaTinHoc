@@ -9,16 +9,18 @@
 	<title>@yield('title')</title> 
 	<link rel="stylesheet" href="assets/user/css/reset.css">
 	<link rel="stylesheet" href="assets/user/css/style.css">
-	<link rel="stylesheet" href="assets/user/css/all.css">
+	<link rel="stylesheet" href="assets/user/css/all.css"> 
 	<style>
 		.showsubmenu{
 			float: right;
 			display: none;
 			font-size: 22px;
 		} 
+		#checkRemember{
+			width: auto;
+		}
 	</style>
-	@yield('css')
-	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+	@yield('css') 
 </head>
 
 <body onload="timeclock()">
@@ -27,51 +29,61 @@
 		<div class="log-form">
 			<div class="form-wrapper">
 				<div class="close-form"><i class="fas fa-times-circle"></i></div>
-				<form action="" class='form-dangnhap'>
-
+				<form class='form-dangnhap' id="form_dangnhap_sv" method="post">
+					@csrf
 					<div class="log-form__title">Sinh viên đăng nhập</div>
+					<label for=""> 
+						<span class="error" id="loiLogin">Tài khoản hoặc mật khẩu chưa đúng!</span> 	  
+						<span class="error" id="loiPhanQuyen">Tài khoản không dùng cho sinh viên<br>Vui lòng chọn đăng nhập cho giảng viên!</span> 	 
+					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input type="text" placeholder="Tên đăng nhập hoặc email">
-						<span class="error"></span>
+						<input required type="text" placeholder="Tên đăng nhập hoặc email" name="name">
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
-						<input type="password" placeholder="Mật khẩu">
-						<span class="error"></span>
+						<input required type="password" placeholder="Mật khẩu" name="password"> 
 					</label>
 					<label for="">
-						<a href="" class='link-register'>Giành cho giảng viên</a>
+						<input id="checkRemember" type="checkbox" name="remember"> Ghi nhớ đăng nhập<br>
+					</label> 
+					<label for="">
+						<button type='submit' class='btn-login' id="btnDangNhapSv">Đăng nhập</button>
 					</label>
 					<label for="">
-						<button type='submit' class='btn-login'>Đăng nhập</button>
-					</label>
+						<a href="" class='link-register'><b>Giành cho giảng viên</b></a>
+					</label> 
 				</form>
-				<form action="" class='form-dangky'>
+				<form method="post" class='form-dangky' id="formLoginGv">
+					@csrf
 					<div class="log-form__title">Giảng viên đăng nhập</div>
+					<label for=""> 
+						<span class="error" id="loiLoginGV">Tài khoản hoặc mật khẩu chưa đúng!</span> 	  
+						<span class="error" id="loiPhanQuyenGV">Tài khoản không dùng cho giảng viên<br>Vui lòng chọn đăng nhập cho sinh viên!</span> 	 
+					</label>
+					<label for="">
+						<select name="permission" id="selectQuyen">
+							<option value="">Mức quyền</option>
+							<option value="Admin">Quản trị</option>
+							<option value="GiangVien">Giảng viên</option>
+						</select> 
+					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input type="text" placeholder="Tên đăng nhập hoặc email">
-						<span class="error"></span>
+						<input required type="text" name="name" placeholder="Tên đăng nhập hoặc email"> 
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
-						<input type="password" placeholder="Mật khẩu">
-						<span class="error"></span>
+						<input required type="password" name="password" placeholder="Mật khẩu"> 
+					</label> 
+					<label for="">
+						<input id="checkRemember" type="checkbox" name="remember"> Ghi nhớ đăng nhập<br>
+					</label>  
+					<label for="">
+						<button type='submit' class='btn-register' id="btnLoginAd">Đăng nhập</button>
 					</label>
 					<label for="">
-						<select name="" id="0">
-							<option value="">Mức quyền</option>
-							<option value="">website 1</option>
-							<option value="">website 2</option>
-						</select>
-						<span class="error"></span>
-					</label>
-					<label for="">
-						<a href="" class='link-login'>Giành cho sinh viên</a>
-					</label>
-					<label for="">
-						<button type='submit' class='btn-register'>Đăng nhập</button>
+						<a href="" class='link-login'><b>Giành cho sinh viên</b></a>
 					</label>
 				</form>
 			</div>
@@ -85,7 +97,7 @@
 					<span class="closeLogout"><i class="fas fa-times-circle"></i></span>
 					<ul>
 						<li> <a href="#" class="far fa-user-circle"> Trang cá nhân</a> </li>
-						<li> <a href="trangchu" class="fas fa-sign-out-alt"> Đăng xuất</a> </li>
+						<li> <a href="logout/sinhvien" class="fas fa-sign-out-alt"> Đăng xuất</a> </li>
 					</ul>
 				</div>
 
@@ -94,10 +106,10 @@
 		<header class="header">
 			<div class="header-banner">
 				<img src="assets/user/images/bannerDHSP.gif" alt="">
-			</div>
-			<div class="header-login" hidden><i class="fas fa-user"></i></div>
-			<div class="header-logout">
-				<i onclick="clickLogout()" class="fas fa-user-tie"></i>
+			</div> 
+			<div class="header-login" @if(Auth::check()) hidden @endif><i class="fas fa-lock"></i></div>
+			<div class="header-logout" @if(!Auth::check()) hidden @endif>
+				<i onclick="clickLogout()" class="fas fa-user-graduate"></i>
 			</div>
 		</header> <!-- END HEADER -->
 		<div class="bar-menu"><i class="fas fa-bars"></i></div>
@@ -338,10 +350,91 @@
 			</div>
 		</div>
 	</footer> <!-- END FOOTER -->
-</body>
+</body> 
+<script src="assets/admin/js/jquery-3.2.1.min.js"></script>
 <script src='assets/user/js/style.js'></script> 
 <script type="text/javascript" src="assets/admin/js/moment.min.js"></script>
-<script type="text/javascript" src="assets/user/js/ustrangchu.js"></script>
+<script type="text/javascript" src="assets/user/js/ustrangchu.js"></script> 
+<script>
+	var postFormLoginSv = $("#form_dangnhap_sv"); 
+	var postLoginGv = $("#formLoginGv");  
+	var selectQuyen = $("#selectQuyen");
+	var btnSubLoginAd = $("#btnLoginAd");
+	selectQuyen.change(function(){
+		if(selectQuyen.val() == "Admin"){
+			btnSubLoginAd.prop('disabled', true);
+			var notify = confirm("Đăng nhập hệ thống quản trị?");
+			if (notify == true) {
+				console.log("Chuyển qua admin");
+			}  
+		}
+		if(selectQuyen.val() == "GiangVien"){
+			btnSubLoginAd.prop('disabled', false); 
+		}
+	}); 
+
+	postFormLoginSv.submit(function(e){ 
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			url: 'login/sinhvien',
+			method: 'post',
+			data: $('#form_dangnhap_sv').serialize(),
+			success: function (response) {
+				if (response == "ok") {
+					 location.reload();
+					 return false; 
+				}
+				if (response == "loiphanquyen") {
+					$("#loiLogin").css("display", "none"); 
+					$("#loiPhanQuyen").css("display", "block");
+					postFormLoginSv.trigger("reset");
+					return false; 
+				}
+				if (response == "loidangnhap") {
+					$("#loiPhanQuyen").css("display", "none"); 
+					$("#loiLogin").css("display", "block");
+					return false; 
+				}
+			}
+		});
+		return false;
+	});
+
+	postLoginGv.submit(function(e){ 
+		if($("#selectQuyen").val() == ""){
+			$("#loiLoginGV").css("display", "none"); 
+			$("#loiPhanQuyenGV").css("display", "none");   
+			btnSubLoginAd.prop('disabled', true);  
+			return false;
+		}
+		btnSubLoginAd.prop('disabled', false);  
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			url: 'login/giangvien',
+			method: 'post',
+			data: $('#formLoginGv').serialize(),
+			success: function (response) {
+				if (response == "ok") {
+					location.reload();
+					return false; 
+				}
+				if (response == "loiphanquyen") {
+					$("#loiLoginGV").css("display", "none"); 
+					$("#loiPhanQuyenGV").css("display", "block");
+					postLoginGv.trigger("reset");
+					return false; 
+				}
+				if (response == "loidangnhap") {
+					$("#loiPhanQuyenGV").css("display", "none"); 
+					$("#loiLoginGV").css("display", "block");
+					return false; 
+				}
+			}
+		});
+		return false;
+	});
+ 
+</script>
 @yield('script')
 </html>
 

@@ -20,8 +20,7 @@
 		    border-radius: 4px;
  			 cursor: pointer;
 		}
-
-
+ 
 		header.header { 
 			background-size: cover;
 		    height: 180px;
@@ -83,7 +82,7 @@
 			border-radius: 3px; 
 			margin-left: 30%;
 			top: 40%;
-		}      
+		}     
 		.logout-form-content ul{
 			list-style-type: none; 
 			background-color: #f1f1f1;
@@ -722,7 +721,8 @@ footer.footer .footer-left li a i {
 
 .log-form label {
     margin-bottom: 15px;
-    display: block;text-align: center;
+	display: block;
+	text-align: center; 
 }
 .log-form button {
     padding: 5px 10px;
@@ -732,6 +732,13 @@ footer.footer .footer-left li a i {
     box-shadow: 1px 1px 1px #565555;
     font-weight: bold;
     outline: none;
+}
+ 
+.log-form label .error {
+    color: red;
+	display: none;
+	font-weight: bold;
+	margin-top: 0.5em; 
 }
 .log-form label a {
     /* text-decoration: none; */
