@@ -7,6 +7,8 @@ use App\Model\LoaiTin;
 use App\Model\TheLoai;
 use App\Model\TinTuc;
 use View;
+use Auth;
+use DateTime;
 
 class BaiVietController extends Controller
 {
@@ -51,7 +53,7 @@ class BaiVietController extends Controller
             $baivietmoi->noidung = $request->noidung;
             $baivietmoi->id_loaitin = $request->idLoaiTin;
 
-            $baivietmoi->id_user = '1';
+            $baivietmoi->id_user = Auth::User()->id;
             
             if($request->noibat === "on"){
                 $baivietmoi->noibat = 1; 

@@ -7,6 +7,10 @@ Quản trị - Tài khoản - Danh sách bài viết
           width: 200px;
           height: 150px;
       }
+      .tablebaiviet button{
+        display : block;
+        margin-top: 0.5em;
+      }
 </style> 
 
 <main class="app-content">
@@ -38,7 +42,7 @@ Quản trị - Tài khoản - Danh sách bài viết
       
       <div class="col-md-12"> 
           <div class="tile">
-            <div class="tile-body"> 
+            <div class="tile-body tablebaiviet"> 
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>

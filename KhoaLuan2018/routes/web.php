@@ -3,7 +3,7 @@
 Route::get('test', 'thu@testmodel');
     
     // NGƯỜI DÙNG 
-Route::group(['prefix'=>''] , function(){
+Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     Route::get('', function () {
         return redirect()->route('trangchinh');
     }); 
@@ -16,23 +16,24 @@ Route::group(['prefix'=>''] , function(){
     Route::get('tintuc', function () {
         return view('pages/user/news');
     });
+  
+    // Route::get('/test', 'TrangchuController@getDuLieu'); 
+    
+});
 
-    Route::group(['prefix'=>'login'] , function(){  
-        Route::post('sinhvien','LoginController@postLoginSinhVien');   
-        Route::post('giangvien','LoginController@postLoginGiangVien');   
-        Route::get('quantri','LoginController@getLoginQuanTri');   
-        Route::post('quantri','LoginController@postLoginQuanTri');   
-    });
-    Route::group(['prefix'=>'logout'] , function(){  
-        Route::get('sinhvien','LoginController@getLogoutSinhVien');    
-        Route::get('quantri','LoginController@getLogoutQuanTriVien');    
-    });
-
-    // Route::get('/test', 'TrangchuController@getDuLieu');
+Route::group(['prefix'=>'login'] , function(){  
+    Route::post('sinhvien','LoginController@postLoginSinhVien');   
+    Route::post('giangvien','LoginController@postLoginGiangVien');   
+    Route::get('quantri','LoginController@getLoginQuanTri');   
+    Route::post('quantri','LoginController@postLoginQuanTri');   
+});
+Route::group(['prefix'=>'logout'] , function(){  
+    Route::get('sinhvien','LoginController@getLogoutSinhVien');    
+    Route::get('quantri','LoginController@getLogoutQuanTriVien');    
 });
     
 // QUẢN TRỊ VIÊN
-Route::group(['prefix'=>'quantri'] , function(){
+Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
     Route::get('', function () {
         return redirect()->route('trangchinhadmin');
     }); 
