@@ -9,6 +9,7 @@ use App\Model\TinTuc;
 use View;
 use Auth;
 use DateTime;
+use DB;
 
 class BaiVietController extends Controller
 {
@@ -90,17 +91,43 @@ class BaiVietController extends Controller
         echo $hienthi.'</label>';
     }
 
-    public function getsuaBaiViet($id){ 
-        $baivietsua = TinTuc::find($id);
-    	return view('pages.admin.BaiViet.sua_baiviet',['baivietsua'=>$baivietsua]); 
+    public function getsuaBaiViet($id){  
+        $baivietsua = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
+                    ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
+                    ->select('tin_tucs.*','the_loais.id as idTheLoai','the_loais.tentheloai','loai_tins.tenloaitin')
+                    ->where('tin_tucs.id','=',$id)
+                    ->first();
+        
+        return view('pages.admin.BaiViet.sua_baiviet',['baivietsua'=>$baivietsua]);  
     }
 
     public function postsuaBaiViet(Request $request, $id){ 
-        $loaitinsua = LoaiTin::find($id);
-        $loaitinsua->tenloaitin = $request->tenloaitin;
-        $loaitinsua->id_theloai = $request->id_theloai;
-        $kiemtra = $loaitinsua->save(); 
-        return redirect('quantri/tintuc/loaitin/sua/'.$id)->with('thongbao',$kiemtra); 
+        $baivietsua = TinTuc::find($id);
+        if($request->noidung == null){
+            return back()->with('thongbaonoidung','Bạn chưa nhập nội dung, vui lòng thực hiện lại!');
+        }
+        else{
+            $baivietsua->tieude = $request->tieude;
+            if($request->hasFile('hinhanh')){ 
+                $now = new DateTime(); 
+                $file = $request->file('hinhanh'); 
+                $fileName = $now->getTimestamp().$file->getClientOriginalName(); 
+                $file->move('assets/user/images/hinhtintuc',$fileName);  
+                $baivietsua->hinhdaidien = $fileName; 
+            } 
+            $baivietsua->mota = $request->mota;
+            $baivietsua->noidung = $request->noidung;
+            $baivietsua->id_loaitin = $request->idLoaiTin; 
+            $baivietsua->id_user = Auth::User()->id; 
+            if($request->noibat === "on"){
+                $baivietsua->noibat = 1; 
+            }
+            else{
+                $baivietsua->noibat = 0; 
+            }
+            $kiemtra = $baivietsua->save(); 
+            return back()->with('thongbaosua',$kiemtra);
+        } 
     }
 
     public function getXoaBaiViet($id){ 

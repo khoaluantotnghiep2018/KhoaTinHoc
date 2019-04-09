@@ -25,8 +25,8 @@ Quản trị - Tài khoản - Thêm tài khoản
             </div>
             @endif
 
-            @if(session('thongbao'))
-                @if(session('thongbao') == '1')
+            @if(session('thongbaothem'))
+                @if(session('thongbaothem') == '1')
                     <div class="alert alert-dismissible alert-success">
                         <button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được thêm mới!
                 </div>

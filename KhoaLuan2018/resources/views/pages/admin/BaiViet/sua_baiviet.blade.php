@@ -1,7 +1,13 @@
 @extends('layout/admin/index')
 @section('title')
 Quản trị - Tài khoản - Thêm tài khoản
-@endsection
+@endsection 
+<style>
+    .viewHinhMota img{
+        width: 50%;
+        
+    }
+</style>
 <main class="app-content">
     <div class="app-title">
         <div>
@@ -25,8 +31,8 @@ Quản trị - Tài khoản - Thêm tài khoản
             </div>
             @endif
 
-            @if(session('thongbao'))
-                @if(session('thongbao') == '1')
+            @if(session('thongbaosua'))
+                @if(session('thongbaosua') == '1')
                     <div class="alert alert-dismissible alert-success">
                         <button class="close" type="button" data-dismiss="alert">×</button>	<strong>Thành công!</strong> Dữ liệu đã được cập nhật!
                 </div>
@@ -42,46 +48,58 @@ Quản trị - Tài khoản - Thêm tài khoản
                 <div class="form-group">
                     <label for="selectTheLoai">Thể loại</label>
                     <select class="form-control" id="selectTheLoai" required>
-                        <option></option>  
+                        <option value="{{$baivietsua->idTheLoai}}">{{$baivietsua->tentheloai}}</option>  
                         @foreach($theloai as $tl)
+                        @if($tl->id != $baivietsua->idTheLoai)
                         <option value="{{$tl->id}}">{{$tl->tentheloai}}</option> 
+                        @endif
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group" id="luuLoaiTin">
                     <label for="selectLoaiTin">Loại tin tức</label>
-                    <select class="form-control"> 
-                        <option></option>  
+                    <select class="form-control" required name="idLoaiTin"> 
+                        <option value="{{$baivietsua->id_loaitin}}">{{$baivietsua->tenloaitin}}</option> 
+                    @foreach($loaitin as $lt)
+                        @if(($lt->id_theloai == $baivietsua->idTheLoai) &&  ($lt->id != $baivietsua->id_loaitin))
+                            <option value="{{$lt->id}}">{{$lt->tenloaitin}}</option> 
+                        @endif 
+                    @endforeach                        
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Tiêu đề</label>
-                    <input required class="form-control" type="text" placeholder="Nhập vào tiêu đề" name="tieude">
+                    <input required class="form-control" type="text" placeholder="Nhập vào tiêu đề" name="tieude" value="{{$baivietsua->tieude}}">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Mô tả ngắn</label>
                     <textarea required class="form-control" rows="4" placeholder="Nhập vào mô tả"
-                        name="mota"></textarea>
-                </div>
+                        name="mota">{{$baivietsua->mota}}</textarea>
+                </div> 
                 <div class="form-group row">
                     <div class="col-md-8 col-md-offset-3">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="noibat" checked> Tin nổi bật
+                                <input class="form-check-input" type="checkbox" name="noibat" @if($baivietsua->noibat) checked @endif> Tin nổi bật
                             </label>
                         </div>
                     </div>
+                </div> 
+                <div class="form-group viewHinhMota"> 
+                    <center>
+                        <img id="hienthiHinhMt" src="assets/user/images/hinhtintuc/{{$baivietsua->hinhdaidien}}" alt="">
+                    </center> 
                 </div>
                 <div class="form-group">
                     <label class="control-label">Hình mô tả</label>
-                    <input required id="hinhmota" class="form-control" type="file" name="hinhanh">
+                    <input id="hinhmota" class="form-control" type="file" name="hinhanh">
                 </div>
                 <div class="tile">
                     <div class="tile-title-w-btn">
                         <h3 class="title">Nội dung bài đăng</h3>
                     </div>
                     <div class="tile-body">
-                        <textarea name="noidung" rows="30" id="textcontent"></textarea>
+                        <textarea name="noidung" rows="30" id="textcontent">{{$baivietsua->noidung}}</textarea>
                         <p>Nhấn tải lên để hoàn tất việc đăng tải một bài viết mới lên hệ thống.</p>
                         <input name="image" type="file" id="upload" hidden>
                     </div>
@@ -161,24 +179,10 @@ Quản trị - Tài khoản - Thêm tài khoản
             case 'image/pjpeg':
                 $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    url: 'quantri/tintuc/baiviet/them',
+                    url: 'quantri/tintuc/baiviet/sua',
                     method: 'post',
                     success: function (response) {
-                        if (response == "1") {
-                            // Hiển thị thông báo thành công
-                            $.notify({
-                                title: "Thành công : ",
-                                message: "Tài khoản đã được thêm mới!",
-                                icon: 'fa fa-check'
-                            }, {
-                                    type: "success"
-                                });
-                        }
-                        else {
-                            swal({
-                                title: "Tài khoản hoặc email đã tồn tại!",
-                            });
-                        }
+                        
                     }
                 });
                 break;
@@ -203,5 +207,10 @@ Quản trị - Tài khoản - Thêm tài khoản
             }
         }); 
     });
+
+    $('#hinhmota').change(function(){ 
+        $('#hienthiHinhMt').css('display','none');
+    });
+  
 </script>
 @endsection

@@ -92,10 +92,8 @@ Quản trị - Tin Tức - Loại tin
 			  confirmButtonText: "Yes, delete it!",
 			  closeOnConfirm: false
 			},
-			function(){
-
-				location.href = 'quantri/tintuc/loaitin/xoa/'+id;
-
+			function(){  
+				location.href = 'quantri/tintuc/loaitin/xoa/'+id; 
 			}); 
 		}
 	</script>
