@@ -20,17 +20,17 @@ class theloaisTableSeeder extends Seeder
                 ],
                 [
                     'tentheloai' => "Tin tức",
-                    'uutien' => 0, 
+                    'uutien' => 1, 
                     'hienthi' => 1, 
                 ],
                 [
                     'tentheloai' => "Tuyển sinh",
-                    'uutien' => 0, 
+                    'uutien' => 2, 
                     'hienthi' => 1, 
                 ],
                 [
                     'tentheloai' => "Chương trình đào tạo",
-                    'uutien' => 0, 
+                    'uutien' => 3, 
                     'hienthi' => 1, 
                 ],
             ]

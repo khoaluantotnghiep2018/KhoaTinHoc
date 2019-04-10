@@ -1,6 +1,6 @@
 @extends('layout/admin/index')
 @section('title')
-Trang chủ
+Quản trị - Trang chủ
 @endsection
 @section('content')
 <main class="app-content">

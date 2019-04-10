@@ -111,8 +111,10 @@ Trang chủ
         </div>
         @endif
         <!-- Hiên thị tin -->
-        @if($theloai != null)
-        @foreach($theloai as $tl)
+        @if(($theloai != null) &&($demtheloaichung != null))
+        @foreach($theloai as $tl) 
+            @foreach($demtheloaichung as $ttc) 
+                @if($tl->id == $ttc->idTheLoai)
         <div class="content-box" @if(!$tl->hienthi) hidden @endif>
             <div class="content-box__title">
                 <div class="link">
@@ -126,39 +128,77 @@ Trang chủ
 
             <div class="content-box__main">
                 <ul>
-                    <li><a href=""><i class="fas fa-hand-point-right"></i> Tin tức chung 1</a></li>
-                    <li><a href=""><i class="fas fa-hand-point-right"></i> Tin tức chung 2</a></li>
-                    <li><a href=""><i class="fas fa-hand-point-right"></i> Tin tức chung 3</a></li>
-                    <li><a href=""><i class="fas fa-hand-point-right"></i> Tin tức chung 4</a></li>
+                    @foreach($baiviettheoloaichung as $bvtlc) 
+                        @if($bvtlc->idTheLoai == $ttc->idTheLoai)
+                        @php
+                            $tieude = $bvtlc->tieude;
+                            if(strlen($tieude) >= 60){
+                                $tieudecat = substr($tieude,0,60);
+                                $index = strrpos($tieudecat," ");  
+                                $tieudengan = substr($tieudecat,0,$index); 
+                            }
+                            else{
+                                $tieudengan = $tieude;
+                            }
+                        @endphp
+                        <li><a href=""><i class="fas fa-hand-point-right"></i> {{$tieudengan}}...</a></li>
+                        @endif
+                    @endforeach 
                     <li><a href="">Xem thêm &raquo;</a></li>
                 </ul>
-
-                <article>
-                    <a href=""><img src="http://tintuc.hues.vn/wp-content/uploads/sites/2/2016/05/lanh-dao-DH-hue-tang-giay-khen-cho-2-tap-the-doi-6-ca-nhan-cua-khoa-Tin-hoc-vi-co-thanh-tich-trong-cong-tac-giang-day-nghien-cuu-khoa-hoc.jpg"
-                        alt=""></a>
+                    @php
+                        $dem = 0;
+                    @endphp
+                    @foreach($motbaiviettheoloaichung as $mbvtlc)  
+                        @if($mbvtlc->idTheLoai == $ttc->idTheLoai && $dem == 0)
+                        @php
+                            $tieude = $mbvtlc->tieude;
+                            if(strlen($tieude) >= 145){
+                                $tieudecat = substr($tieude,0,145);
+                                $index = strrpos($tieudecat," ");  
+                                $tieudengan = substr($tieudecat,0,$index); 
+                            }
+                            else{
+                                $tieudengan = $tieude;
+                            }
+                        @endphp
+                    <article>
+                        <a href=""><img src="assets/user/images/hinhtintuc/{{$mbvtlc->hinhdaidien}}"
+                            alt=""></a>
                         <div class="information">
-                            <div class="information-title"><a href="">Kỷ niệm 20 năm thành lập khoa Tin Học cùng cựu sinh viên</a></div>
+                            <div class="information-title"><a href="">{{$tieudengan}}</a></div>
                             <div class="date">
-                                <span>05/09/2018 17:38</span>
+                                <span>{{$mbvtlc->updated_at}}</span>
                             </div>
-                            <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora quam
-                                laboriosam eveniet
-                                ratione, pariatur eos neque explicabo ad corporis inventore cum quibusdam obcaecati placeat
-                                tenetur! Esse iste
-                            officiis dolor.</div>
-                        </div>
-
+                            @php
+                                $mota = $mbvtlc->mota;
+                                if(strlen($mota) >= 215){
+                                    $motacat = substr($mota,0,215);
+                                    $index = strrpos($motacat," ");  
+                                    $motangan = substr($motacat,0,$index); 
+                                }
+                                else{
+                                    $motangan = $mota;
+                                }
+                            @endphp
+                            <div class="text">{{$motangan}}</div>
+                        </div> 
                         <div class="cmt">
-                            <span><i class="fas fa-eye"></i> : 200</span>
-                            <span><i class="far fa-comment"></i> :20</span>
-                            <iframe src="https://www.facebook.com/plugins/share_button.php?href=https://tuoitre.vn/dam-bao-khong-vi-xay-nha-hat-ma-thieu-tien-den-bu-cho-dan-thu-thiem-20181016160217609.html&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId"
-                            width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                            allowTransparency="true" allow="encrypted-media"></iframe>
+                            <span><i class="fas fa-eye"></i> : {{$mbvtlc->luotxem}}</span>
+                            <span><i class="far fa-comment"></i> : {{$mbvtlc->binhluan}}</span> 
                         </div>
                     </article>
+                        @php
+                            $dem = 1;
+                        @endphp
+                        @endif
+                    @endforeach 
+                    
                 </div>
 
             </div> 
+                    @endif 
+                @endforeach
             @endforeach
             @endif
 

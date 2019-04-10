@@ -168,7 +168,7 @@ Quản trị - Tài khoản - Thêm tài khoản
                             // Hiển thị thông báo thành công
                             $.notify({
                                 title: "Thành công : ",
-                                message: "Tài khoản đã được thêm mới!",
+                                message: "Bài viết đã được thêm mới!",
                                 icon: 'fa fa-check'
                             }, {
                                     type: "success"
@@ -178,14 +178,14 @@ Quản trị - Tài khoản - Thêm tài khoản
                             swal({
                                 title: "Tài khoản hoặc email đã tồn tại!",
                             });
-                        }
+                        } 
                     }
                 });
-                break;
+                return false;
             default:
                 swal({
                     title: "File ảnh không hợp lệ!",
-                });
+                }); 
                 return false;
         }
     });

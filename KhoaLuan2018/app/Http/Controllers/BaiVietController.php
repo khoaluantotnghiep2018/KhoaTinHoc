@@ -15,17 +15,20 @@ class BaiVietController extends Controller
 {
     function __construct(){ 
     	$loaitin = LoaiTin::all();
-    	$theloai = TheLoai::all();
+        $theloai = TheLoai::all();
     	view::share(['loaitin', $loaitin, 'theloai',$theloai]);
 	}
 
 
 	// NGƯỜI DÙNG
-
+    public function getDsTinTuc(){
+        $dsbaiviet = TinTuc::paginate(4);  
+        return view('pages/user/type_news',['dsbaiviet'=>$dsbaiviet]); 
+    }
 
 	// QUẢN TRỊ VIÊN
     public function getBaiViet(){ 
-        $dsbaiviet = TinTuc::all(); 
+        $dsbaiviet = TinTuc::all();   
     	return view('pages.admin.BaiViet.ds_baiviet',['dsbaiviet'=>$dsbaiviet]);
     }
 

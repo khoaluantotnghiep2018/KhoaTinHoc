@@ -9,10 +9,10 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     }); 
     Route::get('trangchu', 'TrangchuController@loadTrangChu')->name('trangchinh');    
     Route::get('gioithieu', 'TrangchuController@getDuLieuNguoiDung');
-    
-    Route::get('danhsachtin', function () {
-        return view('pages/user/type_news');
-    });  
+
+    Route::get('danhsachtin', 'BaiVietController@getDsTinTuc');
+
+     
     Route::get('tintuc', function () {
         return view('pages/user/news');
     });

@@ -19,6 +19,9 @@
         #loiLoginAd{
             display: none;
         }
+        #goToUserPage{
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -28,7 +31,7 @@
     </section>
     <section class="login-content">
         <div class="logo">
-            <h1>Admin Login</h1>
+            <h1 class="fa fa-hand-o-right " id="goToUserPage"> Back Home</h1>
         </div>
         <div class="alert alert-dismissible alert-danger" id="loiPhanQuyenAd">
             <button class="close" type="button" data-dismiss="alert">×</button><strong>Lỗi!</strong><a
@@ -123,6 +126,10 @@
                 }
             });
             return false;
+        });
+
+        $('#goToUserPage').click(function(){
+            location.href = 'trangchu';
         });
 
     </script>

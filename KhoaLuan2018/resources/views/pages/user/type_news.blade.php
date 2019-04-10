@@ -23,102 +23,60 @@ Loại tin tức
             </form> <!-- SEARCH tin THEO Ngày -->
         </div>
         
-
+        @if($dsbaiviet != null)
+            @foreach($dsbaiviet as $dsbv)
         <div class="list-categories__box">
-            <a href=""><img src="http://tgu.edu.vn/images/news/5bd65f1a95455.jpg" alt=""></a>
+            <a href=""><img src="assets/user/images/hinhtintuc/{{$dsbv->hinhdaidien}}" alt=""></a>
             <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
+                <h3 class="information-title"><a href="">{{$dsbv->tieude}}</a></h3> 
                 <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                    <small><i class="far fa-calendar-plus"></i> {{$dsbv->updated_at}}</small>
+                    <small><i class="fas fa-eye"></i> <span>{{$dsbv->luotxem}}</span></small>   
+                    <small><i class="fas fa-comments"></i> <span>{{$dsbv->binhluan}}</span></small> 
                 </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
+                <div class="information-text">{{$dsbv->mota}}</div>
                 <div class="list-categories__btn"> 
                 </div>	
             </div>	
         </div> <!-- Tin theo chuyên mục-->
+            @endforeach
+        @endif 
+        <div class="paginationbackground">  
+        @if ($dsbaiviet->lastPage() > 1)
+        <ul class="pagination">
+            <li class="{{ ($dsbaiviet->currentPage() == 1) ? ' disabled' : '' }}">
+                <a href="{{ $dsbaiviet->url(1) }}"><<</a>
+            </li>
 
-        <div class="list-categories__box">
-            <a href=""><img src="https://znews-photo.zadn.vn/w860/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg" alt=""></a>
-            <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
-                <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
-                <div class="list-categories__btn"> 
-                </div>	
-            </div>	
-        </div> <!-- Tin theo chuyên mục-->
+            <?php
+                // config
+                $link_limit = 10; // maximum number of links (a little bit inaccurate, but will be ok for now)
+            ?>
 
-        <div class="list-categories__box">
-            <a href=""><img src="http://tgu.edu.vn/images/news/5bd65f1a95455.jpg" alt=""></a>
-            <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
-                <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
-                <div class="list-categories__btn"> 
-                </div>	
-            </div>	
-        </div> <!-- Tin theo chuyên mục-->
-
-        <div class="list-categories__box">
-            <a href=""><img src="https://znews-photo.zadn.vn/w860/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg" alt=""></a>
-            <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
-                <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
-                <div class="list-categories__btn"> 
-                </div>	
-            </div>	
-        </div> <!-- Tin theo chuyên mục-->
-
-        <div class="list-categories__box">
-            <a href=""><img src="http://tgu.edu.vn/images/news/5bd65f1a95455.jpg" alt=""></a>
-            <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
-                <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
-                <div class="list-categories__btn"> 
-                </div>	
-            </div>	
-        </div> <!-- Tin theo chuyên mục-->
-
-        <div class="list-categories__box">
-            <a href=""><img src="https://znews-photo.zadn.vn/w860/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg" alt=""></a>
-            <div class="information"> 
-                <h3 class="information-title"><a href="">Thông báo tuyển sinh ĐH .....Thông báo tuyển sinh ĐH .......</a></h3> 
-                <div class="information-date">
-                    <small><i class="far fa-calendar-plus"></i> 22-10-2018</small>
-                    <small><i class="fas fa-eye"></i> <span>05</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>05</span></small> 
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                <div class="information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo placeat facilis temporibus soluta dolor possimus ipsum a quibusdam iste rerum ipsa reiciendis, esse sapiente similique, illo corrupti ea corporis!</div>
-                <div class="list-categories__btn"> 
-                </div>	
-            </div>	
-        </div> <!-- Tin theo chuyên mục--> 
+            @for ($i = 1; $i <= $dsbaiviet->lastPage(); $i++)
+                <?php
+                    $half_total_links = floor($link_limit / 2);
+                    $from = $dsbaiviet->currentPage() - $half_total_links;
+                    $to = $dsbaiviet->currentPage() + $half_total_links;
+                    if ($dsbaiviet->currentPage() < $half_total_links) {
+                        $to += $half_total_links - $dsbaiviet->currentPage();
+                    }
+                    if ($dsbaiviet->lastPage() - $dsbaiviet->currentPage() < $half_total_links) {
+                        $from -= $half_total_links - ($dsbaiviet->lastPage() - $dsbaiviet->currentPage()) - 1;
+                    }
+                ?>
+                @if ($from < $i && $i < $to)
+                    <li class="{{ ($dsbaiviet->currentPage() == $i) ? ' active' : '' }}">
+                        <a href="{{ $dsbaiviet->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endif
+            @endfor 
+            <li class="{{ ($dsbaiviet->currentPage() == $dsbaiviet->lastPage()) ? ' disabled' : '' }}">
+                <a href="{{ $dsbaiviet->url($dsbaiviet->lastPage()) }}" >>></a>
+            </li>
+        </ul>
+        @endif
+        </div>
         
     </div>
     

@@ -250,45 +250,30 @@
 					@endif
 					<!--Giới thiệu trường học . RIGHT -->
 
-					<div class="title">Tin tức nỗi bật</div>
+					<div class="title">Tin tức nổi bật</div>
 					<div class="right-news_border">
 						<div class="marquee">
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
-							<div class="right-news__box">
-								<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOVokuNXIe_7iCgWZDjic0WbI-D83uVi8tGIn3ZX-l6dh_zavA"
-									 alt=""></a>
-								<a href="">Văn nghệ chào mừng kỹ niệm khoa tin học</a>
-								<div style='clear:both'></div>
-							</div>
+							@if($baivietnoibatchung != null)
+								@foreach($baivietnoibatchung as $bvnbc)
+								@php
+									$tieude = $bvnbc->tieude;
+									if(strlen($tieude) >= 50){
+										$tieudecat = substr($tieude,0,50);
+										$index = strrpos($tieudecat," ");  
+										$tieudengan = substr($tieudecat,0,$index); 
+									}
+									else{
+										$tieudengan = $tieude;
+									}
+								@endphp
+								<div class="right-news__box">
+									<a href=""><img src="assets/user/images/hinhtintuc/{{$bvnbc->hinhdaidien}}"
+										alt=""></a>
+									<a href="">{{$tieudengan}}...</a>
+									<div style='clear:both'></div>
+								</div>
+								@endforeach
+							@endif 
 						</div>
 
 					</div>
