@@ -164,28 +164,14 @@ Quản trị - Tài khoản - Thêm tài khoản
                     url: 'quantri/tintuc/baiviet/them',
                     method: 'post',
                     success: function (response) {
-                        if (response == "1") {
-                            // Hiển thị thông báo thành công
-                            $.notify({
-                                title: "Thành công : ",
-                                message: "Bài viết đã được thêm mới!",
-                                icon: 'fa fa-check'
-                            }, {
-                                    type: "success"
-                                });
-                        }
-                        else {
-                            swal({
-                                title: "Tài khoản hoặc email đã tồn tại!",
-                            });
-                        } 
+                        
                     }
                 });
-                return false;
+                break;
             default:
                 swal({
                     title: "File ảnh không hợp lệ!",
-                }); 
+                });
                 return false;
         }
     });

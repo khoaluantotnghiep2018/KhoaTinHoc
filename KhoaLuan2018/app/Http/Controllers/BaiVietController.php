@@ -63,7 +63,7 @@ class BaiVietController extends Controller
                 $baivietmoi->noibat = 1; 
             }
             $kiemtra = $baivietmoi->save(); 
-            return redirect('quantri/tintuc/baiviet/them')->with('thongbaothem',$kiemtra);
+            return back()->with('thongbaothem',$kiemtra);
         }
     }
 
