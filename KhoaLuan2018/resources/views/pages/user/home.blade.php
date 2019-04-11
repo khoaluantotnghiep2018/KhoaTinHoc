@@ -128,9 +128,13 @@ Trang chủ
 
             <div class="content-box__main">
                 <ul>
+                    @php
+                        $maxbaiviet = 0;
+                    @endphp
                     @foreach($baiviettheoloaichung as $bvtlc) 
-                        @if($bvtlc->idTheLoai == $ttc->idTheLoai)
+                        @if($bvtlc->idTheLoai == $ttc->idTheLoai && $maxbaiviet < 3)
                         @php
+                            $maxbaiviet++;
                             $tieude = $bvtlc->tieude;
                             if(strlen($tieude) >= 60){
                                 $tieudecat = substr($tieude,0,60);

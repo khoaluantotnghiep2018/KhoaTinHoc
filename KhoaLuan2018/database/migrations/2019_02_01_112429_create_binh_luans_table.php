@@ -21,6 +21,7 @@ class CreateBinhluansTable extends Migration
             $table->foreign('id_user')->references('id')->on('users'); 
             $table->integer('id_tintuc')->unsigned(); 
             $table->foreign('id_tintuc')->references('id')->on('tin_tucs'); 
+            $table->timestamps();
         });
     }
 

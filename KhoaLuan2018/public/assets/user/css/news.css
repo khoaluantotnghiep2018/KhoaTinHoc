@@ -185,16 +185,21 @@
     display: block;
 }
 
+.cmt-user__text .text{
+    display: inline;
+}
+
 button.remove {
-    padding: 4px 10px;
-    margin-top: 2px;
-    cursor: pointer;
-    color: #09896499;
-    background: #f2f3f300;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 1px 1px 1px #b3b1b1;
-    float: right;
+    padding: 4px 10px; 
+    cursor: pointer; 
+    color: #09896499; 
+    background: #f2f3f300; 
+    border: none; 
+    border-radius: 4px; 
+    box-shadow: 1px 1px 1px #b3b1b1; 
+    float: right; 
+    display: inline; 
+    margin-top: -2px;
 } 
 
 @media all and (max-width:487px)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TinTuc extends Model
 {
     protected $table = "tin_tucs";
-    public $timestamps = false;
+    public $timestamps = true;
     public function loaitin(){
     	return $this->belogsTo('App\Model\LoaiTin','id_loaitin','id');
     }

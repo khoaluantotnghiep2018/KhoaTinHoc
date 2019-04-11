@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\LoaiTin;
 use App\Model\TheLoai;
 use App\Model\TinTuc;
+use App\User;
 use View;
 use Auth;
 use DateTime;
@@ -22,10 +23,63 @@ class BaiVietController extends Controller
 
 	// NGƯỜI DÙNG
     public function getDsTinTuc(){
-        $dsbaiviet = TinTuc::paginate(4);  
+        $dsbaiviet = DB::table('tin_tucs')->orderBy('id', 'desc')->paginate(4);  
+        return view('pages/user/type_news',['dsbaiviet'=>$dsbaiviet]); 
+    }
+    
+    public function getDsTinTucTheoId($id){
+        $checkdsbaiviet = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
+                    ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
+                    ->select('tin_tucs.*') 
+                    ->where('loai_tins.id','=',$id) 
+                    ->first();
+        if($checkdsbaiviet == null){
+            return redirect('404'); 
+        } 
+        $dsbaiviet = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
+                    ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
+                    ->select('tin_tucs.*') 
+                    ->where('loai_tins.id','=',$id) 
+                    ->orderBy('id', 'desc')  
+                    ->paginate(4);    
         return view('pages/user/type_news',['dsbaiviet'=>$dsbaiviet]); 
     }
 
+    public function getChiTietTinTucTheoId($id){
+        $chitietbaiviet = DB::table('tin_tucs')  
+                    ->where('id','=',$id)  
+                    ->first(); 
+        $nameuser = DB::table('users')  
+                    ->where('id','=',$chitietbaiviet->id_user)  
+                    ->first(); 
+        $binhluanbaiviet = DB::table('binh_luans')
+                            ->join('users', 'binh_luans.id_user', '=', 'users.id')
+                            ->join('tin_tucs', 'binh_luans.id_tintuc', '=', 'tin_tucs.id')
+                            ->where('binh_luans.id_tintuc','=',$id)
+                            ->select('binh_luans.*','users.*')
+                            ->orderBy('binh_luans.id', 'desc')   
+                            ->paginate(20);  
+        $chitietbinhluanbaiviet = DB::table('tin_tucs')  
+                                    ->join('binh_luans', 'binh_luans.id_tintuc', '=', 'tin_tucs.id')
+                                    ->join('chi_tiet_binh_luans', 'chi_tiet_binh_luans.id_binhluan', '=', 'binh_luans.id') 
+                                    ->join('users', 'chi_tiet_binh_luans.id_user', '=', 'users.id') 
+                                    ->select('chi_tiet_binh_luans.*','users.id as id_usBinhLuan','users.viewname','users.image','tin_tucs.id as idtintuc')
+                                    ->get();  
+        // return $chitietbinhluanbaiviet; 
+        if($chitietbaiviet != null){
+            return view('pages/user/news',[
+                    'chitietbaiviet'=>$chitietbaiviet,
+                    'nameuser'=>$nameuser,
+                    'binhluanbaiviet'=>$binhluanbaiviet,
+                    'chitietbinhluanbaiviet'=>$chitietbinhluanbaiviet,
+                ]
+            );  
+        }
+        else{
+            return redirect('404'); 
+        }   
+    }
+    
 	// QUẢN TRỊ VIÊN
     public function getBaiViet(){ 
         $dsbaiviet = TinTuc::all();   

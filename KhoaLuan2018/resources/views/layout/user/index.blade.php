@@ -119,17 +119,18 @@
 				<li><a href="trangchu"><i class="fas fa-home"></i></a></li>
 				<li><a href="gioithieu">Giới thiệu</a></li>
 				@foreach($tatcatheloai as $tctl)
-				<li>
-					<a href="danhsachtin">{{$tctl->tentheloai}}<i class="fa fa-plus-square showsubmenu"></i></a>
-					<ul class='submenu'>
-						@foreach($loaitin as $lt) 
-						@if($tctl->id == $lt->id_theloai)
-						<li><center><a href="trangchu">{{$lt->tenloaitin}}</a></center></li> 
-						@endif
-						@endforeach
-					</ul>
-				</li> 
-				@endforeach
+					<li>
+						<a href="javascript:void(0)">{{$tctl->tentheloai}}<i class="fa fa-plus-square showsubmenu"></i></a>
+						<ul class='submenu'>
+							@foreach($loaitin as $lt) 
+							@if($tctl->id == $lt->id_theloai)
+							<li><center><a href="danhsachtin/{{$lt->id}}">{{$lt->tenloaitin}}</a></center></li> 
+							@endif
+							@endforeach
+						</ul>
+					</li> 
+				@endforeach 
+
 				<li><a href="">Danh sách</a></li>
 				<li><a href="">Tài liệu tham khảo</a></li>
 				<li><a href="">Liên hệ chúng tôi</a></li>

@@ -30,7 +30,10 @@ class AppServiceProvider extends ServiceProvider
             $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
             $dulieuthongbao = DB::table('thong_baos')->first();  
             $tatcatheloai = DB::table('the_loais')->get();
-            $loaitin =  DB::table('loai_tins')->get(); 
+            $loaitin =  DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id')  
+                            ->select('loai_tins.*') 
+                            ->distinct('id_loaitin')
+                            ->get();
             $demtheloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                             ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
                             ->select('the_loais.id as idTheLoai') 
@@ -39,8 +42,7 @@ class AppServiceProvider extends ServiceProvider
             $baiviettheoloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                                     ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
                                     ->select('tin_tucs.id','the_loais.id as idTheLoai','tin_tucs.tieude')  
-					                ->orderBy('id', 'desc') 
-                                    ->limit(3)
+					                ->orderBy('id', 'desc')  
                                     ->get();
             $motbaiviettheoloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                                     ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
@@ -50,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
             $baivietnoibatchung = DB::table('tin_tucs')->select('tin_tucs.tieude','tin_tucs.hinhdaidien')
                                     ->where('noibat','=',1)  
                                     ->orderBy('id', 'desc')   
-                                    ->limit(10)
+                                    ->limit(5)
                                     ->get();
             $view->with([
                     'tatcatheloai'=>$tatcatheloai, 

@@ -11,10 +11,12 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     Route::get('gioithieu', 'TrangchuController@getDuLieuNguoiDung');
 
     Route::get('danhsachtin', 'BaiVietController@getDsTinTuc');
-
+    Route::get('danhsachtin/{id}', 'BaiVietController@getDsTinTucTheoId');
      
-    Route::get('tintuc', function () {
-        return view('pages/user/news');
+    Route::get('tintuc/{id}', 'BaivietController@getChiTietTinTucTheoId');
+
+    Route::get('404', function(){
+        return view('pages/user/404');
     });
   
     // Route::get('/test', 'TrangchuController@getDuLieu'); 

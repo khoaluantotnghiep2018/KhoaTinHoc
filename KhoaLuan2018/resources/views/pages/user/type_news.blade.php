@@ -6,6 +6,7 @@ Loại tin tức
 
 @section('css')
 <link rel="stylesheet" href="assets/user/css/categories.css">
+<link rel="stylesheet" href="assets/user/css/pagination.css">
 @endsection
 
 @section('content')
@@ -22,11 +23,12 @@ Loại tin tức
                 <input type="date" class='date'>
             </form> <!-- SEARCH tin THEO Ngày -->
         </div>
+ 
         
         @if($dsbaiviet != null)
             @foreach($dsbaiviet as $dsbv)
         <div class="list-categories__box">
-            <a href=""><img src="assets/user/images/hinhtintuc/{{$dsbv->hinhdaidien}}" alt=""></a>
+            <a href="tintuc/{{$dsbv->id}}"><img src="assets/user/images/hinhtintuc/{{$dsbv->hinhdaidien}}" alt=""></a>
             <div class="information"> 
                 <h3 class="information-title"><a href="">{{$dsbv->tieude}}</a></h3> 
                 <div class="information-date">

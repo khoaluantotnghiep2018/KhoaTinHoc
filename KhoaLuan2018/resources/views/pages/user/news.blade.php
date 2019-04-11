@@ -4,120 +4,101 @@ Danh sách
 @endsection
 
 @section('css')
+<link rel="stylesheet" href="assets/user/css/pagination.css">
 <link rel="stylesheet" href="assets/user/css/news.css">
 @endsection
 
 @section('content')  
 <div class="content">  
+    @if($chitietbaiviet != null) 
     <div class="news">
         <div class="news-title">
-            <h1>TH Hồng Sơn - Tưng bừng ngày hội khai trường</h1>
+            <h1>{{$chitietbaiviet->tieude}}</h1>
         </div> <!-- tiêu đề tin tức -->
 
         <div class="news-infor">
-            <span><i class="fas fa-user"></i> <a href="">Boy dep trai</a></span>
-            <span><i class="fas fa-clock"></i> 10:16:00</span>
+            <span><i class="fas fa-user"></i> <a href="">{{$nameuser->viewname}}</a></span>
+            <span><i class="fas fa-clock"></i> {{$chitietbaiviet->updated_at}}</span>
             <span><i class="fas fa-tags"></i> <a href="">Tin tức</a></span>
         </div> <!-- người đăng bài  -->
 
         <div class="news-tomtat">
-            <strong>Hòa chung không khí hân hoan, náo nức của cả nước chào đón năm học mới. Sáng nay, ngày 05/09/2018 trường Tiểu học Hồng Sơn đã long trọng tổ chức lễ khai giảng năm học 2018 - 2019.</strong>
+            <strong>{{$chitietbaiviet->mota}}</strong>
             
         </div> <!-- Tóm tắt tin tức -->
 
-        <div class="news-content">
-            <img src="http://tieuhochongson.vinhcity.edu.vn/uploads/news/2018_09/kg-8.jpg" alt="">
-
-            <p>Từ sáng tinh mơ, không khí "toàn dân đưa trẻ đến trường'" đã rộn ràng khắp mọi nơi, trên mọi nẻo đường, ngõ phố. Sân trường Hồng Sơn ngập tràn sắc màu rực rỡ của cờ, hoa cùng tiếng trẻ thơ nô đùa ríu rít. Ngôi trường bừng lên sức sống mới trong niềm hân hoan chào đón năm học mới, năm học 2018-2019.</p>
-
-            <p>
-            Trong không khí vui tươi của ngày khai giảng năm học mới 2018-2019, Chủ tịch nước Trần Đại Quang đã gửi đến các thầy giáo, cô giáo, cán bộ, công chức, viên chức, người lao động đã và đang công tác trong ngành Giáo dục, các bậc phụ huynh cùng toàn thể các em sinh viên, học sinh cả nước những tình cảm thân thiết và lời chúc mừng tốt đẹp nhất.
-            </p>
-            
-            <img src="http://tieuhochongson.vinhcity.edu.vn/uploads/news/2018_09/kg-9.jpg" alt="">
-
-            <p>Từ sáng tinh mơ, không khí "toàn dân đưa trẻ đến trường'" đã rộn ràng khắp mọi nơi, trên mọi nẻo đường, ngõ phố. Sân trường Hồng Sơn ngập tràn sắc màu rực rỡ của cờ, hoa cùng tiếng trẻ thơ nô đùa ríu rít. Ngôi trường bừng lên sức sống mới trong niềm hân hoan chào đón năm học mới, năm học 2018-2019.</p>
-            
-            <img src="http://tieuhochongson.vinhcity.edu.vn/uploads/news/2018_09/40854064_1783045921808203_7490595342736424960_n.jpg" alt="">
-
-            <p>
-            Trong không khí vui tươi của ngày khai giảng năm học mới 2018-2019, Chủ tịch nước Trần Đại Quang đã gửi đến các thầy giáo, cô giáo, cán bộ, công chức, viên chức, người lao động đã và đang công tác trong ngành Giáo dục, các bậc phụ huynh cùng toàn thể các em sinh viên, học sinh cả nước những tình cảm thân thiết và lời chúc mừng tốt đẹp nhất.
-            </p>
-            
+        <div class="news-content"> 
+            {!!$chitietbaiviet->noidung!!}
         </div>
 
 
         <div class="comment">
             <div class="cmt-title">
-                <strong>55 Comment</strong>
-                <small><a href="">Login để comment</a></small>
+                <strong>{{$chitietbaiviet->binhluan}} bình luận</strong>
+                @if(!Auth::check())
+                <small><p>Cần đăng nhập để bình luận</p></small>
+                @endif
             </div>
             <div class="cmt-add">
                 <div class="cmt-add__input">
-                    <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
-                    <textarea name="" id="" cols="30" rows="3"></textarea>	
+                @if(Auth::check()) 
+                <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
+                @endif
+                    <textarea name="" id="" cols="30" rows="3" @if(!Auth::check()) disabled @endif></textarea>	
                 </div>
-                <div class="btn"><button>Gửi bình luận</button></div>
+               
+                <div class="btn">
+                    <button @if(!Auth::check()) disabled @endif>Gửi bình luận</button>
+                </div>
+               
             </div>
-
-            <div class="cmt-content">
-                
-                
+            @if($binhluanbaiviet != null)
+            @foreach($binhluanbaiviet as $blbv)
+            <div class="cmt-content">  
                 <div class="user">
                     <div class="cmt-user">
-                        <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
+                        <img src="assets/user/images/avatar/{{$blbv->image}}" alt="">
                         <div class="cmt-user__text">
-                            <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
-                           
+                            <div class="name">{{$blbv->viewname}} <small>{{$blbv->updated_at}}</small></div>
+                            <div class="text">{{$blbv->noidung}}</div>
+                            @if(Auth::check() && Auth::User()->id == $blbv->id_user)  
                             <button class='fas fa-trash-alt remove'> Xóa</button>
                             <button class='far fa-edit remove'> Sửa</button>
+
+                            @endif
                             <div class="rep"> 
-                                <a class="btn-rep far fa-comment-dots"> 5 phản hồi khác</a>
+                                <a class="btn-rep far fa-comment-dots"> 5 phản hồi.</a>
                             </div>
                         </div>
                     </div>	 <!-- Nội dung comment của user -->
-                    
+                     
                     <div class="user-content__rep">
-                        <div class="rep-user">
+                        @if($chitietbinhluanbaiviet != null)
+                            @foreach($chitietbinhluanbaiviet as $ctblbv)
+                            @if($ctblbv->id_binhluan == $blbv->id && $ctblbv->idtintuc == $chitietbaiviet->id)
+                        <div class="rep-user"> 
                             <div class="cmt-user">
-                                <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
+                                <img src="assets/user/images/avatar/{{$ctblbv->image}}" alt="">
                                 <div class="cmt-user__text">
-                                    <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
-                                    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
+                                    <div class="name">{{$ctblbv->viewname}} <small>{{$ctblbv->updated_at}}</small></div>
+                                    <div class="text">{{$ctblbv->noidung}}</div>
+                                    @if(Auth::check() && Auth::User()->id == $ctblbv->id_user)   
                                     <button class='fas fa-trash-alt remove'> Xóa</button>
                                     <button class='far fa-edit remove'> Sửa</button>
+                                    @endif
                                 </div>
-                            </div>	
-
-                            <div class="cmt-user">
-                                <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
-                                <div class="cmt-user__text">
-                                    <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
-                                    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eos cumque ad, aspernatur officia maiores dolorum odio sit voluptatibus sint nulla voluptatum aliquam, quidem deserunt nostrum consequatur. Eaque, doloribus, rem?</div>
-                                    <button class='fas fa-trash-alt remove'> Xóa</button>
-                                    <button class='far fa-edit remove'> Sửa</button>
-                                </div>
-                            </div>	
-
-                            <div class="cmt-user">
-                                <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
-                                <div class="cmt-user__text">
-                                    <div class="name">Boy đẹp trai <small>20-10-1992</small></div>
-                                    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a, maxime quos, dolorum beatae ipsa. Dolor, aliquid. Iusto est odit.</div>
-                                    <button class='fas fa-trash-alt remove'> Xóa</button>
-                                    <button class='far fa-edit remove'> Sửa</button>
-                                </div>
-                            </div>	
+                            </div>	   
                         </div> <!-- nội dung rep của user -->
-
+                                @endif
+                            @endforeach
+                        @endif
                         <div class="rep-input">
                             <div class="cmt-add">
                                 <div class="cmt-add__input">
                                     <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
-                                    <textarea name="" id="" cols="30" rows="3"></textarea>	
+                                    <textarea name="" id="" cols="30" rows="3" @if(!Auth::check()) readonly @endif></textarea>	
                                 </div>
-                                <div class="btn"><button>Trả lời</button></div>
+                                <div class="btn"><button @if(!Auth::check()) disabled @endif>Trả lời</button></div>
                             </div>
                         </div> <!-- ô input rep user -->	
                     </div> <!-- Khung chứa của rep -->
@@ -125,9 +106,52 @@ Danh sách
                 </div>
  
             </div>
+            @endforeach
+            @endif
+
+            <div class="paginationbackground">  
+        @if ($binhluanbaiviet->lastPage() > 1)
+        <ul class="pagination">
+            <li class="{{ ($binhluanbaiviet->currentPage() == 1) ? ' disabled' : '' }}">
+                <a href="{{ $binhluanbaiviet->url(1) }}"><<</a>
+            </li>
+
+            <?php
+                // config
+                $link_limit = 10; // maximum number of links (a little bit inaccurate, but will be ok for now)
+            ?>
+
+            @for ($i = 1; $i <= $binhluanbaiviet->lastPage(); $i++)
+                <?php
+                    $half_total_links = floor($link_limit / 2);
+                    $from = $binhluanbaiviet->currentPage() - $half_total_links;
+                    $to = $binhluanbaiviet->currentPage() + $half_total_links;
+                    if ($binhluanbaiviet->currentPage() < $half_total_links) {
+                        $to += $half_total_links - $binhluanbaiviet->currentPage();
+                    }
+                    if ($binhluanbaiviet->lastPage() - $binhluanbaiviet->currentPage() < $half_total_links) {
+                        $from -= $half_total_links - ($binhluanbaiviet->lastPage() - $binhluanbaiviet->currentPage()) - 1;
+                    }
+                ?>
+                @if ($from < $i && $i < $to)
+                    <li class="{{ ($binhluanbaiviet->currentPage() == $i) ? ' active' : '' }}">
+                        <a href="{{ $binhluanbaiviet->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endif
+            @endfor 
+            <li class="{{ ($binhluanbaiviet->currentPage() == $binhluanbaiviet->lastPage()) ? ' disabled' : '' }}">
+                <a href="{{ $binhluanbaiviet->url($binhluanbaiviet->lastPage()) }}" >>></a>
+            </li>
+        </ul>
+        @endif
+        </div>
+
+
+            
         </div>
     </div>
-        
+
+    @endif  
     
     <div class="contact">
         <div class="contact-title">
