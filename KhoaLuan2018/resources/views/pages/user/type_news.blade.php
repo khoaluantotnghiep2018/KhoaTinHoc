@@ -34,7 +34,7 @@ Loại tin tức
                 <div class="information-date">
                     <small><i class="far fa-calendar-plus"></i> {{$dsbv->updated_at}}</small>
                     <small><i class="fas fa-eye"></i> <span>{{$dsbv->luotxem}}</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>{{$dsbv->binhluan}}</span></small> 
+                    <small><i class="fas fa-comments"></i> <span>số bình luận</span></small> 
                 </div>
                 <div class="information-text">{{$dsbv->mota}}</div>
                 <div class="list-categories__btn"> 

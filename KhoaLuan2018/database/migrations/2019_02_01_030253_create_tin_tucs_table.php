@@ -20,8 +20,7 @@ class CreateTinTucsTable extends Migration
             $table->string('hinhdaidien');
             $table->longText('noidung');
             $table->boolean('noibat')->default(0); 
-            $table->integer('luotxem')->default(0); 
-            $table->integer('binhluan')->default(0); 
+            $table->integer('luotxem')->default(0);  
             $table->integer('id_loaitin')->unsigned(); 
             $table->foreign('id_loaitin')->references('id')->on('loai_tins');
             $table->integer('id_user')->unsigned(); 

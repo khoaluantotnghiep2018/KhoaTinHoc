@@ -34,9 +34,20 @@ Danh sách
 
         <div class="comment">
             <div class="cmt-title">
-                <strong>{{$chitietbaiviet->binhluan}} bình luận</strong>
+            @php
+                $soluongbinhluan = $soluongtlbinhluan = 0;
+                if($chitietbinhluanbaiviet != null){
+                    $soluongbinhluan = count($binhluanbaiviet);
+                }
+                if($chitietbinhluanbaiviet != null){
+                    $soluongtlbinhluan = count($chitietbinhluanbaiviet);;
+                }
+                $soluongbinhluanchung =  $soluongbinhluan + $soluongtlbinhluan;
+            @endphp
+
+                <strong>{{$soluongbinhluanchung}} bình luận</strong>
                 @if(!Auth::check())
-                <small><p>Cần đăng nhập để bình luận</p></small>
+                <small><p>Cần đăng nhập để bình luận.</p></small>
                 @endif
             </div>
             <div class="cmt-add">
@@ -44,31 +55,38 @@ Danh sách
                 @if(Auth::check()) 
                 <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
                 @endif
-                    <textarea name="" id="" cols="30" rows="3" @if(!Auth::check()) disabled @endif></textarea>	
-                </div>
-               
+                    <textarea id="textThemBinhLuan" name="them" cols="30" rows="3" @if(!Auth::check()) disabled @endif></textarea>	
+                </div> 
                 <div class="btn">
-                    <button @if(!Auth::check()) disabled @endif>Gửi bình luận</button>
-                </div>
-               
+                    <button id="btnHuySuaBinhLuan" hidden>Hủy bỏ</button>
+                    <button id="btnSubBinhLuan" value="them" @if(!Auth::check()) disabled @endif>Gửi bình luận</button>
+                </div> 
             </div>
             @if($binhluanbaiviet != null)
             @foreach($binhluanbaiviet as $blbv)
-            <div class="cmt-content">  
+            <div class="cmt-content">   
                 <div class="user">
                     <div class="cmt-user">
                         <img src="assets/user/images/avatar/{{$blbv->image}}" alt="">
                         <div class="cmt-user__text">
                             <div class="name">{{$blbv->viewname}} <small>{{$blbv->updated_at}}</small></div>
-                            <div class="text">{{$blbv->noidung}}</div>
+                            <div class="text">{{$blbv->noidung}}</div> 
                             @if(Auth::check() && Auth::User()->id == $blbv->id_user)  
                             <button class='fas fa-trash-alt remove'> Xóa</button>
-                            <button class='far fa-edit remove'> Sửa</button>
-
+                            <button onclick="clickSuaBinhLuan({{$blbv->id}} , '{{$blbv->noidung}}');" id="btnSuaBinhLuan" class='far fa-edit remove'> Sửa</button> 
                             @endif
-                            <div class="rep"> 
-                                <a class="btn-rep far fa-comment-dots"> 5 phản hồi.</a>
-                            </div>
+                            @if($chitietbinhluanbaiviet != null)
+                                @php
+                                    $dem = 0; 
+                                foreach($chitietbinhluanbaiviet as $ctblbv){
+                                    if($ctblbv->id_binhluan == $blbv->id && $ctblbv->idtintuc == $chitietbaiviet->id)
+                                        $dem++;   
+                                }
+                                @endphp
+                                <div class="rep"> 
+                                    <a class="btn-rep far fa-comment-dots"> {{$dem}} Phản hồi.</a>
+                                </div> 
+                            @endif
                         </div>
                     </div>	 <!-- Nội dung comment của user -->
                      
@@ -95,8 +113,10 @@ Danh sách
                         <div class="rep-input">
                             <div class="cmt-add">
                                 <div class="cmt-add__input">
-                                    <img src="http://www.zayedhotel.com/addons/default/themes/yoona/img/user.jpg" alt="">
-                                    <textarea name="" id="" cols="30" rows="3" @if(!Auth::check()) readonly @endif></textarea>	
+                                @if(Auth::check()) 
+                                <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
+                                @endif
+                                    <textarea name="" id="" cols="30" rows="1" @if(!Auth::check()) readonly @endif></textarea>	
                                 </div>
                                 <div class="btn"><button @if(!Auth::check()) disabled @endif>Trả lời</button></div>
                             </div>
@@ -185,4 +205,48 @@ Danh sách
 
 @section('script')
 <script src='assets/user/js/comment.js'></script>
+<script>
+    var btnSubBinhLuan = $('#btnSubBinhLuan');
+    var textThemBinhLuan = $('#textThemBinhLuan');
+    var idsua, noidungsua;
+    btnSubBinhLuan.click(function(){ 
+        if(textThemBinhLuan.val() == ""){ 
+            alert("Chưa có nội dung bình luận!");
+            return false;
+        }
+        if(btnSubBinhLuan.val() == "them"){  
+            //  console.log('Id: '+{{Auth::User()->id}});
+            //  @if($chitietbaiviet != null)
+            //  console.log('Nội dung: {{$chitietbaiviet->id}}'); 
+            //  @endif
+            //  $.ajax({
+            //     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            //     url:'',
+            //     method:'post', 
+            //     success:function(response){   
+
+            //     }
+            // });
+            console.table({{$chitietbaiviet}});
+        } 
+        if(btnSubBinhLuan.val() == "sua"){
+            console.log("sửa");
+        } 
+    });
+
+    var btnSuaBinhLuan = $('#btnSuaBinhLuan');
+    var btnHuySuaBinhLuan = $('#btnHuySuaBinhLuan');
+
+    function clickSuaBinhLuan(id, text){  
+        btnSubBinhLuan.attr('value', 'sua');
+        btnHuySuaBinhLuan.show();
+        textThemBinhLuan.val(text);   
+    };
+
+    btnHuySuaBinhLuan.click(function(){  
+        btnHuySuaBinhLuan.hide();
+        btnSubBinhLuan.attr('value', 'them');
+        textThemBinhLuan.val("");   
+    });
+</script>
 @endsection

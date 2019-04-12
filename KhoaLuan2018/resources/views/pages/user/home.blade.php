@@ -188,8 +188,8 @@ Trang chủ
                             <div class="text">{{$motangan}}</div>
                         </div> 
                         <div class="cmt">
-                            <span><i class="fas fa-eye"></i> : {{$mbvtlc->luotxem}}</span>
-                            <span><i class="far fa-comment"></i> : {{$mbvtlc->binhluan}}</span> 
+                            <span><i class="fas fa-eye"></i> : {{$mbvtlc->luotxem}}</span> 
+                            <span><i class="far fa-comment"></i> : số bình luận</span> 
                         </div>
                     </article>
                         @php
