@@ -45,7 +45,7 @@ Giới thiệu
                             <label class="form-check-label">
                                 <input class="form-check-input" id="optionsRadios2" type="radio" name="optionsRadios"
                                 value="option2" @if(!$trangchu->hienthirss) checked @endif>Lựa chọn tin lấy
-                                từ tin tức nỗi bật
+                                từ tin tức nổi bật
                             </label>
                         </div>
                         <legend>Danh mục tin tức hiển thị</legend>

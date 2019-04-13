@@ -208,6 +208,8 @@ Danh sách
     if({{$chitietbaiviet->id}} != null){
         id_baiviethientai = {{$chitietbaiviet->id}};
     }
+    var id_sua;
+
     btnSubBinhLuan.click(function(){ 
         if(textThemBinhLuan.val() == ""){ 
             alert("Chưa có nội dung bình luận!");
@@ -215,22 +217,36 @@ Danh sách
         }
         if(btnSubBinhLuan.val() == "them"){   
             var mang = [];
-                mang[0] = id_baiviethientai; 
-                mang[1] = textThemBinhLuan.val(); 
-                $.ajax({
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    url: 'binhluan/them',
-                    method: 'get', 
-                    data: {data: mang},
-                    success:function(response){   
-                        $('#showAllComment').html(response); 
-                        textThemBinhLuan.val("");
-                    }
-                });   
-           
+            mang[0] = id_baiviethientai; 
+            mang[1] = textThemBinhLuan.val(); 
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                url: 'binhluan/them',
+                method: 'get', 
+                data: {data: mang},
+                success:function(response){   
+                    $('#showAllComment').html(response); 
+                    textThemBinhLuan.val("");
+                }
+            });    
         } 
-        if(btnSubBinhLuan.val() == "sua"){
-            console.log("sửa");
+        if(btnSubBinhLuan.val() == "sua"){ 
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                url: 'binhluan/sua',
+                method: 'get', 
+                data: {
+                    id_sua: id_sua,
+                    noidung: textThemBinhLuan.val(),
+                    id_baiviethientai : id_baiviethientai,
+                },
+                success:function(response){   
+                    $('#showAllComment').html(response);  
+                }
+            });  
+            btnHuySuaBinhLuan.hide();
+            btnSubBinhLuan.attr('value', 'them');
+            textThemBinhLuan.val("");   
         }  
     });
 
@@ -240,8 +256,8 @@ Danh sách
     function clickSuaBinhLuan(id, text){  
         btnSubBinhLuan.attr('value', 'sua');
         btnHuySuaBinhLuan.show();
-        textThemBinhLuan.val(text);   
-        console.log("Sửa bl : "+id);
+        textThemBinhLuan.val(text); 
+        id_sua = id;  
     };
 
     var btnXoaBinhLuan = $('#btnXoaBinhLuan');
