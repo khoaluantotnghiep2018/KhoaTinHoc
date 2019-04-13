@@ -57,8 +57,8 @@ Quản trị - Tin Tức - Loại tin
 						</tr>
 					</thead>
 					<tbody>
-						@if($loaitin != null)
-						@foreach($loaitin as $lt)
+						@if($loai_tin != null)
+						@foreach($loai_tin as $lt)
 						<tr>
 							<td>{{$lt->id}}</td>
 							<td>{{$lt->tenloaitin}}</td> 

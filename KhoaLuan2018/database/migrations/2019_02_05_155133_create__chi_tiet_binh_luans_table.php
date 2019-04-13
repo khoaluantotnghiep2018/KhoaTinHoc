@@ -17,7 +17,7 @@ class CreateChiTietBinhLuansTable extends Migration
             $table->increments('id');
             $table->text('noidung'); 
             $table->integer('id_binhluan')->unsigned(); 
-            $table->foreign('id_binhluan')->references('id')->on('binh_luans'); 
+            $table->foreign('id_binhluan')->references('id')->on('binh_luans')->onDelete('cascade'); 
             $table->integer('id_user')->unsigned(); 
             $table->foreign('id_user')->references('id')->on('users');  
             $table->timestamps();

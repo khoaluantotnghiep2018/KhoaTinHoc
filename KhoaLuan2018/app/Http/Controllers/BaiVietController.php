@@ -56,7 +56,7 @@ class BaiVietController extends Controller
                             ->join('users', 'binh_luans.id_user', '=', 'users.id')
                             ->join('tin_tucs', 'binh_luans.id_tintuc', '=', 'tin_tucs.id')
                             ->where('binh_luans.id_tintuc','=',$id)
-                            ->select('binh_luans.*','users.*')
+                            ->select('binh_luans.*','users.name','users.viewname','users.email','users.image','users.updated_at')
                             ->orderBy('binh_luans.id', 'desc')   
                             ->paginate(20);  
         $chitietbinhluanbaiviet = DB::table('tin_tucs')  

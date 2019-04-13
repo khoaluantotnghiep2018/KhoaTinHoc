@@ -21,7 +21,8 @@ class LoaiTinController extends Controller
 
 	// QUẢN TRỊ VIÊN
     public function getLoaiTin(){ 
-    	return view('pages.admin.LoaiTin.ds_loaitin');
+    	$loai_tin = LoaiTin::all(); 
+        return view('pages.admin.LoaiTin.ds_loaitin',['loai_tin'=>$loai_tin]);  
     }
 
     public function themLoaiTin(){ 

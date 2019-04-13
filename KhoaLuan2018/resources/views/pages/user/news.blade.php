@@ -33,19 +33,8 @@ Danh sách
 
 
         <div class="comment">
-            <div class="cmt-title">
-            @php
-                $soluongbinhluan = $soluongtlbinhluan = 0;
-                if($chitietbinhluanbaiviet != null){
-                    $soluongbinhluan = count($binhluanbaiviet);
-                }
-                if($chitietbinhluanbaiviet != null){
-                    $soluongtlbinhluan = count($chitietbinhluanbaiviet);;
-                }
-                $soluongbinhluanchung =  $soluongbinhluan + $soluongtlbinhluan;
-            @endphp
-
-                <strong>{{$soluongbinhluanchung}} bình luận</strong>
+            <div class="cmt-title">  
+                <strong>{{count($binhluanbaiviet)}} bình luận</strong>
                 @if(!Auth::check())
                 <small><p>Cần đăng nhập để bình luận.</p></small>
                 @endif
@@ -62,6 +51,7 @@ Danh sách
                     <button id="btnSubBinhLuan" value="them" @if(!Auth::check()) disabled @endif>Gửi bình luận</button>
                 </div> 
             </div>
+            <div id="showAllComment">
             @if($binhluanbaiviet != null)
             @foreach($binhluanbaiviet as $blbv)
             <div class="cmt-content">   
@@ -72,7 +62,7 @@ Danh sách
                             <div class="name">{{$blbv->viewname}} <small>{{$blbv->updated_at}}</small></div>
                             <div class="text">{{$blbv->noidung}}</div> 
                             @if(Auth::check() && Auth::User()->id == $blbv->id_user)  
-                            <button class='fas fa-trash-alt remove'> Xóa</button>
+                            <button onclick="clickXoaBinhLuan({{$blbv->id}})" class='fas fa-trash-alt remove'  id="btnXoaBinhLuan"> Xóa</button>
                             <button onclick="clickSuaBinhLuan({{$blbv->id}} , '{{$blbv->noidung}}');" id="btnSuaBinhLuan" class='far fa-edit remove'> Sửa</button> 
                             @endif
                             @if($chitietbinhluanbaiviet != null)
@@ -123,11 +113,12 @@ Danh sách
                         </div> <!-- ô input rep user -->	
                     </div> <!-- Khung chứa của rep -->
                     
-                </div>
- 
+                </div> 
             </div>
             @endforeach
             @endif
+            </div>
+            
 
             <div class="paginationbackground">  
         @if ($binhluanbaiviet->lastPage() > 1)
@@ -203,35 +194,44 @@ Danh sách
 </div> <!-- END CONTENT -->
 @endsection
 
-@section('script')
-<script src='assets/user/js/comment.js'></script>
+@section('script') 
+<script src="assets/user/js/comment.js"></script>  
 <script>
+    
+    function clickRepComment(e, id){
+        $('.user-content__rep:eq('+id+')').toggleClass("hienthi");  
+    }
+
     var btnSubBinhLuan = $('#btnSubBinhLuan');
-    var textThemBinhLuan = $('#textThemBinhLuan');
-    var idsua, noidungsua;
+    var textThemBinhLuan = $('#textThemBinhLuan'); 
+    var id_baiviethientai;
+    if({{$chitietbaiviet->id}} != null){
+        id_baiviethientai = {{$chitietbaiviet->id}};
+    }
     btnSubBinhLuan.click(function(){ 
         if(textThemBinhLuan.val() == ""){ 
             alert("Chưa có nội dung bình luận!");
             return false;
         }
-        if(btnSubBinhLuan.val() == "them"){  
-            //  console.log('Id: '+{{Auth::User()->id}});
-            //  @if($chitietbaiviet != null)
-            //  console.log('Nội dung: {{$chitietbaiviet->id}}'); 
-            //  @endif
-            //  $.ajax({
-            //     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            //     url:'',
-            //     method:'post', 
-            //     success:function(response){   
-
-            //     }
-            // });
-            console.table({{$chitietbaiviet}});
+        if(btnSubBinhLuan.val() == "them"){   
+            var mang = [];
+                mang[0] = id_baiviethientai; 
+                mang[1] = textThemBinhLuan.val(); 
+                $.ajax({
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    url: 'binhluan/them',
+                    method: 'get', 
+                    data: {data: mang},
+                    success:function(response){   
+                        $('#showAllComment').html(response); 
+                        textThemBinhLuan.val("");
+                    }
+                });   
+           
         } 
         if(btnSubBinhLuan.val() == "sua"){
             console.log("sửa");
-        } 
+        }  
     });
 
     var btnSuaBinhLuan = $('#btnSuaBinhLuan');
@@ -241,12 +241,33 @@ Danh sách
         btnSubBinhLuan.attr('value', 'sua');
         btnHuySuaBinhLuan.show();
         textThemBinhLuan.val(text);   
+        console.log("Sửa bl : "+id);
     };
+
+    var btnXoaBinhLuan = $('#btnXoaBinhLuan');
+    function clickXoaBinhLuan(id){  
+        $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            url: 'binhluan/xoa',
+            method: 'get', 
+            data: {
+                id_xoa: id,
+                id_baiviethientai : id_baiviethientai,
+            },
+            success:function(response){   
+                $('#showAllComment').html(response);  
+            }
+        });  
+    };
+
 
     btnHuySuaBinhLuan.click(function(){  
         btnHuySuaBinhLuan.hide();
         btnSubBinhLuan.attr('value', 'them');
         textThemBinhLuan.val("");   
     });
+    
+    
+
 </script>
 @endsection

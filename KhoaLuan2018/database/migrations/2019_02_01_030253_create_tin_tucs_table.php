@@ -22,7 +22,7 @@ class CreateTinTucsTable extends Migration
             $table->boolean('noibat')->default(0); 
             $table->integer('luotxem')->default(0);  
             $table->integer('id_loaitin')->unsigned(); 
-            $table->foreign('id_loaitin')->references('id')->on('loai_tins');
+            $table->foreign('id_loaitin')->references('id')->on('loai_tins')->onDelete('cascade');
             $table->integer('id_user')->unsigned(); 
             $table->foreign('id_user')->references('id')->on('users'); 
             $table->timestamps();

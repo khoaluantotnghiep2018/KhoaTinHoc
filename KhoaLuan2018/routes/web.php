@@ -15,6 +15,10 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
      
     Route::get('tintuc/{id}', 'BaivietController@getChiTietTinTucTheoId');
 
+    Route::get('binhluan/them','BinhluanController@themBinhLuanMoi');
+    Route::get('binhluan/sua','BinhluanController@suaBinhLuan');
+    Route::get('binhluan/xoa','BinhluanController@xoaBinhLuan');
+
     Route::get('404', function(){
         return view('pages/user/404');
     });
