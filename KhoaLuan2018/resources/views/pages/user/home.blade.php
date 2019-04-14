@@ -145,10 +145,10 @@ Trang chủ
                                 $tieudengan = $tieude;
                             }
                         @endphp
-                        <li><a href=""><i class="fas fa-hand-point-right"></i> {{$tieudengan}}...</a></li>
+                        <li><a href="tintuc/{{$bvtlc->id}}"><i class="fas fa-hand-point-right"></i> {{$tieudengan}}...</a></li>
                         @endif
+                        <li><a href="danhsachtin/{{$ttc->id_loaitin}}">Xem thêm &raquo;</a></li>
                     @endforeach 
-                    <li><a href="">Xem thêm &raquo;</a></li>
                 </ul>
                     @php
                         $dem = 0;
@@ -167,10 +167,10 @@ Trang chủ
                             }
                         @endphp
                     <article>
-                        <a href=""><img src="assets/user/images/hinhtintuc/{{$mbvtlc->hinhdaidien}}"
+                        <a href="tintuc/{{$mbvtlc->id}}"><img src="assets/user/images/hinhtintuc/{{$mbvtlc->hinhdaidien}}"
                             alt=""></a>
                         <div class="information">
-                            <div class="information-title"><a href="">{{$tieudengan}}</a></div>
+                            <div class="information-title"><a href="tintuc/{{$mbvtlc->id}}">{{$tieudengan}}</a></div>
                             <div class="date">
                                 <span>{{$mbvtlc->updated_at}}</span>
                             </div>
@@ -189,7 +189,17 @@ Trang chủ
                         </div> 
                         <div class="cmt">
                             <span><i class="fas fa-eye"></i> : {{$mbvtlc->luotxem}}</span> 
-                            <span><i class="far fa-comment"></i> : số bình luận</span> 
+                            @php
+                                if($binhluanchung != null){
+                                    $dembinhluan = 0;
+                                    foreach($binhluanchung as $bl){
+                                        if($bl->id_tintuc == $mbvtlc->id){
+                                            $dembinhluan++;
+                                        }
+                                    }
+                                }
+                            @endphp
+                            <span><i class="far fa-comment"></i> : {{$dembinhluan}} bình luận</span> 
                         </div>
                     </article>
                         @php

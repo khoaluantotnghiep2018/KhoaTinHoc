@@ -15,7 +15,7 @@ Loại tin tức
     <div class="list-categories">
         <div class="list-categories__title">
             <div>
-                <i class="fas fa-bars"></i> <a href="">Home</a> <span>/</span> <a href="">Tin chuyên mục</a>	
+                <i class="fas fa-bars"></i> <a href="trangchu">Home</a> <span>/</span> <a href="javascript:void(0)">Danh sách bài viết</a>	
             </div>
             
 
@@ -30,11 +30,21 @@ Loại tin tức
         <div class="list-categories__box">
             <a href="tintuc/{{$dsbv->id}}"><img src="assets/user/images/hinhtintuc/{{$dsbv->hinhdaidien}}" alt=""></a>
             <div class="information"> 
-                <h3 class="information-title"><a href="">{{$dsbv->tieude}}</a></h3> 
+                <h3 class="information-title"><a href="tintuc/{{$dsbv->id}}">{{$dsbv->tieude}}</a></h3> 
                 <div class="information-date">
                     <small><i class="far fa-calendar-plus"></i> {{$dsbv->updated_at}}</small>
                     <small><i class="fas fa-eye"></i> <span>{{$dsbv->luotxem}}</span></small>   
-                    <small><i class="fas fa-comments"></i> <span>số bình luận</span></small> 
+                    @php
+                        if($binhluan != null){
+                            $dembinhluan = 0;
+                            foreach($binhluan as $bl){
+                                if($bl->id_tintuc == $dsbv->id){
+                                    $dembinhluan++;
+                                }
+                            }
+                        }
+                    @endphp
+                    <small><i class="fas fa-comments"></i> <span>{{$dembinhluan}} bình luận</span></small> 
                 </div>
                 <div class="information-text">{{$dsbv->mota}}</div>
                 <div class="list-categories__btn"> 
@@ -80,34 +90,7 @@ Loại tin tức
         @endif
         </div>
         
-    </div>
-    
-    <div class="contact">
-        <div class="contact-title">
-            <i class="fas fa-envelope-square"></i> <span>Hổ trợ sinh viên</span>
-            <div class="contact-title__close"><i class="fas fa-times-circle"></i></div>
-        </div>
-        <div class="contact-content">
-            <form action="">
-                <label for="">
-                    <span><i class="fas fa-user"></i></span>
-                    <input type="text" placeholder="Họ tên">
-                </label>
-                <label for="">
-                    <span><i class="fas fa-envelope"></i></span>
-                    <input type="text" placeholder="Email">
-                </label>
-                <label for="">
-                    <span><i class="fas fa-phone-volume"></i></span>
-                    <input type="text" placeholder="Điện thoại">
-                </label>
-                <label for="">
-                    <textarea name="" id="" placeholder="Bạn cần khoa hổ trợ điều gì?" rows="1" cols="28"></textarea>
-                </label>
-                <button>Gửi</button>
-            </form>
-        </div>
-    </div> <!-- END CONTACT (LH) -->
+    </div> 
 
 </div> <!-- END CONTENT -->
 @endsection

@@ -17,9 +17,10 @@ Danh sách
         </div> <!-- tiêu đề tin tức -->
 
         <div class="news-infor">
-            <span><i class="fas fa-user"></i> <a href="">{{$nameuser->viewname}}</a></span>
+            <span><i class="fas fa-user"></i> <a href="javascript:void(0)">{{$nameuser->viewname}}</a></span>
             <span><i class="fas fa-clock"></i> {{$chitietbaiviet->updated_at}}</span>
-            <span><i class="fas fa-tags"></i> <a href="">Tin tức</a></span>
+            <span><i class="fas fa-tags"></i> <a href="javascript:void(0)">{{$theloaitheotintuc->tentheloai}}</a></span>
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=<?php echo url()->current();?>&layout=button_count&size=small&mobile_iframe=true&width=78&height=20&appId" width="78" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
         </div> <!-- người đăng bài  -->
 
         <div class="news-tomtat">
@@ -42,7 +43,7 @@ Danh sách
             <div class="cmt-add">
                 <div class="cmt-add__input">
                 @if(Auth::check()) 
-                <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
+                <img src="assets/user/images/avatar/{{Auth::User()->image}}" alt="">
                 @endif
                     <textarea id="textThemBinhLuan" name="them" cols="30" rows="3" @if(!Auth::check()) disabled @endif></textarea>	
                 </div> 
@@ -110,7 +111,7 @@ Danh sách
                             <div class="cmt-add">
                                 <div class="cmt-add__input">
                                 @if(Auth::check()) 
-                                <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
+                                <img src="assets/user/images/avatar/{{Auth::User()->image}}" alt="">
                                 @endif
                                     <textarea name="" id="texttraloi{{$blbv->id}}" cols="30" rows="1" @if(!Auth::check()) readonly @endif></textarea>	
                                 </div>

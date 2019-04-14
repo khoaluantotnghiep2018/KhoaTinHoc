@@ -268,9 +268,9 @@
 									}
 								@endphp
 								<div class="right-news__box">
-									<a href=""><img src="assets/user/images/hinhtintuc/{{$bvnbc->hinhdaidien}}"
+									<a href="tintuc/{{$bvnbc->id}}"><img src="assets/user/images/hinhtintuc/{{$bvnbc->hinhdaidien}}"
 										alt=""></a>
-									<a href="">{{$tieudengan}}...</a>
+									<a href="tintuc/{{$bvnbc->id}}">{{$tieudengan}}...</a>
 									<div style='clear:both'></div>
 								</div>
 								@endforeach

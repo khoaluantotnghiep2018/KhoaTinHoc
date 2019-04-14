@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\LoaiTin;
 use App\Model\TheLoai;
 use App\Model\TinTuc;
+use App\Model\BinhLuan;
 use App\User;
 use View;
 use Auth;
@@ -33,8 +34,9 @@ class BaiVietController extends Controller
                     ->select('tin_tucs.*') 
                     ->where('loai_tins.id','=',$id) 
                     ->first();
+        $binhluan = BinhLuan::all();  
         if($checkdsbaiviet == null){
-            return redirect('404'); 
+            return redirect('404');     
         } 
         $dsbaiviet = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                     ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
@@ -42,16 +44,22 @@ class BaiVietController extends Controller
                     ->where('loai_tins.id','=',$id) 
                     ->orderBy('id', 'desc')  
                     ->paginate(4);    
-        return view('pages/user/type_news',['dsbaiviet'=>$dsbaiviet]); 
+        return view('pages/user/type_news',['dsbaiviet'=>$dsbaiviet, 'binhluan'=>$binhluan]); 
     }
 
     public function getChiTietTinTucTheoId($id){
         $chitietbaiviet = DB::table('tin_tucs')  
                     ->where('id','=',$id)  
                     ->first(); 
-        $nameuser = DB::table('users')  
+        $nameuser = DB::table('users')   
                     ->where('id','=',$chitietbaiviet->id_user)  
                     ->first(); 
+        $theloaitheotintuc = DB::table('the_loais')  
+                                ->join('loai_tins', 'loai_tins.id_theloai', '=', 'the_loais.id')
+                                ->join('tin_tucs', 'tin_tucs.id_loaitin', '=', 'loai_tins.id')  
+                                ->where('loai_tins.id','=',$chitietbaiviet->id_loaitin)  
+                                ->select('the_loais.*')
+                                ->first();             
         $binhluanbaiviet = DB::table('binh_luans')
                             ->join('users', 'binh_luans.id_user', '=', 'users.id')
                             ->join('tin_tucs', 'binh_luans.id_tintuc', '=', 'tin_tucs.id')
@@ -65,13 +73,14 @@ class BaiVietController extends Controller
                                     ->join('users', 'chi_tiet_binh_luans.id_user', '=', 'users.id') 
                                     ->select('chi_tiet_binh_luans.*','users.id as id_usBinhLuan','users.viewname','users.image','tin_tucs.id as idtintuc')
                                     ->get();  
-        // return $chitietbinhluanbaiviet; 
+        // return response()->json($theloaitheotintuc); 
         if($chitietbaiviet != null){
             return view('pages/user/news',[
                     'chitietbaiviet'=>$chitietbaiviet,
                     'nameuser'=>$nameuser,
                     'binhluanbaiviet'=>$binhluanbaiviet,
                     'chitietbinhluanbaiviet'=>$chitietbinhluanbaiviet,
+                    'theloaitheotintuc'=>$theloaitheotintuc,
                 ]
             );  
         }

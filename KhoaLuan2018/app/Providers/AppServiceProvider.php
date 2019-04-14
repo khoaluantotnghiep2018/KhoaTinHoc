@@ -4,6 +4,7 @@ namespace App\Providers;
     use Illuminate\Support\Facades\Schema;
     use Illuminate\Support\ServiceProvider;
     use DB;
+    use App\Model\BinhLuan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
                             ->get();
             $demtheloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                             ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
-                            ->select('the_loais.id as idTheLoai') 
+                            ->select('the_loais.id as idTheLoai','tin_tucs.id_loaitin') 
                             ->distinct('idTheLoai')
                             ->get();
             $baiviettheoloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
@@ -49,11 +50,12 @@ class AppServiceProvider extends ServiceProvider
                                     ->select('tin_tucs.*','the_loais.id as idTheLoai')  
                                     ->orderBy('id', 'desc')  
                                     ->get();
-            $baivietnoibatchung = DB::table('tin_tucs')->select('tin_tucs.tieude','tin_tucs.hinhdaidien')
+            $baivietnoibatchung = DB::table('tin_tucs')->select('tin_tucs.id','tin_tucs.tieude','tin_tucs.hinhdaidien')
                                     ->where('noibat','=',1)  
                                     ->orderBy('id', 'desc')   
                                     ->limit(5)
                                     ->get();
+            $binhluanchung = BinhLuan::all();
             $view->with([
                     'tatcatheloai'=>$tatcatheloai, 
                     'loaitin'=>$loaitin, 
@@ -64,6 +66,7 @@ class AppServiceProvider extends ServiceProvider
                     'baiviettheoloaichung'=>$baiviettheoloaichung,
                     'motbaiviettheoloaichung'=>$motbaiviettheoloaichung,
                     'baivietnoibatchung'=>$baivietnoibatchung,
+                    'binhluanchung'=>$binhluanchung,
                 ]); 
         });
     }
