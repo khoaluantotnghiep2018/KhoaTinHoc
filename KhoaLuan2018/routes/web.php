@@ -19,6 +19,10 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     Route::get('binhluan/sua','BinhluanController@suaBinhLuan');
     Route::get('binhluan/xoa','BinhluanController@xoaBinhLuan');
 
+    Route::get('traloibinhluan/them','BinhluanController@themTraLoiBinhLuanMoi');
+    Route::get('traloibinhluan/sua','BinhluanController@suaTraLoiBinhLuan');
+    Route::get('traloibinhluan/xoa','BinhluanController@xoaTraLoiBinhLuan');
+
     Route::get('404', function(){
         return view('pages/user/404');
     });

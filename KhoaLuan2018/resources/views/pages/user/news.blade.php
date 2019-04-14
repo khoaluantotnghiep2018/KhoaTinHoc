@@ -51,8 +51,11 @@ Danh sách
                     <button id="btnSubBinhLuan" value="them" @if(!Auth::check()) disabled @endif>Gửi bình luận</button>
                 </div> 
             </div>
-            <div id="showAllComment">
+            <div id="showAllComment"> 
             @if($binhluanbaiviet != null)
+            @php
+                $id_toggle = 0;
+            @endphp
             @foreach($binhluanbaiviet as $blbv)
             <div class="cmt-content">   
                 <div class="user">
@@ -74,8 +77,11 @@ Danh sách
                                 }
                                 @endphp
                                 <div class="rep"> 
-                                    <a class="btn-rep far fa-comment-dots"> {{$dem}} Phản hồi.</a>
+                                    <a onclick="clickRepComment(this, {{$id_toggle}})" class="btn-rep far fa-comment-dots"> {{$dem}} Phản hồi.</a>
                                 </div> 
+                                @php
+                                    $id_toggle++; 
+                                @endphp
                             @endif
                         </div>
                     </div>	 <!-- Nội dung comment của user -->
@@ -91,8 +97,8 @@ Danh sách
                                     <div class="name">{{$ctblbv->viewname}} <small>{{$ctblbv->updated_at}}</small></div>
                                     <div class="text">{{$ctblbv->noidung}}</div>
                                     @if(Auth::check() && Auth::User()->id == $ctblbv->id_user)   
-                                    <button class='fas fa-trash-alt remove'> Xóa</button>
-                                    <button class='far fa-edit remove'> Sửa</button>
+                                    <button onclick="clickXoaTraloiBinhLuan({{$ctblbv->id}})" class='fas fa-trash-alt remove'> Xóa</button>
+                                    <button onclick="clickSuaTraloiBinhLuan({{$ctblbv->id}}, {{$blbv->id}}, '{{$ctblbv->noidung}}')" class='far fa-edit remove'> Sửa</button>
                                     @endif
                                 </div>
                             </div>	   
@@ -106,9 +112,12 @@ Danh sách
                                 @if(Auth::check()) 
                                 <img src="assets/user/images/avatar/{{$nameuser->image}}" alt="">
                                 @endif
-                                    <textarea name="" id="" cols="30" rows="1" @if(!Auth::check()) readonly @endif></textarea>	
+                                    <textarea name="" id="texttraloi{{$blbv->id}}" cols="30" rows="1" @if(!Auth::check()) readonly @endif></textarea>	
                                 </div>
-                                <div class="btn"><button @if(!Auth::check()) disabled @endif>Trả lời</button></div>
+                                <div class="btn">
+                                    <button id="btnHuyTraLoiBinhLuan{{$blbv->id}}" hidden onclick="clickHuyTraLoiBinhLuan({{$blbv->id}})">Hủy bỏ</button>
+                                    <button value="them" onclick="clickSubTraLoiBinhLuan({{$blbv->id}})" id="btnSubTraLoiBinhLuan{{$blbv->id}}" @if(!Auth::check()) disabled @endif>Trả lời</button>
+                                </div>
                             </div>
                         </div> <!-- ô input rep user -->	
                     </div> <!-- Khung chứa của rep -->
@@ -156,50 +165,28 @@ Danh sách
         </ul>
         @endif
         </div>
-
-
+ 
             
         </div>
     </div>
 
-    @endif  
-    
-    <div class="contact">
-        <div class="contact-title">
-            <i class="fas fa-envelope-square"></i> <span>Hổ trợ sinh viên</span>
-            <div class="contact-title__close"><i class="fas fa-times-circle"></i></div>
-        </div>
-        <div class="contact-content">
-            <form action="">
-                <label for="">
-                    <span><i class="fas fa-user"></i></span>
-                    <input type="text" placeholder="Họ tên">
-                </label>
-                <label for="">
-                    <span><i class="fas fa-envelope"></i></span>
-                    <input type="text" placeholder="Email">
-                </label>
-                <label for="">
-                    <span><i class="fas fa-phone-volume"></i></span>
-                    <input type="text" placeholder="Điện thoại">
-                </label>
-                <label for="">
-                    <textarea name="" id="" placeholder="Bạn cần khoa hổ trợ điều gì?" rows="1" cols="28"></textarea>
-                </label>
-                <button>Gửi</button>
-            </form>
-        </div>
-    </div> <!-- END CONTACT (LH) -->
+    @endif   
 
 </div> <!-- END CONTENT -->
 @endsection
 
 @section('script') 
 <script src="assets/user/js/comment.js"></script>  
-<script>
-    
-    function clickRepComment(e, id){
-        $('.user-content__rep:eq('+id+')').toggleClass("hienthi");  
+<script> 
+    var id_toggle_hientai;
+    function clickRepComment(e, id){ 
+        $('.user-content__rep:eq('+id+')').toggleClass("hienthi");
+        id_toggle_hientai = id; 
+        $('.user-content__rep').each(function (index, value) {
+            if(index != id){
+                $(this).removeClass("hienthi");
+            }
+        });
     }
 
     var btnSubBinhLuan = $('#btnSubBinhLuan');
@@ -258,6 +245,9 @@ Danh sách
         btnHuySuaBinhLuan.show();
         textThemBinhLuan.val(text); 
         id_sua = id;  
+        myscroll = $('.cmt-title'); 
+        // Đẩy về vị trí bình luận
+        document.documentElement.scrollTop = myscroll.offset().top - 50; 
     };
 
     var btnXoaBinhLuan = $('#btnXoaBinhLuan');
@@ -280,10 +270,88 @@ Danh sách
     btnHuySuaBinhLuan.click(function(){  
         btnHuySuaBinhLuan.hide();
         btnSubBinhLuan.attr('value', 'them');
-        textThemBinhLuan.val("");   
+        textThemBinhLuan.val("");  
     });
     
-    
+    // Js trả lời bình luận
+    var id_traloi;
+    function clickSubTraLoiBinhLuan(id_binhluan){
+        var btnSubTraLoiBinhLuan = $('#btnSubTraLoiBinhLuan'+id_binhluan); 
+        var texttraloi = $("#texttraloi"+id_binhluan);
+        if(texttraloi.val() == ""){ 
+            alert("Chưa có nội dung trả lời!");
+            return false;
+        }
+        if(btnSubTraLoiBinhLuan.val() == "them"){  
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                url: 'traloibinhluan/them',
+                method: 'get', 
+                data: {
+                    id_binhluan: id_binhluan,
+                    noidung: texttraloi.val(),
+                    id_baiviethientai : id_baiviethientai,
+                    id_toggle_hientai : id_toggle_hientai,
+                },
+                success:function(response){   
+                    $('#showAllComment').html(response); 
+                    texttraloi.val("");
+                }
+            });   
+               
+        } 
+        if(btnSubTraLoiBinhLuan.val() == "sua"){   
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                url: 'traloibinhluan/sua',
+                method: 'get', 
+                data: {
+                    id_sua: id_traloi,
+                    noidung: $("#texttraloi"+id_binhluan).val(),
+                    id_baiviethientai : id_baiviethientai,
+                    id_toggle_hientai : id_toggle_hientai,
+                },
+                success:function(response){   
+                    $('#showAllComment').html(response);  
+                }
+            });  
+            $("#btnHuyTraLoiBinhLuan"+id_binhluan).hide();
+            var btnSubTraLoiBinhLuan = $('#btnSubTraLoiBinhLuan'+id_binhluan);    
+            btnSubTraLoiBinhLuan.attr('value', 'them');
+            $("#btnHuyTraLoiBinhLuan"+id_binhluan).val("");    
+        }  
+    } 
+     
+    function clickXoaTraloiBinhLuan(id){  
+        $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            url: 'traloibinhluan/xoa',
+            method: 'get', 
+            data: {
+                id_xoa: id,
+                id_baiviethientai : id_baiviethientai,
+                id_toggle_hientai : id_toggle_hientai,
+            },
+            success:function(response){   
+                $('#showAllComment').html(response);  
+            }
+        });   
+    };
 
+    function clickSuaTraloiBinhLuan(id_tl, id, text){ 
+        var btnSubTraLoiBinhLuan = $('#btnSubTraLoiBinhLuan'+id);   
+        id_traloi = id_tl; 
+        $("#btnHuyTraLoiBinhLuan"+id).show();
+        $("#texttraloi"+id).val(text);
+        btnSubTraLoiBinhLuan.val("sua");
+    }
+
+    function clickHuyTraLoiBinhLuan(id){
+        var btnSubTraLoiBinhLuan = $('#btnSubTraLoiBinhLuan'+id); 
+        $("#texttraloi"+id).val("");
+        btnSubTraLoiBinhLuan.val("them");
+        $("#btnHuyTraLoiBinhLuan"+id).hide();
+    }
+    
 </script>
 @endsection

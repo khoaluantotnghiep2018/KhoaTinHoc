@@ -131,11 +131,11 @@
 }
 
 .cmt-content {
-        padding: 15px;
+    padding: 15px;
     background: #fff;
-    margin-top: 20px;
+    margin-top: 10px;
     border: 1px solid #ccc;
-    box-shadow: 0px 0px 1px 1px #e8e6e6 inset;
+    box-shadow: 0px 0px 1px 1px #e8e6e6 inset;  
 }
 
 .cmt-user__text .name {
