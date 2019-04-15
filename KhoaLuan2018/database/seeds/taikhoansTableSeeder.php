@@ -15,7 +15,7 @@ class taikhoansTableSeeder extends Seeder
             [
                 'name' => "vanthuy", 
                 'viewname' => "Huỳnh Văn Thùy",
-                'email' => 'abc.gmail.com',
+                'email' => 'huynhvanthuy1997@gmail.com',
                 'password' => bcrypt('123'),
                 'permission' => 'Admin',    
                 'image' => 'avatar.jpg', 

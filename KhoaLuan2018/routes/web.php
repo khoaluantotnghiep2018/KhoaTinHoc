@@ -41,6 +41,15 @@ Route::group(['prefix'=>'logout'] , function(){
     Route::get('sinhvien','LoginController@getLogoutSinhVien');    
     Route::get('quantri','LoginController@getLogoutQuanTriVien');    
 });
+
+Route::group(['prefix'=>'taikhoan'] , function(){ 
+    Route::group(['prefix'=>'quenmatkhau'] , function(){ 
+        Route::post('kiemtra', 'LoginController@postKiemTraQuenMatKhau');      
+        Route::get('xacnhan', 'LoginController@getXacNhanMaQuenMatKhau');      
+        Route::get('doimatkhau/{id}/{maxacthuc}', 'LoginController@getXacNhanDoiMatKhau');      
+        Route::post('doimatkhau', 'LoginController@postXacNhanDoiMatKhau');      
+    });
+});
     
 // QUẢN TRỊ VIÊN
 Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
@@ -102,7 +111,7 @@ Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
             Route::get('them', 'TaiKhoanController@themTaiKhoan'); 
             Route::post('them', 'TaiKhoanController@postthemTaiKhoan');   
         });
-    });
+    }); 
 
 });
 

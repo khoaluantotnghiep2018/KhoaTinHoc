@@ -86,5 +86,5 @@ class TaiKhoanController extends Controller
             return redirect('quantri/taikhoan/quantri/them')->with('thongbao',"2");
         }
          
-    }
+    } 
 }
