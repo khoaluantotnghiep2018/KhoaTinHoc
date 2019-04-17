@@ -13,12 +13,28 @@ class taikhoansTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => "vanthuy", 
+                'name' => "Admin", 
                 'viewname' => "Huỳnh Văn Thùy",
                 'email' => 'huynhvanthuy1997@gmail.com',
                 'password' => bcrypt('123'),
                 'permission' => 'Admin',    
-                'image' => 'avatar.jpg', 
+                'image' => 'avatar.jpg',  
+            ],
+            [
+                'name' => "sinhvien", 
+                'viewname' => "Sinh Viên",
+                'email' => 'sinhvien@gmail.com',
+                'password' => bcrypt('123'),
+                'permission' => 'SinhVien',    
+                'image' => 'avatar.jpg',  
+            ],
+            [
+                'name' => "giangvien", 
+                'viewname' => "Giảng Viên",
+                'email' => 'giangvien@gmail.com',
+                'password' => bcrypt('123'),
+                'permission' => 'GiangVien',    
+                'image' => 'avatar.jpg',  
             ],
         ]);
     }

@@ -207,6 +207,7 @@
         var btnMaXacThuc = $('#btnMaXacThuc');
         var ipMaXacThuc = $('#ipMaXacThuc');
         btnMaXacThuc.click(function(){
+            $('#loiXacNhanMail').css('display','none');  
             if(ipMaXacThuc.val() == ""){
                 alert("Nhập mã xác thực!");
                 return false;

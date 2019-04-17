@@ -18,6 +18,20 @@
 		} 
 		#checkRemember{
 			width: auto;
+		} 
+		#loiHoTro{
+			background-color: #f8f8f8; 
+			border-radius: 20px; 
+			color: red;
+			display : none;
+			font-weight: bold;
+		}
+		#thongBaoHoTro{
+			background-color: #f8f8f8; 
+			border-radius: 20px; 
+			color: green;
+			font-weight: bold;
+			display : none;
 		}
 	</style>
 	@yield('css') 
@@ -38,7 +52,7 @@
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input required type="text" placeholder="Tên đăng nhập hoặc email" name="name" autofocus>
+						<input required type="email" placeholder="Tên đăng nhập hoặc email" name="name" autofocus>
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
@@ -132,7 +146,19 @@
 				@endforeach 
 
 				<li><a href="">Danh sách</a></li>
-				<li><a href="">Tài liệu tham khảo</a></li>
+				<li>
+					<a href="">Tài liệu tham khảo</a>
+					<ul class='submenu'> 
+						<li><center><a href="">Tham khảo chung</a></center></li>   
+						@can('quyensinhvien') 
+						<li><center><a href="">Sinh viên</a></center></li>  
+						@endcan 
+						@can('quyengiangvien')  
+						<li><center><a href="">Sinh viên</a></center></li>   
+						<li><center><a href="">Giảng viên</a></center></li>  
+						@endcan 
+					</ul>	
+				</li>
 				<li><a href="">Liên hệ chúng tôi</a></li>
 			</ul>
 		</nav> <!-- END MENU -->
@@ -289,24 +315,29 @@
 					<div class="contact-title__close"><i class="fas fa-times-circle"></i></div>
 				</div>
 				<div class="contact-content">
-					<form action="">
+					<form method="post" id="postHoTroSinhVien">
+					    @csrf
+						<label for=""> 
+							<span id="loiHoTro" id="loiLogin">Lỗi dữ liệu, kiểm tra lại!</span> 	  
+							<span id="thongBaoHoTro" id="loiLogin">Chúng tôi sẽ phản hồi cho bạn sớm nhất!</span> 	  
+						</label>
 						<label for="">
 							<span><i class="fas fa-user"></i></span>
-							<input type="text" placeholder="Họ tên">
+							<input required name="hoten" type="text" placeholder="Họ tên">
 						</label>
 						<label for="">
 							<span><i class="fas fa-envelope"></i></span>
-							<input type="text" placeholder="Email">
+							<input required name="email" type="text" placeholder="Email">
 						</label>
 						<label for="">
 							<span><i class="fas fa-phone-volume"></i></span>
-							<input type="text" placeholder="Điện thoại">
+							<input onKeyPress="return isNumberKey(event)" required name="dienthoai" type="text" placeholder="Điện thoại">
 						</label>
 						<label for="">
-							<textarea name="" id="" placeholder="Bạn cần khoa hổ trợ điều gì?" rows="1" cols="28"></textarea>
+							<textarea required name="noidung" id="noidunghotro" placeholder="Bạn cần khoa hổ trợ điều gì?" rows="1" cols="28"></textarea>
 						</label>
-						<button>Gửi hổ trợ</button>
-						<button>Gửi ẩn danh</button>
+						<button type="submit">Gửi hổ trợ</button>
+						<button id="bntHoTroAnDanh" type="button">Gửi ẩn danh</button>
 					</form>
 				</div>
 			</div> <!-- END CONTACT (LH) -->
@@ -419,6 +450,68 @@
 		});
 		return false;
 	});
+
+	// Xử lý thêm hổ trợ  
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if (charCode > 31 && (charCode < 48 || charCode > 57))
+			return false;
+		return true;
+	}
+
+	var postHoTroSinhVien = $('#postHoTroSinhVien');
+	postHoTroSinhVien.submit(function(e){    
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			url: 'hotro/thuong',
+			method: 'post',
+			data: $('#postHoTroSinhVien').serialize(),
+			success: function (response) {
+				if(response == "1"){
+					$('#loiHoTro').css("display",'none');
+					$('#thongBaoHoTro').css("display",'block');  
+					$('#postHoTroSinhVien').trigger("reset");
+					setTimeout(function(){ $('#thongBaoHoTro').css("display",'none'); }, 3000);  
+				}
+				else{
+					$('#loiHoTro').css("display",'block');
+					$('#thongBaoHoTro').css("display",'none');
+				}
+			}
+		});
+		return false;
+	});
+
+	$('#bntHoTroAnDanh').click(function(){
+		var noidung = $('#noidunghotro');
+		$('#loiHoTro').css("display",'none');
+		$('#thongBaoHoTro').css("display",'none');
+		if(noidung.val() == ""){
+			alert("Nhập vào nội dung?");
+		}
+		$.ajax({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+			url: 'hotro/andanh',
+			method: 'get',
+			data: {noidung : noidung.val(),},
+			success: function (response) {
+				if(response == "1"){
+					$('#loiHoTro').css("display",'none');
+					$('#thongBaoHoTro').css("display",'block');  
+					$('#postHoTroSinhVien').trigger("reset");
+					setTimeout(function(){ $('#thongBaoHoTro').css("display",'none'); }, 3000); 
+				}
+				else{
+					$('#loiHoTro').css("display",'block');
+					$('#thongBaoHoTro').css("display",'none');
+				}
+			}
+		});
+		return false;
+	});
+	
+	
  
 </script>
 @yield('script')

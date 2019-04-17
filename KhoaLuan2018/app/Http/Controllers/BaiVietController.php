@@ -51,6 +51,14 @@ class BaiVietController extends Controller
         $chitietbaiviet = DB::table('tin_tucs')  
                     ->where('id','=',$id)  
                     ->first(); 
+        if($chitietbaiviet == null){
+            return redirect('404');  
+        }
+        $view = $chitietbaiviet->luotxem + 1;
+        $updatechitietbv = DB::table('tin_tucs')  
+                    ->where('id','=',$id) 
+                    ->update(['luotxem'=>$view]);
+        
         $nameuser = DB::table('users')   
                     ->where('id','=',$chitietbaiviet->id_user)  
                     ->first(); 
@@ -72,8 +80,8 @@ class BaiVietController extends Controller
                                     ->join('chi_tiet_binh_luans', 'chi_tiet_binh_luans.id_binhluan', '=', 'binh_luans.id') 
                                     ->join('users', 'chi_tiet_binh_luans.id_user', '=', 'users.id') 
                                     ->select('chi_tiet_binh_luans.*','users.id as id_usBinhLuan','users.viewname','users.image','tin_tucs.id as idtintuc')
-                                    ->get();  
-        // return response()->json($theloaitheotintuc); 
+                                    ->get();   
+        // return response()->json($chitietbaiviet->luotxem); 
         if($chitietbaiviet != null){
             return view('pages/user/news',[
                     'chitietbaiviet'=>$chitietbaiviet,

@@ -41,6 +41,10 @@ Route::group(['prefix'=>'logout'] , function(){
     Route::get('sinhvien','LoginController@getLogoutSinhVien');    
     Route::get('quantri','LoginController@getLogoutQuanTriVien');    
 });
+Route::group(['prefix'=>'hotro'] , function(){  
+    Route::post('thuong','HoTroController@postHoTroThuong');      
+    Route::get('andanh','HoTroController@getHoTroAnDanh');      
+});
 
 Route::group(['prefix'=>'taikhoan'] , function(){ 
     Route::group(['prefix'=>'quenmatkhau'] , function(){ 
@@ -110,6 +114,19 @@ Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
 
             Route::get('them', 'TaiKhoanController@themTaiKhoan'); 
             Route::post('them', 'TaiKhoanController@postthemTaiKhoan');   
+        });
+    }); 
+    Route::group(['prefix'=>'taikhoan'] , function(){ 
+        Route::group(['prefix'=>'hopthu'] , function(){ 
+            Route::get('danhsach', 'HoTroController@getDsHopThu');   
+
+            Route::get('sua/{id}', 'HoTroController@getsuaTaiKhoan');   
+            Route::post('sua/{id}', 'HoTroController@postsuaTaiKhoan');   
+
+            Route::get('xoa/{id}', 'HoTroController@getXoaTaiKhoan');   
+
+            Route::get('them', 'HoTroController@themTaiKhoan'); 
+            Route::post('them', 'HoTroController@postthemTaiKhoan');   
         });
     }); 
 

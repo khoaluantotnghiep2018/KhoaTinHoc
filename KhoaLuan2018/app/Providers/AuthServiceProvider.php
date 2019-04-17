@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('quyensinhvien', function($user){
+            if($user->permission == "SinhVien"){
+                return true;
+            } 
+        });
+        Gate::define('quyengiangvien', function($user){
+            if($user->permission == "GiangVien"){
+                return true;
+            } 
+        });
     }
 }
