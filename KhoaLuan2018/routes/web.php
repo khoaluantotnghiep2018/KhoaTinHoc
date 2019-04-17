@@ -115,19 +115,18 @@ Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
             Route::get('them', 'TaiKhoanController@themTaiKhoan'); 
             Route::post('them', 'TaiKhoanController@postthemTaiKhoan');   
         });
-    }); 
-    Route::group(['prefix'=>'taikhoan'] , function(){ 
-        Route::group(['prefix'=>'hopthu'] , function(){ 
-            Route::get('danhsach', 'HoTroController@getDsHopThu');   
+    });  
+    Route::group(['prefix'=>'hopthu'] , function(){ 
+        Route::get('danhsach', 'HoTroController@getDsHopThu');   
 
-            Route::get('sua/{id}', 'HoTroController@getsuaTaiKhoan');   
-            Route::post('sua/{id}', 'HoTroController@postsuaTaiKhoan');   
+        Route::get('sua/{id}', 'HoTroController@getsuaTaiKhoan');   
+        Route::post('sua/{id}', 'HoTroController@postsuaTaiKhoan');   
 
-            Route::get('xoa/{id}', 'HoTroController@getXoaTaiKhoan');   
+        Route::get('xoa/{id}', 'HoTroController@getXoaTaiKhoan');   
 
-            Route::get('them', 'HoTroController@themTaiKhoan'); 
-            Route::post('them', 'HoTroController@postthemTaiKhoan');   
-        });
+        Route::get('xemtatca', 'HoTroController@xemTatTinNhan'); 
+        Route::get('xemchuadoc', 'HoTroController@xemTinChuaDoc');   
+        Route::get('xemMotTin/{id}', 'HoTroController@xemTinTheoId');   
     }); 
 
 });

@@ -5,6 +5,7 @@ namespace App\Providers;
     use Illuminate\Support\ServiceProvider;
     use DB;
     use App\Model\BinhLuan;
+    use App\Model\HopThu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191); 
+        // NGƯỜI DÙNG
         view()->composer('*', function($view){ 
             $trangchu = DB::table('trang_chus')->first(); 
             $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
@@ -56,6 +58,9 @@ class AppServiceProvider extends ServiceProvider
                                     ->limit(5)
                                     ->get();
             $binhluanchung = BinhLuan::all();
+
+            // QUẢN TRỊ VIÊN
+            $hopthuchuadocchung = DB::table("hop_thus")->where('daxem','=','0')->get();
             $view->with([
                     'tatcatheloai'=>$tatcatheloai, 
                     'loaitin'=>$loaitin, 
@@ -67,6 +72,7 @@ class AppServiceProvider extends ServiceProvider
                     'motbaiviettheoloaichung'=>$motbaiviettheoloaichung,
                     'baivietnoibatchung'=>$baivietnoibatchung,
                     'binhluanchung'=>$binhluanchung,
+                    'hopthuchuadocchung'=>$hopthuchuadocchung,
                 ]); 
         });
     }

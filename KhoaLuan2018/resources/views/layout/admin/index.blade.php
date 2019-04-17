@@ -10,7 +10,7 @@
     @yield('css')
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  </head> 
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
     <header class="app-header"><a class="app-header__logo" href="quantri/trangchu">Admin page</a>
@@ -22,32 +22,22 @@
           <button class="app-search__button"><i class="fa fa-search"></i></button>
         </li>
         <!--Notification Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+        <li class="dropdown"><a class="app-nav__item @if($hopthuchuadocchung->count() != 0) thongbaohopthu @endif" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
           <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">You have 4 new notifications.</li>
-            <div class="app-notification__content">
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Mail server not working</p>
-                    <p class="app-notification__meta">5 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Transaction complete</p>
-                    <p class="app-notification__meta">2 days ago</p>
-                  </div></a></li>
+            @if($hopthuchuadocchung->count() != 0)
+            <?php 
+                $soluongthu = 0;
+                foreach($hopthuchuadocchung as $htcd){ 
+                  $soluongthu++;
+                }
+            ?> 
               <div class="app-notification__content">
-                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                <li><a class="app-notification__item" href="quantri/hopthu/xemchuadoc"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                     <div>
-                      <p class="app-notification__message">Lisa sent you a mail</p>
-                      <p class="app-notification__meta">2 min ago</p>
+                      <p class="app-notification__message">Sinh viên đã yêu cầu hổ trợ</p>
+                      <p class="app-notification__meta"><b>{{$soluongthu}}</b> tin nhắn mới</p>
                     </div></a></li>
-                <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                <!-- <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
                     <div>
                       <p class="app-notification__message">Mail server not working</p>
                       <p class="app-notification__meta">5 min ago</p>
@@ -56,10 +46,11 @@
                     <div>
                       <p class="app-notification__message">Transaction complete</p>
                       <p class="app-notification__meta">2 days ago</p>
-                    </div></a></li>
+                    </div></a></li> -->
               </div>
             </div>
-            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+            <li class="app-notification__footer"><a href="quantri/hopthu/xemtatca">Xem tất cả thông báo.</a></li>
+            @endif
           </ul>
         </li>
         <!-- User Menu-->
@@ -106,9 +97,9 @@
             <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Sinh viên</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Hộp thư hổ trợ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Hộp thư</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="quantri/taikhoan/hopthu/danhsach"><i class="icon fa fa-circle-o"></i> Hộp thư đến</a></li> 
+            <li><a class="treeview-item" href="quantri/hopthu/danhsach"><i class="icon fa fa-circle-o"></i> Hộp thư đến</a></li> 
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
