@@ -13,7 +13,7 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     Route::get('danhsachtin', 'BaiVietController@getDsTinTuc');
     Route::get('danhsachtin/{id}', 'BaiVietController@getDsTinTucTheoId');
      
-    Route::get('tintuc/{id}', 'BaivietController@getChiTietTinTucTheoId');
+    Route::get('tintuc/{id}', 'BaiVietController@getChiTietTinTucTheoId');
 
     Route::get('binhluan/them','BinhluanController@themBinhLuanMoi');
     Route::get('binhluan/sua','BinhluanController@suaBinhLuan');
@@ -27,7 +27,7 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
         return view('pages/user/404');
     });
 
-    Route::get('timkiem','BaivietController@timBaiVietTheoTuKhoa');  
+    Route::get('timkiem','BaiVietController@timBaiVietTheoTuKhoa');  
     
 });
 
