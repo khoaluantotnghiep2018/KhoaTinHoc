@@ -15,9 +15,9 @@ class CreateTinTucsTable extends Migration
     {
         Schema::create('tin_tucs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tieude');
+            $table->text('tieude');
             $table->text('mota');
-            $table->string('hinhdaidien');
+            $table->text('hinhdaidien');
             $table->longText('noidung');
             $table->boolean('noibat')->default(0); 
             $table->integer('luotxem')->default(0);  

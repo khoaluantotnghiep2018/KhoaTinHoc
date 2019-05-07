@@ -70,7 +70,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }
@@ -185,7 +185,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }
@@ -299,7 +299,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }
@@ -416,7 +416,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }
@@ -536,7 +536,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }
@@ -654,7 +654,7 @@ class BinhluanController extends Controller
                                                     } 
                                                     $ketqua = $ketqua.'
                                                                         <div class="rep"> 
-                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.' Phản hồi.</a>
+                                                                            <a onclick="clickRepComment(this, '.$id_toggle.')" class="btn-rep far fa-comment-dots"> '.$dem.'.</a>
                                                                         </div> 
                                                                     ';
                                                 }

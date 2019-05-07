@@ -16,7 +16,7 @@ class TrangchuController extends Controller
     } 
     // NGƯỜI DÙNG
     public function loadTrangChu(){
-        return view('pages/user/home');
+        return view('pages/user/home');  
     }
  
     public function getDuLieuNguoiDung(){ 

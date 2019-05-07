@@ -26,8 +26,8 @@ Route::group(['prefix'=>'','middleware'=>'userCheckLogin'] , function(){
     Route::get('404', function(){
         return view('pages/user/404');
     });
-  
-    // Route::get('/test', 'TrangchuController@getDuLieu'); 
+
+    Route::get('timkiem','BaivietController@timBaiVietTheoTuKhoa');  
     
 });
 

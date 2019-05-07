@@ -103,7 +103,7 @@ Quản trị - Tài khoản - Danh sách bài viết
             success: function (data) { 
                 $("#luuNoiBat").html(data); 
             }
-        }); 
+        });  
       }
     </script>
 @endsection

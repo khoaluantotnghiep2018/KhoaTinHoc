@@ -32,7 +32,7 @@
                 }
             ?> 
               <div class="app-notification__content">
-                <li><a class="app-notification__item" href="quantri/hopthu/xemchuadoc"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                <li><a class="app-notification__item avatarhome" href="quantri/hopthu/xemchuadoc"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                     <div>
                       <p class="app-notification__message">Sinh viên đã yêu cầu hổ trợ</p>
                       <p class="app-notification__meta"><b>{{$soluongthu}}</b> tin nhắn mới</p>
@@ -55,9 +55,8 @@
         </li>
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
-          <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Trang cá nhân</a></li>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right"> 
+            <li><a class="dropdown-item" href="quantri/taikhoan/quantri/sua/{{Auth::User()->id}}"><i class="fa fa-user fa-lg"></i> Trang cá nhân</a></li>
             <li><a class="dropdown-item" href="logout/quantri"><i class="fa fa-sign-out fa-lg"></i> Đăng xuất</a></li>
           </ul>
         </li>
@@ -66,10 +65,10 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar avatarPageAdmin" src="assets/user/images/avatar/{{Auth::User()->image}}" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name">Huỳnh Văn Thùy</p>
-          <p class="app-sidebar__user-designation">Admin</p>
+          <p class="app-sidebar__user-name">{{Auth::User()->viewname}}</p>
+          <p class="app-sidebar__user-designation">{{Auth::User()->permission}}</p>
         </div>
       </div>
       <ul class="app-menu">
@@ -77,32 +76,27 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Trang chủ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="quantri/gioithieu"><i class="icon fa fa-circle-o"></i> Giới thiệu</a></li>
-            <li><a class="treeview-item" href="quantri/hienthi"><i class="icon fa fa-circle-o"></i> Hiển thị</a></li>
-            <li><a class="treeview-item" href="widgets.html"><i class="icon fa fa-circle-o"></i> Widgets</a></li>
+            <li><a class="treeview-item" href="quantri/hienthi"><i class="icon fa fa-circle-o"></i> Hiển thị</a></li> 
           </ul>
         </li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Charts</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Tin tức</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="quantri/tintuc/loaitin/danhsach"><i class="icon fa fa-circle-o"></i> Loại tin</a></li>
-            <li><a class="treeview-item" href="quantri/tintuc/baiviet/danhsach"><i class="icon fa fa-circle-o"></i> Bài viết</a></li>
-            <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o"></i> Tin tức</a></li>
-            <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o"></i> Chi tiết tin tức</a></li>
+            <li><a class="treeview-item" href="quantri/tintuc/baiviet/danhsach"><i class="icon fa fa-circle-o"></i> Bài viết</a></li> 
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tài khoản</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle-o"></i><span class="app-menu__label">Tài khoản</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="quantri/taikhoan/quantri/danhsach"><i class="icon fa fa-circle-o"></i> Quản trị</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Giáo viên</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i> Sinh viên</a></li>
+            <li><a class="treeview-item" href="quantri/taikhoan/quantri/danhsach"><i class="icon fa fa-circle-o"></i> Danh sách tài khoản</a></li> 
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Hộp thư</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-envelope"></i><span class="app-menu__label">Hộp thư</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="quantri/hopthu/danhsach"><i class="icon fa fa-circle-o"></i> Hộp thư đến</a></li> 
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-link"></i><span class="app-menu__label">Hình ảnh liên kết</span></a></li>
+        <!-- <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Blank Page</a></li>
             <li><a class="treeview-item" href="page-login.html"><i class="icon fa fa-circle-o"></i> Login Page</a></li>
@@ -113,7 +107,7 @@
             <li><a class="treeview-item" href="page-mailbox.html"><i class="icon fa fa-circle-o"></i> Mailbox</a></li>
             <li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>
           </ul>
-        </li>
+        </li>  -->
       </ul>
     </aside>
     @yield('content')

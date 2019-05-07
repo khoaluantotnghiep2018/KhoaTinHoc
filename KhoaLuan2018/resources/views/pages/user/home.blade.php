@@ -85,27 +85,59 @@ Trang chủ
             </div>
         </div>
         <div class="content-box__main" id="news_top">
+            @if($baiviettopngaunhienchung != null)
+            @foreach($baiviettopngaunhienchung as $bvtnnc)
+            @php 
+                $tieude = $bvtnnc->tieude;
+                if(strlen($tieude) >= 50){
+                    $tieudecat = substr($tieude,0,50);
+                    $index = strrpos($tieudecat," ");  
+                    $tieudengan = substr($tieudecat,0,$index); 
+                }
+                else{
+                    $tieudengan = $tieude;
+                }
+            @endphp
             <article>
-                <a href=""><img src="http://tintuc.hues.vn/wp-content/uploads/sites/2/2016/05/lanh-dao-DH-hue-tang-giay-khen-cho-2-tap-the-doi-6-ca-nhan-cua-khoa-Tin-hoc-vi-co-thanh-tich-trong-cong-tac-giang-day-nghien-cuu-khoa-hoc.jpg"
+                <a href=""><img src="assets/user/images/hinhtintuc/{{$bvtnnc->hinhdaidien}}"
                     alt=""></a>
                     <div class="information">
-                        <div class="information-title"><a href="">Kỷ niệm 20 năm thành lập khoa Tin Học cùng cựu sinh viên</a></div>
+                        <div class="information-title"><a href="">{{$tieudengan}}</a></div>
                         <div class="date">
-                            <span class="fas fa-calendar-alt"> 05/09/2018 17:38</span>
+                            <span class="fas fa-calendar-alt"> {{$bvtnnc->updated_at}}</span>
                         </div>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora quam
-                            laboriosam eveniet
-                            ratione, pariatur eos neque explicabo ad corporis inventore cum quibusdam obcaecati placeat
-                            tenetur! Esse iste
-                            officiis dolor.
-                        pariatur eos neque explicabo ad corporis inventore cum quibusdam obcaecati </div>
+                        @php
+                            $mota = $bvtnnc->mota;
+                            if(strlen($mota) >= 215){
+                                $motacat = substr($mota,0,215);
+                                $index = strrpos($motacat," ");  
+                                $motangan = substr($motacat,0,$index); 
+                            }
+                            else{
+                                $motangan = $mota;
+                            }
+                        @endphp
+                        <div class="text"> {{$motangan}}</div>
                     </div>
+                    @php
+                        if($binhluanchung != null){
+                            $dembinhluan = 0;
+                            foreach($binhluanchung as $bl){
+                                if($bl->id_tintuc == $bvtnnc->id){
+                                    $dembinhluan++;
+                                }
+                            }
+                        }
+                    @endphp
                     <div class="cmt">
-                        <span><i class="fas fa-eye"></i> : 200</span>
-                        <span><i class="far fa-comment"></i> :20</span>
+                        <span><i class="fas fa-eye"></i> : {{$bvtnnc->luotxem}}</span>
+                        <span><i class="far fa-comment"></i> :{{$dembinhluan}}</span>
                     </div>
 
                 </article>
+            @break
+            @endforeach
+            @endif
             </div>
 
         </div>
@@ -113,8 +145,8 @@ Trang chủ
         <!-- Hiên thị tin -->
         @if(($theloai != null) &&($demtheloaichung != null))
         @foreach($theloai as $tl) 
-            @foreach($demtheloaichung as $ttc) 
-                @if($tl->id == $ttc->idTheLoai)
+            @foreach($theloaicotintucchung as $tlcttc) 
+                @if($tl->id == $tlcttc->idTheLoai)
         <div class="content-box" @if(!$tl->hienthi) hidden @endif>
             <div class="content-box__title">
                 <div class="link">
@@ -132,12 +164,12 @@ Trang chủ
                         $maxbaiviet = 0;
                     @endphp
                     @foreach($baiviettheoloaichung as $bvtlc) 
-                        @if($bvtlc->idTheLoai == $ttc->idTheLoai && $maxbaiviet < 3)
+                        @if($bvtlc->idTheLoai == $tlcttc->idTheLoai && $maxbaiviet < 3)
                         @php
                             $maxbaiviet++;
                             $tieude = $bvtlc->tieude;
-                            if(strlen($tieude) >= 60){
-                                $tieudecat = substr($tieude,0,60);
+                            if(strlen($tieude) >= 50){
+                                $tieudecat = substr($tieude,0,50);
                                 $index = strrpos($tieudecat," ");  
                                 $tieudengan = substr($tieudecat,0,$index); 
                             }
@@ -147,14 +179,14 @@ Trang chủ
                         @endphp
                         <li><a href="tintuc/{{$bvtlc->id}}"><i class="fas fa-hand-point-right"></i> {{$tieudengan}}...</a></li>
                         @endif
-                        <li><a href="danhsachtin/{{$ttc->id_loaitin}}">Xem thêm &raquo;</a></li>
-                    @endforeach 
+                        @endforeach 
+                        <li><a href="javascript:void(0)"></a></li>
                 </ul>
                     @php
                         $dem = 0;
                     @endphp
                     @foreach($motbaiviettheoloaichung as $mbvtlc)  
-                        @if($mbvtlc->idTheLoai == $ttc->idTheLoai && $dem == 0)
+                        @if($mbvtlc->idTheLoai == $tlcttc->idTheLoai && $dem == 0)
                         @php
                             $tieude = $mbvtlc->tieude;
                             if(strlen($tieude) >= 145){

@@ -1,0 +1,1 @@
+web: vender/bin/heroku-php-aphache2 public/

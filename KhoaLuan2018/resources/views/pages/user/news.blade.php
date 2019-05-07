@@ -1,6 +1,6 @@
 @extends('layout/user/index')
 @section('title')
-Danh sách
+Bài viết
 @endsection
 
 @section('css')
@@ -78,7 +78,7 @@ Danh sách
                                 }
                                 @endphp
                                 <div class="rep"> 
-                                    <a onclick="clickRepComment(this, {{$id_toggle}})" class="btn-rep far fa-comment-dots"> {{$dem}} Phản hồi.</a>
+                                    <a onclick="clickRepComment(this, {{$id_toggle}})" class="btn-rep far fa-comment-dots"> {{$dem}}.</a>
                                 </div> 
                                 @php
                                     $id_toggle++; 
@@ -139,7 +139,7 @@ Danh sách
 
             <?php
                 // config
-                $link_limit = 10; // maximum number of links (a little bit inaccurate, but will be ok for now)
+                $link_limit = 10;
             ?>
 
             @for ($i = 1; $i <= $binhluanbaiviet->lastPage(); $i++)

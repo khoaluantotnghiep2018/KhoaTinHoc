@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\LoaiTin;
 use App\Model\TheLoai;
 use App\Model\TinTuc;
-use App\Model\BinhLuan;
+use App\Model\BinhLuan; 
 use App\User;
 use View;
 use Auth;
@@ -208,6 +208,16 @@ class BaiVietController extends Controller
     	$baivietxoa = TinTuc::find($id);
         $kiemtra = $baivietxoa->delete(); 
         return redirect('quantri/tintuc/baiviet/danhsach/')->with('thongbaoxoa',$kiemtra);  
+    }
+
+    public function timBaiVietTheoTuKhoa(Request $req){
+        $tukhoa = $req->tukhoa; 
+        $binhluan = BinhLuan::all(); 
+        $tintuctimkiem = TinTuc::where('tieude','like',"%$tukhoa%") 
+                                    ->orWhere('mota','like',"%$tukhoa%") 
+                                    ->orderBy('id', 'desc')    
+                                    ->paginate(4);
+        return view('pages.user.seach_key',['dsbaiviet'=>$tintuctimkiem, 'tukhoa'=>$tukhoa, 'binhluan'=>$binhluan]);
     }
   
 }

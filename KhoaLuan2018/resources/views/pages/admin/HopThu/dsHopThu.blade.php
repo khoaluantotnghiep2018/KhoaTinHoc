@@ -97,7 +97,7 @@ Quản trị - Hộp thư - Danh sách hộp thư
                     <td><a href="#"><i class="fa fa-user-times"></i></a></td>
                     <td><a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalLong{{$ht->id}}" @if($ht->dadoc == 0) style="color: #dab021;" @endif >{{$ht->hoten}}</a></td>
                     <td>{{$noidung}}</td> 
-                    <td>{{date("d-m-Y", strtotime($ht->updated_at))}}</td> 
+                    <td>{{date("d-m-Y", strtotime($ht->updated_at))}}</td>  
                   </tr>   
                   @endif
 
@@ -112,12 +112,18 @@ Quản trị - Hộp thư - Danh sách hộp thư
                         </div>
                         <div class="modal-body">
                             {{$ht->noidung}}
-                        </div>
+                        </div> 
+                        <div>
+                        <input name="" class="form-control is-valid" type="text" >
+                        </div> 
                         <div class="modal-footer">
+                            @if($ht->andanh == 0)
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Trả lời</button>
+                            @endif
                             @if($ht->dadoc == 0)
                             <button onclick="location.href='quantri/hopthu/xemMotTin/'+{{$ht->id}}" type="button" class="btn btn-primary">Đánh dấu đã đọc</button>
                             @endif
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            
                         </div>
                         </div>
                     </div>

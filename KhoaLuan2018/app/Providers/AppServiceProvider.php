@@ -6,6 +6,7 @@ namespace App\Providers;
     use DB;
     use App\Model\BinhLuan;
     use App\Model\HopThu;
+    use App\Model\TinTuc;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,6 +43,12 @@ class AppServiceProvider extends ServiceProvider
                             ->select('the_loais.id as idTheLoai','tin_tucs.id_loaitin') 
                             ->distinct('idTheLoai')
                             ->get();
+            $theloaicotintucchung = DB::table('tin_tucs')
+                                    ->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
+                                    ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
+                                    ->select('the_loais.id as idTheLoai') 
+                                    ->distinct('idTheLoai')
+                                    ->get();
             $baiviettheoloaichung = DB::table('tin_tucs')->join('loai_tins', 'tin_tucs.id_loaitin', '=', 'loai_tins.id') 
                                     ->join('the_loais', 'loai_tins.id_theloai', '=', 'the_loais.id')
                                     ->select('tin_tucs.id','the_loais.id as idTheLoai','tin_tucs.tieude')  
@@ -57,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
                                     ->orderBy('id', 'desc')   
                                     ->limit(5)
                                     ->get();
+            $baiviettopngaunhienchung = DB::table('tin_tucs')->where('noibat','=',1) ->inRandomOrder()->get();
             $binhluanchung = BinhLuan::all();
 
             // QUẢN TRỊ VIÊN
@@ -73,6 +81,8 @@ class AppServiceProvider extends ServiceProvider
                     'baivietnoibatchung'=>$baivietnoibatchung,
                     'binhluanchung'=>$binhluanchung,
                     'hopthuchuadocchung'=>$hopthuchuadocchung,
+                    'theloaicotintucchung'=>$theloaicotintucchung,
+                    'baiviettopngaunhienchung'=>$baiviettopngaunhienchung,
                 ]); 
         });
     }

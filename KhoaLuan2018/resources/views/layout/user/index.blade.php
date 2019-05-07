@@ -52,7 +52,7 @@
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-user"></i></span>
-						<input required type="email" placeholder="Tên đăng nhập hoặc email" name="name" autofocus>
+						<input required type="text" placeholder="Tên đăng nhập hoặc email" name="name" autofocus>
 					</label>
 					<label for="">
 						<span class='icon'><i class="fas fa-unlock-alt"></i></span>
@@ -166,9 +166,9 @@
 		<div class="search">
 			<div id="clocktop"></div>
 			<div class="form-search">
-				<form action="" method='get'>
-					<input type="text" placeholder="Tìm kiếm..." name='search'>
-					<button><i class="fas fa-search"></i></button>
+				<form action="timkiem" method='get'> 
+					<input name="tukhoa" type="text" placeholder="Tìm kiếm..." name='search'>
+					<button type="submit"><i class="fas fa-search"></i></button>
 				</form>
 			</div>
 		</div> <!-- END SEARCH -->
