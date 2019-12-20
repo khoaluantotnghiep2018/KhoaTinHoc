@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="{{asset('')}}">
 	<title>@yield('title')</title> 
+	<link rel="shortcut icon" type="image/jpg" href="https://banner2.cleanpng.com/20180511/ywe/kisspng-logo-education-reading-5af63e61c673a9.1157524615260872658129.jpg"/>
 	<link rel="stylesheet" href="assets/user/css/reset.css">
 	<link rel="stylesheet" href="assets/user/css/style.css">
 	<link rel="stylesheet" href="assets/user/css/all.css"> 
@@ -45,7 +46,7 @@
 				<div class="close-form"><i class="fas fa-times-circle"></i></div>
 				<form class='form-dangnhap' id="form_dangnhap_sv" method="post">
 					@csrf
-					<div class="log-form__title">Sinh viên đăng nhập</div>
+					<div class="log-form__title">ĐĂNG NHẬP HỆ THỐNG</div>
 					<label for=""> 
 						<span class="error" id="loiLogin">Tài khoản hoặc mật khẩu chưa đúng!</span> 	  
 						<span class="error" id="loiPhanQuyen">Tài khoản không dùng cho sinh viên<br>Vui lòng chọn đăng nhập cho giảng viên!</span> 	 
@@ -65,15 +66,15 @@
 						<button type='submit' class='btn-login' id="btnDangNhapSv">Đăng nhập</button>
 					</label>
 					<label for="">
-						<a href="" class='link-register'><b>Giành cho giảng viên</b></a>
+						<a href="" class='link-register'><b>Giành cho giáo viên</b></a>
 					</label> 
 				</form>
 				<form method="post" class='form-dangky' id="formLoginGv">
 					@csrf
-					<div class="log-form__title">Giảng viên đăng nhập</div>
+					<div class="log-form__title">ĐĂNG NHẬP HỆ THỐNG</div>
 					<label for=""> 
 						<span class="error" id="loiLoginGV">Tài khoản hoặc mật khẩu chưa đúng!</span> 	  
-						<span class="error" id="loiPhanQuyenGV">Tài khoản không dùng cho giảng viên<br>Vui lòng chọn đăng nhập cho sinh viên!</span> 	 
+						<span class="error" id="loiPhanQuyenGV">Tài khoản không dùng cho giáo viên<br>Vui lòng kiểm tra lại!</span> 	 
 					</label>
 					<label for="">
 						<select name="permission" id="selectQuyen">
@@ -97,7 +98,7 @@
 						<button type='submit' class='btn-register' id="btnLoginAd">Đăng nhập</button>
 					</label>
 					<label for="">
-						<a href="" class='link-login'><b>Giành cho sinh viên</b></a>
+						<a href="" class='link-login'><b>Giành cho học sinh</b></a>
 					</label>
 				</form>
 			</div>
@@ -119,7 +120,7 @@
 		</div>
 		<header class="header">
 			<div class="header-banner">
-				<img src="assets/user/images/bannerDHSP.gif" alt="">
+				<img src="assets/user/images/bannerTop.jpg" alt="">
 			</div> 
 			<div class="header-login" @if(Auth::check()) hidden @endif><i class="fas fa-lock"></i></div>
 			<div class="header-logout" @if(!Auth::check()) hidden @endif>

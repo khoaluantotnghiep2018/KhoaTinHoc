@@ -6,80 +6,12 @@ Trang chủ
 
 @section('content')
 <div class="content">
-    <!-- Hiển thị rss -->
-    @if($trangchu != null)
-    <div class="content-box" @if(!$trangchu->hienthirss) hidden @endif>
-        <div class="content-box__title">
-            <div class="link">
-                <p>RSS</p>
-                <a class="fa fa-rss" id="readRss" href="trangchu"></a>
-            </div>
-            <div class="next">
-            </div>
-        </div>
-        <?php
-        try{
-            $doc = new DOMDocument();
-            $doc->load("https://ictnews.vn/rss/cntt"); 
-            $max = $doc->getElementsByTagName("item")->count();
-                    // Lấy ngẫu nhiên 1 tin 
-            $index = rand(0,$max-1);
-            $articles = $doc->getElementsByTagName("item")->item($index);
-            $title = $articles->getElementsByTagName("title")->item(0);
-            $description = $articles->getElementsByTagName("description")->item(0);
-            $link = $articles->getElementsByTagName("link")->item(0);
-            $pubDate = $articles->getElementsByTagName("pubDate")->item(0);
-        } catch (Exception $e) {
-            
-        }
-        ?>
-        <div class="content-box__main" id="news_top">
-            <article>
-                <?php 
-                    // Xử lý hình ảnh + nội dung  
-                try{
-                    $stat = strpos($description->nodeValue, '</br>');
-                    $content_image = substr($description->nodeValue, 0, $stat); 
-                    $content_text = substr($description->nodeValue, $stat+6, strlen($description->nodeValue)-1); 
-                    $content_text = str_replace(" ]]>","",$content_text);
-                    $date = substr($pubDate->nodeValue,0,20);
-                    echo $content_image;  
-                } catch (Exception $e) {
-                    
-                } 
-                ?>
-                <div class="information">
-                    <div class="information-title">
-                     <i class="fas fa-calendar-alt"> <?php 
-                     try{
-                        echo $date; 
-                    } catch (Exception $e) {
-                        
-                    }
-                    ?></i><br>
-                    <a href="<?php try{echo $link->nodeValue;} catch (Exception $e) {
-                        
-                    } ?>">
-                    <?php try { echo $title->nodeValue; } catch (Exception $e) {
-                        
-                    } ?>.</a> <br> 
-                    <span><?php try{ echo $content_text.".."; } catch (Exception $e) {
-                        
-                    } ?></span>  
-                </div>
-            </article>
-        </div>
-
-    </div>
-    @endif
-
     <!-- Hiển thị top news khoa -->
     @if($trangchu != null)
-    <div class="content-box" @if($trangchu->hienthirss) hidden @endif>
+    <div class="content-box">
         <div class="content-box__title">
             <div class="link">
-                <p>RSS</p>
-                <a class="fa fa-rss" id="readRss" href=""></a>
+                <p>Tin mới nhất</p>
             </div>
             <div class="next">
             </div>

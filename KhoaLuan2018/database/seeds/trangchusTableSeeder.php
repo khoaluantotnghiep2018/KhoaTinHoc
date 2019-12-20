@@ -53,7 +53,6 @@ class trangchusTableSeeder extends Seeder
             <p>Trong những năm ti&ecirc;p theo, Khoa phấn đấu l&agrave; đơn vị đ&agrave;o tạo gi&aacute;o vi&ecirc;n Tin học chất lượng của v&ugrave;ng Duy&ecirc;n Hải miền Trung v&agrave; cả nước, th&agrave;nh lập 2 nh&oacute;m nghi&ecirc;n cứu mạnh để nghi&ecirc;n cứu v&agrave; chuyển giao c&ocirc;ng nghệ trong lĩnh vực CNTT. Tiếp tục ph&aacute;t triển đội ngũ c&oacute; tr&igrave;nh độ cao. Năm 2018 Khoa sẽ bắt đầu đ&agrave;o tạo Thạc sĩ chuy&ecirc;n ng&agrave;nh Hệ thống th&ocirc;ng tin.</p>
             </div>
             </div>', 
-            'hienthirss' => 1,
         ]);
     }
 }

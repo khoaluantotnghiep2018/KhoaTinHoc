@@ -16,7 +16,6 @@ class CreateTrangchusTable extends Migration
         Schema::create('trang_chus', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('gioithieu');
-            $table->boolean('hienthirss');
             $table->timestamps();
         });
     }

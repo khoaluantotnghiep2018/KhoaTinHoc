@@ -68,7 +68,7 @@ Quản trị - Tin Tức - Loại tin
 							<td>{{$tl->tentheloai}}</td>
 							@endif
 							@endforeach
-							<td><button onclick="location.href='quantri/tintuc/loaitin/sua/{{$lt->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button> 
+							<td><button onclick="location.href='quantri/tintuc/loaitin/sua/{{$lt->id}}'" class="btn btn-secondary fa fa-pencil-square-o" type="button"> Sửa</button> 
 							</td>
 							<td><button onclick="XoaLoaiTin({{$lt->id}})" class="btn btn-danger fa fa-minus-square-o" type="button"> Xóa</button></td>
 						</tr>

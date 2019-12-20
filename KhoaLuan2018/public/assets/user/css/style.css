@@ -451,20 +451,7 @@
 		#news_top .information-title a:hover{
 			text-shadow: 2px 2px 10px #8b0202;
 		}
-		#readRss{
-			background-color: #ea7819;
-			color: white;
-			padding: 4px;
-			border-radius: 3px; 
-			text-decoration: none;
-		}
 		
-
-
-
-
-
-
 
 .content-box__main article button.btn {
     padding: 5px 12px;

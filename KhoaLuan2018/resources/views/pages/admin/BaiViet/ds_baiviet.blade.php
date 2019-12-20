@@ -64,7 +64,7 @@ Quản trị - Tài khoản - Danh sách bài viết
                     <td>{{$ds->mota}}</td>
                     <td><img class="detail-img" src="assets/user/images/hinhtintuc/{{$ds->hinhdaidien}}"></td>
                     <td> 
-                      <div class="animated-checkbox" id="luuNoiBat">
+                      <div class="animated-checkbox" id="luuNoiBat{{$ds->id}}">
                         <label> 
                           @if( $ds->noibat == '1') 
                           <input type="checkbox" checked onchange="DoiNoiBat({{$ds->id}})"><span class="label-text"> Mở</span>  
@@ -95,13 +95,14 @@ Quản trị - Tài khoản - Danh sách bài viết
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script>
       function DoiNoiBat(id){ 
+        console.log(id)
         $.ajax({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             url: 'quantri/tintuc/baiviet/suanoibat',
             method: 'post',
             data: {id: id},
             success: function (data) { 
-                $("#luuNoiBat").html(data); 
+                $("#luuNoiBat"+id).html(data); 
             }
         });  
       }
