@@ -119,4 +119,8 @@ class TrangchuController extends Controller
             return $checkupdate; 
         }
     }
+
+    public function HienThiLienKet(){
+        return view('pages.admin.lienket');
+    }
 }

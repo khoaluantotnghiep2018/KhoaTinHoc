@@ -74,6 +74,9 @@ Route::group(['prefix'=>'quantri','middleware'=>'adminCheckLogin'] , function(){
         Route::post('suaanhientintuc', 'TrangchuController@updateAnHienTinTuc');   
         Route::post('suathongbao', 'TrangchuController@updateThongBao');   
     });
+    Route::group(['prefix'=>'lienket'] , function(){
+        Route::get('', 'TrangchuController@HienThiLienKet');     
+    });
     Route::group(['prefix'=>'tintuc'] , function(){ 
         Route::group(['prefix'=>'loaitin'] , function(){ 
             Route::get('danhsach', 'LoaiTinController@getLoaiTin');   

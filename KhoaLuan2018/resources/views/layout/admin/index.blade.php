@@ -95,7 +95,7 @@
             <li><a class="treeview-item" href="quantri/hopthu/danhsach"><i class="icon fa fa-circle-o"></i> Hộp thư đến</a></li> 
           </ul>
         </li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-link"></i><span class="app-menu__label">Hình ảnh liên kết</span></a></li>
+        <li><a class="app-menu__item" href="quantri/lienket"><i class="app-menu__icon fa fa-link"></i><span class="app-menu__label">Hình ảnh liên kết</span></a></li>
         <!-- <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Blank Page</a></li>

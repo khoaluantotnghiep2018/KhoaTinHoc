@@ -84,7 +84,7 @@ Giới thiệu
             </div> 
         </div>
     </div>
-</div>
+
 </main>
 @endif
 
@@ -170,8 +170,6 @@ $("#subhienthitintuc").click(function(){
             }
         })
 }); 
-
-
 
     // Xử lý sửa thông báo
     $("#subdangthongbao").click(function(){ 
