@@ -160,7 +160,7 @@
 						@endcan 
 					</ul>	
 				</li>
-				<li><a href="">Liên hệ chúng tôi</a></li>
+				<li id="ContactPage"><a href="javascript:void(0)">Liên hệ chúng tôi</a></li>
 			</ul>
 		</nav> <!-- END MENU -->
 
@@ -511,8 +511,11 @@
 		});
 		return false;
 	});
-	
-	
+	// Back to Bottom Page -> Show Contact
+	$( "#ContactPage" ).click(function() {
+		console.log("check")
+    	$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+	});
  
 </script>
 @yield('script')

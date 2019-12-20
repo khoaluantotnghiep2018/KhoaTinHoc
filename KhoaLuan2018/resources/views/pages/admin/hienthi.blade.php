@@ -32,22 +32,6 @@ Giới thiệu
             <div class="tile">
                 <div class="row">
                     <div class="col-lg-5">
-
-                        <legend>Hiển thị tin đầu trang</legend>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" id="optionsRadios1" type="radio" name="optionsRadios"
-                                value="option1" @if($trangchu->hienthirss) checked @endif>Lựa chọn tin lấy
-                                từ RSS
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" id="optionsRadios2" type="radio" name="optionsRadios"
-                                value="option2" @if(!$trangchu->hienthirss) checked @endif>Lựa chọn tin lấy
-                                từ tin tức nổi bật
-                            </label>
-                        </div>
                         <legend>Danh mục tin tức hiển thị</legend>
                         @foreach($theloai as $tlhienthi)
                         <div class="form-check">

@@ -29,7 +29,7 @@ class theloaisTableSeeder extends Seeder
                     'hienthi' => 1, 
                 ],
                 [
-                    'tentheloai' => "Chương trình đào tạo",
+                    'tentheloai' => "Chương trình học tập",
                     'uutien' => 3, 
                     'hienthi' => 1, 
                 ],

@@ -21,7 +21,7 @@ Quản trị - Tài khoản - Danh sách bài viết
         <ul class="app-breadcrumb breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
 			<li class="breadcrumb-item">Trang chủ</li>
-			<li class="breadcrumb-item"><a href="#">Bàu viết</a></li>
+			<li class="breadcrumb-item"><a href="#">Bài viết</a></li>
 			<li class="breadcrumb-item"><a href="#">Danh sách</a></li>
 		</ul>
       </div>
@@ -75,7 +75,7 @@ Quản trị - Tài khoản - Danh sách bài viết
                       </div>
                     </td>
                     <td>{{$ds->luotxem}}</td>
-                    <td><button  class="btn btn-success fa fa-search" type="button"> Xem</button><button onclick="location.href='quantri/tintuc/baiviet/sua/{{$ds->id}}'" class="btn btn-secondary fa fa-pencil-square-o" " type="button"> Sửa</button><button onclick="location.href='quantri/tintuc/baiviet/xoa/{{$ds->id}}'" class="btn btn-danger fa fa-trash" type="button"> Xóa </button></td>
+                    <td><button  class="btn btn-success fa fa-search" type="button"> Xem</button><button onclick="location.href='quantri/tintuc/baiviet/sua/{{$ds->id}}'" class="btn btn-secondary fa fa-pencil-square-o" type="button"> Sửa</button><button onclick="location.href='quantri/tintuc/baiviet/xoa/{{$ds->id}}'" class="btn btn-danger fa fa-trash" type="button"> Xóa </button></td>
                   </tr>
                   @endforeach
                   @endif
@@ -95,7 +95,6 @@ Quản trị - Tài khoản - Danh sách bài viết
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <script>
       function DoiNoiBat(id){ 
-        console.log(id)
         $.ajax({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             url: 'quantri/tintuc/baiviet/suanoibat',
