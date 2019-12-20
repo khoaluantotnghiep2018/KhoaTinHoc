@@ -30,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191); 
         // NGƯỜI DÙNG
         view()->composer('*', function($view){ 
-            $trangchu = DB::table('trang_chus')->first(); 
+            $trangchu = DB::table('trang_chus')->first();
+            $lienket = DB::table('lien_kets')->get();
             $theloai =  DB::table('the_loais')->orderBy('uutien', 'asc')->get();
             $dulieuthongbao = DB::table('thong_baos')->first();  
             $tatcatheloai = DB::table('the_loais')->get();
@@ -73,6 +74,7 @@ class AppServiceProvider extends ServiceProvider
                     'tatcatheloai'=>$tatcatheloai, 
                     'loaitin'=>$loaitin, 
                     'trangchu'=>$trangchu, 
+                    'lienket'=>$lienket, 
                     'theloai'=>$theloai, 
                     "dulieuthongbao" =>$dulieuthongbao,
                     'demtheloaichung'=>$demtheloaichung,

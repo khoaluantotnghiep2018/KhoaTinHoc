@@ -202,41 +202,49 @@
 						<li><a href="javascript:void(0)">Thông tin từ cơ sở dữ liệu</a></li>
 					</ul>
 				</div>
-
+				@if($lienket != null)
 				<div class="left-lienket">
 					<div class="title">Hình ảnh liên kết</div>
 					<div class="left-lienket__box">
-						<a href=""><img src="https://thpt-nguyentatthanh-tphcm.edu.vn/uploads/banners/img_bgddt_220-1_1.jpg" alt=""></a>
-						<a href='#'><img src="https://thpt-nguyentatthanh-tphcm.edu.vn/uploads/banners/truonghocketnoitop_banner2_1.gif"
-							 alt=""></a>
-						<a href='#'><img src="https://thpt-nguyentatthanh-tphcm.edu.vn/uploads/banners/logo_small.gif" alt=""></a>
-						<a href='#'><img src="https://thpt-nguyentatthanh-tphcm.edu.vn/uploads/banners/img_bao-giao-ducvn.jpg" alt=""></a>
-						<a href='#'><img src="https://thpt-nguyentatthanh-tphcm.edu.vn/uploads/banners/img_baogiaoduc_tphcm.jpg" alt=""></a>
+					@foreach($lienket as $lk)
+						@if($lk->loailienket == "HinhAnh")
+						<a href="{{$lk->linklienket}}"><img src="{{$lk->tenlienket}}" alt="Hình ảnh liên kết"></a>
+						@endif
+					@endforeach
 					</div>
 				</div>
-
 				<div class="left-lienket">
 					<div class="title">Liên kết website</div>
 					<div class="lienket-website">
-
 						<select name="" id="0">
-							<option value="">Giành cho sinh viên</option>
-							<option value="">website 1</option>
-							<option value="">website 2</option>
+							<option value="">Giành cho Giáo viên</option>
+							@foreach($lienket as $lk)
+								@if($lk->loailienket == "GiaoVien")
+							<option value="">{{$lk->tenlienket}}</option>
+							
+								@endif
+							@endforeach
 						</select>
 						<select name="" id="0">
-							<option value="">Giành cho giảng viên</option>
-							<option value="">website 1</option>
-							<option value="">website 2</option>
+							<option value="">Giành cho Học sinh</option>
+							@foreach($lienket as $lk)
+								@if($lk->loailienket == "HocSinh")
+							<option value="">{{$lk->tenlienket}}</option>
+							
+								@endif
+							@endforeach
 						</select>
 						<select name="" id="0">
 							<option value="">Liên kết khác</option>
-							<option value="">website 1</option>
-							<option value="">website 2</option>
+							@foreach($lienket as $lk)
+								@if($lk->loailienket == "LienKetKhac")
+							<option value="">{{$lk->tenlienket}}</option>
+								@endif
+							@endforeach
 						</select>
 					</div>
 				</div>
-
+				@endif
 				<div class="left-truycap">
 					<div class="title">Thống kê truy cập</div>
 					<div class="left-truycap__box">

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(thongbaosSeeder::class);
         $this->call(taikhoansTableSeeder::class);
         $this->call(tintucsTableSeeder::class); 
+        $this->call(LienKetsTableSeeder::class); 
     }
 }
