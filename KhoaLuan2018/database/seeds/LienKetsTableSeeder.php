@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LienKetsTableSeeder extends Seeder
+class lienketsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
